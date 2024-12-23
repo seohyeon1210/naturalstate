@@ -10,6 +10,7 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^4.2.4"
   },
+  "proxy": "http://localhost:18080",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -33,6 +34,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://localhost:18080"
+  }
 }
