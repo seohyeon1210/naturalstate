@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import Header from './component/header/Header';
+import Header from './components/Header/Header';
+import MainBanner from './components/Main/MainBanner';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -16,6 +17,10 @@ function App() {
         <>
             <div>
                 <Header/>
+            </div>
+
+            <div>
+                <MainBanner/>
             </div>
 
             <div>
