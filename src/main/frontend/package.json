@@ -7,11 +7,15 @@
     "bootstrap": "^5.3.3",
     "components": "^0.1.0",
     "cra-template": "1.2.0",
+    "formik": "^2.4.6",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.7",
+    "react-daum-postcode": "^3.2.0",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^7.1.1",
     "react-scripts": "5.0.1",
-    "web-vitals": "^4.2.4"
+    "web-vitals": "^4.2.4",
+    "yup": "^1.6.1"
   },
   "proxy": "http://localhost:18080",
   "scripts": {
