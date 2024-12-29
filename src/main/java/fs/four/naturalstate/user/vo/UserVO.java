@@ -1,90 +1,110 @@
 package fs.four.naturalstate.user.vo;
 
+import java.util.Date;
+
 public class UserVO {
 
-    private String user_id;
-    private String user_password;
-    private String user_name;
-    private String user_postcode;
-    private String user_address;
-    private String user_phonenumber;
-    private String user_email;
-    private String user_optout;
-    private String user_joindate;
+    private String username;
+    private String password;
+    private String confirmPassword;
+    private String firstName;
+    private String phone;
+    private String zip;
+    private String address;
+    private String detailAddress;
+    private String email;
+    private boolean receiveEmail;
+    private Date joindate;
 
-    public UserVO() {
+    public UserVO(){
 
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getUser_password() {
-        return user_password;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUser_password(String user_password) {
-        this.user_password = user_password;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getConfirmPassword() {
+        return confirmPassword;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
-    public String getUser_postcode() {
-        return user_postcode;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUser_postcode(String user_postcode) {
-        this.user_postcode = user_postcode;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getUser_address() {
-        return user_address;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setUser_address(String user_address) {
-        this.user_address = user_address;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getUser_phonenumber() {
-        return user_phonenumber;
+    public String getZip() {
+        return zip;
     }
 
-    public void setUser_phonenumber(String user_phonenumber) {
-        this.user_phonenumber = user_phonenumber;
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 
-    public String getUser_email() {
-        return user_email;
+    public String getAddress() {
+        return address;
     }
 
-    public void setUser_email(String user_email) {
-        this.user_email = user_email;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getUser_optout() {
-        return user_optout;
+    public String getDetailAddress() {
+        return detailAddress;
     }
 
-    public void setUser_optout(String user_optout) {
-        this.user_optout = user_optout;
+    public void setDetailAddress(String detailAddress) {
+        this.detailAddress = detailAddress;
     }
 
-    public String getUser_joindate() {
-        return user_joindate;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUser_joindate(String user_joindate) {
-        this.user_joindate = user_joindate;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isReceiveEmail() {
+        return receiveEmail;
+    }
+
+    public void setReceiveEmail(boolean receiveEmail) {
+        this.receiveEmail = receiveEmail;
+    }
+
+    public Date getJoindate() {
+        return joindate;
+    }
+
+    public void setJoindate(Date joindate) {
+        this.joindate = joindate;
     }
 }
