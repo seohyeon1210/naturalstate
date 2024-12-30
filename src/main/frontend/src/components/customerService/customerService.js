@@ -8,16 +8,16 @@ function CustomerService() {
 
   // 게시판 데이터
   const boardData = [
-    { 번호: 10, title: "네이버", author: "아임웹", date: "2019-12-17", likes: 0 },
-    { 번호: 9, title: "제목", author: "아임웹", date: "2019-12-16", likes: 0 },
-    { 번호: 8, title: "구글 지도", author: "아임웹", date: "2019-12-16", likes: 0 },
-    { 번호: 7, title: "환율미쳤다", author: "아임웹", date: "2018-05-14", likes: 0 },
-    { 번호: 6, title: "분위기 최고네요~!", author: "아임웹", date: "2018-04-17", likes: 0 },
-    { 번호: 5, title: "진짜로 갑니다~~", author: "아임웹", date: "2018-04-17", likes: 0 },
-    { 번호: 4, title: "템 메뉴 이미지", author: "아임웹", date: "2017-12-06", likes: 0 },
-    { 번호: 3, title: "응원합니다!", author: "아임웹", date: "2017-11-20", likes: 0 },
-    { 번호: 2, title: "가즈아아아아아아!", author: "아임웹", date: "2017-11-20", likes: 0 },
-    { 번호: 1, title: "제목만", author: "아임웹", date: "2017-11-20", likes: 0 },
+    { no: 10, title: "네이버", author: "아임웹", date: "2019-12-17", likes: 0 },
+    { no: 9, title: "제목", author: "아임웹", date: "2019-12-16", likes: 0 },
+    { no: 8, title: "구글 지도", author: "아임웹", date: "2019-12-16", likes: 0 },
+    { no: 7, title: "환율미쳤다", author: "아임웹", date: "2018-05-14", likes: 0 },
+    { no: 6, title: "분위기 최고네요~!", author: "아임웹", date: "2018-04-17", likes: 0 },
+    { no: 5, title: "진짜로 갑니다~~", author: "아임웹", date: "2018-04-17", likes: 0 },
+    { no: 4, title: "템 메뉴 이미지", author: "아임웹", date: "2017-12-06", likes: 0 },
+    { no: 3, title: "응원합니다!", author: "아임웹", date: "2017-11-20", likes: 0 },
+    { no: 2, title: "가즈아아아아아아!", author: "아임웹", date: "2017-11-20", likes: 0 },
+    { no: 1, title: "제목만", author: "아임웹", date: "2017-11-20", likes: 0 },
   ];
 
   // 현재 페이지의 데이터 계산
@@ -43,7 +43,7 @@ function CustomerService() {
       <table style={{ width: "100%", borderCollapse: "collapse" }}>
         <thead>
           <tr style={{ borderBottom: "2px solid #ccc" }}>
-            <th style={{ padding: "10px", textAlign: "center" }}>No</th>
+            <th style={{ padding: "10px", textAlign: "center" }}>번호</th>
             <th style={{ padding: "10px", textAlign: "left" }}>제목</th>
             <th style={{ padding: "10px", textAlign: "center" }}>글쓴이</th>
             <th style={{ padding: "10px", textAlign: "center" }}>작성시간</th>

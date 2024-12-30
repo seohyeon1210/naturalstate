@@ -57,22 +57,25 @@ function PostForm() {
             value={formData.content}
             onChange={handleChange}
             required
-            style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px" }}
+            style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px", height: "250px", }}
           ></textarea>
         </div>
-        <button
-          type="submit"
-          style={{
-            padding: "10px 20px",
-            backgroundColor: "#007BFF",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-        >
-          등록하기
-        </button>
+        {/* 버튼을 오른쪽으로 정렬 */}
+        <div style={{ textAlign: "right" }}>
+          <button
+            type="submit"
+            style={{
+              padding: "10px 20px",
+              backgroundColor: "#007BFF",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+          >
+            등록하기
+          </button>
+        </div>
       </form>
     </div>
   );
