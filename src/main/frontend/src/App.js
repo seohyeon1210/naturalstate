@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MainAlert from "./components/Main/MainAlert";
 import SecondHeader from "./components/Header/SecondHeader";
 import Login from "./components/Login/Login";
+import CustomerService from "./components/CustomerService/CustomerService";
 
 function App() {
     const [mainMessage, setMainMessage] = useState('');
@@ -44,6 +45,7 @@ function App() {
                 />
                 <Route path="/join" element={<Join />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/customerservice" element={<CustomerService />} />
             </Routes>
         </>
     );

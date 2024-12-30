@@ -1,12 +1,9 @@
-import React from 'react'; // 반드시 추가해야 함
+import React from 'react';
 
-function App() {
-  return (
-    <div>
-      <h1>안녕안녕 여긴 고객센터 페이지야</h1>
-       <h2>여기선 문의를 할수있어</h2>
-    </div>
-  );
+function CustomerService() {
+    return (
+        <h1>고객센터 페이지 입니다.</h1>
+    )
 }
 
-export default App;
+export default CustomerService;
