@@ -11,6 +11,8 @@ import SecondHeader from "./components/Header/SecondHeader";
 import Login from "./components/Login/Login";
 import CustomerService from "./components/CustomerService/CustomerService";
 import StoreJoin from "./components/Join/StoreJoin";
+import PostForm from "./components/customerService/PostForm"; // PostForm 컴포넌트로 변경
+
 
 function App() {
     const [mainMessage, setMainMessage] = useState('');
@@ -48,22 +50,11 @@ function App() {
                 <Route path="/join" element={<Join />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/customerservice" element={<CustomerService />} />
+                <Route path="/post" element={<PostForm />} />      /*PostForm URL 매핑 (/post로 매핑) */
             </Routes>
         </>
     );
 }
-
-
-/*function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Board />} />
-        <Route path="/post" element={<PostForm />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}*/
 
 export default function AppWrapper() {
     return (

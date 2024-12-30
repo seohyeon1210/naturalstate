@@ -10,4 +10,7 @@ public class CustomerServiceControllerImpl {
         return "forward:/index.html";
     }
 
+    @GetMapping("/post")
+    public String PostForm() { return "forward:/index.html"; }
+
 }

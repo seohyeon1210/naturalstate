@@ -1,38 +1,81 @@
--import React, { useState } from 'react';
- import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // 페이지 이동을 위한 useNavigate 훅
 
- function PostForm({ onSubmit }) {
-   const [title, setTitle] = useState('');
-   const [author, setAuthor] = useState('');
-   const navigate = useNavigate();
+function PostForm() {
+  const [formData, setFormData] = useState({
+    title: "",
+    author: "",
+    content: "",
+  });
+  const navigate = useNavigate(); // 글 작성 후 페이지 이동
 
-   const handleSubmit = (e) => {
-     e.preventDefault();
-     const newPost = {
-       id: Date.now(),
-       title,
-       author,
-       date: new Date().toISOString().split('T')[0],
-       likes: 0,
-     };
-     onSubmit(newPost);
-     navigate('/'); // 등록 후 목록으로 이동
-   };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
-   return (
-     <form onSubmit={handleSubmit}>
-       <h1>게시글 등록</h1>
-       <div>
-         <label>제목: </label>
-         <input value={title} onChange={(e) => setTitle(e.target.value)} required />
-       </div>
-       <div>
-         <label>글쓴이: </label>
-         <input value={author} onChange={(e) => setAuthor(e.target.value)} required />
-       </div>
-       <button type="submit">등록</button>
-     </form>
-   );
- }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submitted Post:", formData);
+    alert("글이 등록되었습니다!");
+    navigate("/customerService"); // customerService 화면으로 이동
+  };
 
- export default PostForm;
+  return (
+    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+      <h1 style={{ textAlign: "center" }}>글쓰기</h1>
+      <form onSubmit={handleSubmit} style={{ maxWidth: "600px", margin: "0 auto" }}>
+        <div style={{ marginBottom: "10px" }}>
+          <label style={{ display: "block", marginBottom: "5px" }}>제목:</label>
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+            required
+            style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px" }}
+          />
+        </div>
+        <div style={{ marginBottom: "10px" }}>
+          <label style={{ display: "block", marginBottom: "5px" }}>작성자:</label>
+          <input
+            type="text"
+            name="author"
+            value={formData.author}
+            onChange={handleChange}
+            required
+            style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px" }}
+          />
+        </div>
+        <div style={{ marginBottom: "10px" }}>
+          <label style={{ display: "block", marginBottom: "5px" }}>내용:</label>
+          <textarea
+            name="content"
+            value={formData.content}
+            onChange={handleChange}
+            required
+            style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px" }}
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          style={{
+            padding: "10px 20px",
+            backgroundColor: "#007BFF",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          등록하기
+        </button>
+      </form>
+    </div>
+  );
+}
+
+export default PostForm;
