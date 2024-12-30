@@ -13,7 +13,8 @@ const Header = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
 
                     <Nav className="ms-auto">
-                        <Nav.Link href="#login" className="nav-link-right">로그인</Nav.Link>
+                        <Nav.Link href="#store" className="nav-link-right">입점신청</Nav.Link>
+                        <Nav.Link as={Link} to="/login" className="nav-link-right">로그인</Nav.Link>
                         <Nav.Link as={Link} to="/join" className="nav-link-right">회원가입</Nav.Link>
                         <Nav.Link href="#cs" className="nav-link-right">고객센터</Nav.Link>
                     </Nav>

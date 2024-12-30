@@ -8,6 +8,7 @@ import Join from "./components/Join/Join";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MainAlert from "./components/Main/MainAlert";
 import SecondHeader from "./components/Header/SecondHeader";
+import Login from "./components/Login/Login";
 
 function App() {
     const [mainMessage, setMainMessage] = useState('');
@@ -42,6 +43,7 @@ function App() {
                     }
                 />
                 <Route path="/join" element={<Join />} />
+                <Route path="/login" element={<Login />} />
             </Routes>
         </>
     );
