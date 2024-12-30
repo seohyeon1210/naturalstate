@@ -49,6 +49,18 @@ function App() {
     );
 }
 
+
+/*function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Board />} />
+        <Route path="/post" element={<PostForm />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}*/
+
 export default function AppWrapper() {
     return (
         <Router>
