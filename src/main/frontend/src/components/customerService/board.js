@@ -1,5 +1,8 @@
 import React from 'react';
 import PostItem from './PostItem';  // PostItem 임포트
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 
 function Board() {
   const posts = [
