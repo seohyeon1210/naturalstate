@@ -2,7 +2,6 @@ import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import MainBannerImage from '../../assets/Main/001.png';
 import MainBannerImage2 from '../../assets/Main/002.png';
-import './MainBanner.css';
 
 function MainBanner() {
     return (
