@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import * as formik from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
+import "./Join.css";
 
 function Join() {
     const {Formik} = formik;
@@ -53,220 +54,222 @@ function Join() {
     };
 
     return (
-        <Formik
-            validationSchema={schema}
-            onSubmit={async (values, { setSubmitting, resetForm }) => {
-                console.log('폼 제출 시작:', values);
-                try {
-                    const response = await axios.post('http://localhost:18080/api/join', values, {
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    });
-                    console.log('회원가입 성공:', response.data);
-                    alert('회원가입이 완료되었습니다.');
-                    resetForm();
-                } catch (error) {
-                    console.error('회원가입 실패:', error);
-                    alert('회원가입에 실패하였습니다. 다시 시도해 주세요.');
-                }
-                setSubmitting(false);
-                console.log("폼 데이터", values);
-            }}
-            initialValues={{
-                username: '',
-                password: '',
-                confirmPassword: '',
-                firstName: '',
-                phone: '',
-                zip: '',
-                address: '',
-                detailAddress: '',
-                email: '',
-                receiveEmail: false
-            }}
-        >
-            {({handleSubmit, handleChange, setFieldValue, values, touched, errors, isSubmitting}) => (
-                <Form noValidate onSubmit={handleSubmit}>
-                    <Row className="mb-3">
-                        <Form.Group as={Col} md="6" controlId="validationFormikUsername">
-                            <Form.Label>아이디</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="아이디"
-                                name="username"
-                                value={values.username}
-                                onChange={handleChange}
-                                isInvalid={!!errors.username}
-                            />
-                            <Form.Control.Feedback type="invalid">
-                                {errors.username}
-                            </Form.Control.Feedback>
-                        </Form.Group>
-
-                        <Form.Group as={Col} md="6" controlId="validationFormikPassword">
-                            <Form.Label>비밀번호</Form.Label>
-                            <Form.Control
-                                type="password"
-                                placeholder="비밀번호"
-                                name="password"
-                                value={values.password}
-                                onChange={handleChange}
-                                isInvalid={!!errors.password}
-                            />
-                            <Form.Control.Feedback type="invalid">
-                                {errors.password}
-                            </Form.Control.Feedback>
-                        </Form.Group>
-                    </Row>
-
-                    <Row className="mb-3">
-                        <Form.Group as={Col} md="6" controlId="validationFormikConfirmPassword">
-                            <Form.Label>비밀번호 확인</Form.Label>
-                            <Form.Control
-                                type="password"
-                                placeholder="비밀번호 확인"
-                                name="confirmPassword"
-                                value={values.confirmPassword}
-                                onChange={handleChange}
-                                isInvalid={!!errors.confirmPassword}
-                            />
-                            <Form.Control.Feedback type="invalid">
-                                {errors.confirmPassword}
-                            </Form.Control.Feedback>
-                        </Form.Group>
-
-                        <Form.Group as={Col} md="6" controlId="validationFormikFirstName">
-                            <Form.Label>이름</Form.Label>
-                            <Form.Control
-                                type="text"
-                                name="firstName"
-                                value={values.firstName}
-                                onChange={handleChange}
-                                isInvalid={!!errors.firstName}
-                            />
-                            <Form.Control.Feedback type="invalid">
-                                {errors.firstName}
-                            </Form.Control.Feedback>
-                        </Form.Group>
-                    </Row>
-
-                    <Row className="mb-3">
-                        <Form.Group as={Col} md="6" controlId="validationFormikPhone">
-                            <Form.Label>연락처</Form.Label>
-                            <InputGroup>
+        <div className="join-container">
+            <Formik
+                validationSchema={schema}
+                onSubmit={async (values, {setSubmitting, resetForm}) => {
+                    console.log('폼 제출 시작:', values);
+                    try {
+                        const response = await axios.post('http://localhost:18080/api/join', values, {
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        });
+                        console.log('회원가입 성공:', response.data);
+                        alert('회원가입이 완료되었습니다.');
+                        resetForm();
+                    } catch (error) {
+                        console.error('회원가입 실패:', error);
+                        alert('회원가입에 실패하였습니다. 다시 시도해 주세요.');
+                    }
+                    setSubmitting(false);
+                    console.log("폼 데이터", values);
+                }}
+                initialValues={{
+                    username: '',
+                    password: '',
+                    confirmPassword: '',
+                    firstName: '',
+                    phone: '',
+                    zip: '',
+                    address: '',
+                    detailAddress: '',
+                    email: '',
+                    receiveEmail: false
+                }}
+            >
+                {({handleSubmit, handleChange, setFieldValue, values, touched, errors, isSubmitting}) => (
+                    <Form noValidate onSubmit={handleSubmit} className="join-form">
+                        <Row className="mb-3">
+                            <Form.Group as={Col} md="6" controlId="validationFormikUsername">
+                                <Form.Label>아이디</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    placeholder="010-0000-0000"
-                                    name="phone"
-                                    value={values.phone}
+                                    placeholder="아이디"
+                                    name="username"
+                                    value={values.username}
                                     onChange={handleChange}
-                                    isInvalid={!!errors.phone}>
+                                    isInvalid={!!errors.username}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.username}
+                                </Form.Control.Feedback>
+                            </Form.Group>
 
-                                </Form.Control>
-                            </InputGroup>
-                            <Form.Control.Feedback type="invalid">
-                                {errors.phone}
-                            </Form.Control.Feedback>
-                        </Form.Group>
-                    </Row>
+                            <Form.Group as={Col} md="6" controlId="validationFormikPassword">
+                                <Form.Label>비밀번호</Form.Label>
+                                <Form.Control
+                                    type="password"
+                                    placeholder="비밀번호"
+                                    name="password"
+                                    value={values.password}
+                                    onChange={handleChange}
+                                    isInvalid={!!errors.password}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.password}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                        </Row>
 
-                    <Row className="mb-3">
-                        <Form.Group as={Col} md="6" controlId="validationFormikZip">
-                            <Form.Label>우편번호</Form.Label>
-                            <InputGroup>
+                        <Row className="mb-3">
+                            <Form.Group as={Col} md="6" controlId="validationFormikConfirmPassword">
+                                <Form.Label>비밀번호 확인</Form.Label>
+                                <Form.Control
+                                    type="password"
+                                    placeholder="비밀번호 확인"
+                                    name="confirmPassword"
+                                    value={values.confirmPassword}
+                                    onChange={handleChange}
+                                    isInvalid={!!errors.confirmPassword}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.confirmPassword}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+
+                            <Form.Group as={Col} md="6" controlId="validationFormikFirstName">
+                                <Form.Label>이름</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    placeholder="우편번호"
-                                    name="zip"
-                                    value={zipcode || values.zip}
+                                    name="firstName"
+                                    value={values.firstName}
                                     onChange={handleChange}
-                                    isInvalid={!!errors.zip}
+                                    isInvalid={!!errors.firstName}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.firstName}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                        </Row>
+
+                        <Row className="mb-3">
+                            <Form.Group as={Col} md="6" controlId="validationFormikPhone">
+                                <Form.Label>연락처</Form.Label>
+                                <InputGroup>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="010-0000-0000"
+                                        name="phone"
+                                        value={values.phone}
+                                        onChange={handleChange}
+                                        isInvalid={!!errors.phone}>
+
+                                    </Form.Control>
+                                </InputGroup>
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.phone}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                        </Row>
+
+                        <Row className="mb-3">
+                            <Form.Group as={Col} md="6" controlId="validationFormikZip">
+                                <Form.Label>우편번호</Form.Label>
+                                <InputGroup>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="우편번호"
+                                        name="zip"
+                                        value={zipcode || values.zip}
+                                        onChange={handleChange}
+                                        isInvalid={!!errors.zip}
+                                        readOnly
+                                    />
+                                    <Button onClick={() => handleSearchPostcode(setFieldValue)}>우편번호 찾기</Button>
+                                </InputGroup>
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.zip}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                        </Row>
+
+                        <Row className="mb-3">
+                            <Form.Group as={Col} md="12" controlId="validationFormikAddress">
+                                <Form.Label>주소</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="도로명 주소"
+                                    name="address"
+                                    value={address || values.address}
+                                    onChange={handleChange}
+                                    isInvalid={!!errors.address}
                                     readOnly
                                 />
-                                <Button onClick={() => handleSearchPostcode(setFieldValue)}>우편번호 찾기</Button>
-                            </InputGroup>
-                            <Form.Control.Feedback type="invalid">
-                                {errors.zip}
-                            </Form.Control.Feedback>
-                        </Form.Group>
-                    </Row>
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.address}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                        </Row>
 
-                    <Row className="mb-3">
-                        <Form.Group as={Col} md="12" controlId="validationFormikAddress">
-                            <Form.Label>주소</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="도로명 주소"
-                                name="address"
-                                value={address || values.address}
-                                onChange={handleChange}
-                                isInvalid={!!errors.address}
-                                readOnly
-                            />
-                            <Form.Control.Feedback type="invalid">
-                                {errors.address}
-                            </Form.Control.Feedback>
-                        </Form.Group>
-                    </Row>
+                        <Row className="mb-3">
+                            <Form.Group as={Col} md="12" controlId="validationFormikDetailAddress">
+                                <Form.Label>상세주소</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="상세주소"
+                                    name="detailAddress"
+                                    value={detailAddress || values.detailAddress}
+                                    onChange={handleChange}
+                                    isInvalid={!!errors.detailAddress}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.detailAddress}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                        </Row>
 
-                    <Row className="mb-3">
-                        <Form.Group as={Col} md="12" controlId="validationFormikDetailAddress">
-                            <Form.Label>상세주소</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="상세주소"
-                                name="detailAddress"
-                                value={detailAddress || values.detailAddress}
-                                onChange={handleChange}
-                                isInvalid={!!errors.detailAddress}
-                            />
-                            <Form.Control.Feedback type="invalid">
-                                {errors.detailAddress}
-                            </Form.Control.Feedback>
-                        </Form.Group>
-                    </Row>
+                        <Row className="mb-3">
+                            <Form.Group as={Col} md="6" controlId="validationFormikEmail">
+                                <Form.Label>이메일</Form.Label>
+                                <Form.Control
+                                    type="email"
+                                    placeholder="이메일"
+                                    name="email"
+                                    value={values.email}
+                                    onChange={handleChange}
+                                    isInvalid={!!errors.email}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.email}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                        </Row>
 
-                    <Row className="mb-3">
-                        <Form.Group as={Col} md="6" controlId="validationFormikEmail">
-                            <Form.Label>이메일</Form.Label>
-                            <Form.Control
-                                type="email"
-                                placeholder="이메일"
-                                name="email"
-                                value={values.email}
-                                onChange={handleChange}
-                                isInvalid={!!errors.email}
-                            />
-                            <Form.Control.Feedback type="invalid">
-                                {errors.email}
-                            </Form.Control.Feedback>
-                        </Form.Group>
-                    </Row>
+                        <Row className="mb-3">
+                            <Form.Group as={Col} md="6" controlId="validationFormikReceiveEmail">
+                                <Form.Check
+                                    type="checkbox"
+                                    name="receiveEmail"
+                                    label="이메일 수신 동의"
+                                    checked={values.receiveEmail}
+                                    onChange={handleChange}
+                                    isInvalid={!!errors.receiveEmail}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.receiveEmail}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                        </Row>
 
-                    <Row className="mb-3">
-                        <Form.Group as={Col} md="6" controlId="validationFormikReceiveEmail">
-                            <Form.Check
-                                type="checkbox"
-                                name="receiveEmail"
-                                label="이메일 수신 동의"
-                                checked={values.receiveEmail}
-                                onChange={handleChange}
-                                isInvalid={!!errors.receiveEmail}
-                            />
-                            <Form.Control.Feedback type="invalid">
-                                {errors.receiveEmail}
-                            </Form.Control.Feedback>
-                        </Form.Group>
-                    </Row>
+                        <Button type="submit" disabled={isSubmitting}>
+                            {isSubmitting ? "제출 중..." : "회원가입"}
+                        </Button>
 
-                    <Button type="submit" disabled={isSubmitting}>
-                        {isSubmitting ? "제출 중..." : "회원가입"}
-                    </Button>
-
-                </Form>
-            )}
-        </Formik>
+                    </Form>
+                )}
+            </Formik>
+        </div>
     );
 }
 

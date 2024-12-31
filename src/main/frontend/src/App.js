@@ -14,6 +14,7 @@ import StoreJoin from "./components/Join/StoreJoin";
 import PostForm from "./components/customerService/PostForm";
 import Footer from "./components/Footer/Footer";
 import "./components/Main/Main.css"
+import Cart from "./components/Cart/Cart";
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
                     <Route path="/storejoin" element={<StoreJoin/>}/>
                     <Route path="/join" element={<Join/>}/>
                     <Route path="/login" element={<Login/>}/>
+                    <Route path="/cart" element={<Cart/>}/>
                     <Route path="/customerservice" element={<CustomerService/>}/>
                     <Route path="/post" element={<PostForm/>}/>
                 </Routes>
