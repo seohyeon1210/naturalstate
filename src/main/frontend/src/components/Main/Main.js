@@ -8,76 +8,20 @@ import Col from 'react-bootstrap/Col';
 function Main() {
     return (
         <Container>
-            <Row>
-                <Col>
-                    <Card style={{width: '18rem'}}>
-                        <Card.Img variant="top" src={MainProductImage}/>
-                        <Card.Body>
-                            <Card.Title>상품명</Card.Title>
-                            <Card.Text>
-                                상품 가격
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col>
-                    <Card style={{width: '18rem'}}>
-                        <Card.Img variant="top" src={MainProductImage}/>
-                        <Card.Body>
-                            <Card.Title>상품명</Card.Title>
-                            <Card.Text>
-                                상품 가격
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col>
-                    <Card style={{width: '18rem'}}>
-                        <Card.Img variant="top" src={MainProductImage}/>
-                        <Card.Body>
-                            <Card.Title>상품명</Card.Title>
-                            <Card.Text>
-                                상품 가격
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
-
-            <Row>
-                <Col>
-                    <Card style={{width: '18rem'}}>
-                        <Card.Img variant="top" src={MainProductImage}/>
-                        <Card.Body>
-                            <Card.Title>상품명</Card.Title>
-                            <Card.Text>
-                                상품 가격
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col>
-                    <Card style={{width: '18rem'}}>
-                        <Card.Img variant="top" src={MainProductImage}/>
-                        <Card.Body>
-                            <Card.Title>상품명</Card.Title>
-                            <Card.Text>
-                                상품 가격
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col>
-                    <Card style={{width: '18rem'}}>
-                        <Card.Img variant="top" src={MainProductImage}/>
-                        <Card.Body>
-                            <Card.Title>상품명</Card.Title>
-                            <Card.Text>
-                                상품 가격
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
+            <Row xs={1} md={3} className="g-4">
+                {Array.from({ length: 3 }).map((_, idx) => (
+                    <Col key={idx}>
+                        <Card>
+                            <Card.Img variant="top" src={MainProductImage} />
+                            <Card.Body>
+                                <Card.Title>상품명</Card.Title>
+                                <Card.Text>
+                                    상품 가격
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
             </Row>
         </Container>
     );
