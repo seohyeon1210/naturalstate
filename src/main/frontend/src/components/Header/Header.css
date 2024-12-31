@@ -1,5 +1,6 @@
 #custom-navbar {
     height: 5rem;
+    border-bottom: 1px solid #dee2e6;
 }
 
 #custom-navbar .navbar-brand {

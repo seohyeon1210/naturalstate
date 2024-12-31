@@ -11,7 +11,9 @@ import SecondHeader from "./components/Header/SecondHeader";
 import Login from "./components/Login/Login";
 import CustomerService from "./components/CustomerService/CustomerService";
 import StoreJoin from "./components/Join/StoreJoin";
-import PostForm from "./components/customerService/PostForm"; // PostForm 컴포넌트로 변경
+import PostForm from "./components/customerService/PostForm";
+import Footer from "./components/Footer/Footer";
+import "./components/Main/Main.css"
 
 
 function App() {
@@ -28,38 +30,41 @@ function App() {
     const isMainPage = location.pathname === '/' || location.pathname === '/main';
 
     return (
-        <>
-            <MainAlert />
-            <Header />
-            {isMainPage && <SecondHeader />}
-            <Routes>
-                <Route
-                    path="/"
-                    element={
-                        <>
-                            <MainBanner />
-                            <br />
-                            <Main />
-                            <div>
-                                가장 먼저 보여지는 백엔드에서 가져온 데이터 확인: {mainMessage}
-                            </div>
-                        </>
-                    }
-                />
-                <Route path="/storejoin" element={<StoreJoin />} />
-                <Route path="/join" element={<Join />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/customerservice" element={<CustomerService />} />
-                <Route path="/post" element={<PostForm />} />      /*PostForm URL 매핑 (/post로 매핑) */
-            </Routes>
-        </>
+        <div id="app-wrapper">
+            <MainAlert/>
+            <Header/>
+            {isMainPage && <SecondHeader/>}
+            <div className="main-content">
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <>
+                                <MainBanner/>
+                                <br/>
+                                <Main/>
+                                <div>
+                                    가장 먼저 보여지는 백엔드에서 가져온 데이터 확인: {mainMessage}
+                                </div>
+                            </>
+                        }
+                    />
+                    <Route path="/storejoin" element={<StoreJoin/>}/>
+                    <Route path="/join" element={<Join/>}/>
+                    <Route path="/login" element={<Login/>}/>
+                    <Route path="/customerservice" element={<CustomerService/>}/>
+                    <Route path="/post" element={<PostForm/>}/>
+                </Routes>
+            </div>
+            <Footer/>
+        </div>
     );
 }
 
 export default function AppWrapper() {
     return (
         <Router>
-            <App />
+            <App/>
         </Router>
     );
 }

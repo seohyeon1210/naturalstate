@@ -14,10 +14,8 @@ const Header = () => {
 
                     <Nav className="ms-auto">
                         <Nav.Link as={Link} to="/cart" className="nav-link-right">장바구니</Nav.Link>
-                        <Nav.Link as={Link} to="/storejoin" className="nav-link-right">입점신청</Nav.Link>
                         <Nav.Link as={Link} to="/login" className="nav-link-right">로그인</Nav.Link>
                         <Nav.Link as={Link} to="/join" className="nav-link-right">회원가입</Nav.Link>
-                        <Nav.Link as={Link} to="/customerservice" className="nav-link-right">고객센터</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

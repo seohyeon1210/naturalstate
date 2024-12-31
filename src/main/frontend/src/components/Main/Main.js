@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 function Main() {
     return (
         <Container>
-            <Row xs={1} md={3} className="g-4">
+            <Row xs={1} md={3} className="g-3">
                 {Array.from({ length: 3 }).map((_, idx) => (
                     <Col key={idx}>
                         <Card>
