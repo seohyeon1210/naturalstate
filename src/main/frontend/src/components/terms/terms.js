@@ -2,6 +2,12 @@ import React from 'react';
 import { useNavigate } from "react-router-dom"; // React Router 사용
 
 function Terms() {
+  const navigate = useNavigate(); // 페이지 이동을 위한 Hook
+
+  const handleAgreement = () => {
+    navigate("/"); // 루트 경로로 이동
+  };
+
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif', lineHeight: '1.6' }}>
       <h1 style={{ textAlign: 'center' }}>이용약관</h1>
@@ -70,6 +76,18 @@ function Terms() {
           관할 법원은 회사의 소재지 법원으로 합니다.
         </p>
       </section>
+
+      {/* 체크박스 추가 */}
+      <div style={{ textAlign: 'center', marginTop: '20px' }}>
+        <label>
+          <input
+            type="checkbox"
+            onChange={handleAgreement}
+            style={{ marginRight: '10px' }}
+          />
+          이용약관을 읽고 동의합니다
+        </label>
+      </div>
     </div>
   );
 }
