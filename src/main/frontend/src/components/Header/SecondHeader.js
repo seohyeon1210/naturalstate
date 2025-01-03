@@ -18,10 +18,6 @@ function SecondHeader(){
                                 채소
                             </NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.3">곡물</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">
-                                Something
-                            </NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
