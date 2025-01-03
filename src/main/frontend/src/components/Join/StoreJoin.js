@@ -19,7 +19,7 @@ function StoreJoin() {
         phone: yup.string()
             .matches(/^(\d{3})-(\d{4})-(\d{4})$/, '올바른 전화번호 형식은 010-1234-5678입니다.')
             .required('연락처는 필수입니다.'),
-        taxid: yup.string()
+        taxId: yup.string()
             .matches(/^(\d{3})-(\d{2})-(\d{5})$|^(\d{3})-(\d{2})-(\d{4})$/, '올바른 사업자 등록번호 형식은 000-00-0000 또는 000-00-00000입니다.')
             .required('사업자 등록번호는 필수입니다.'),
         email: yup.string().email('유효한 이메일을 입력해주세요.').required('이메일은 필수입니다.')
@@ -52,13 +52,13 @@ function StoreJoin() {
                 confirmPassword: '',
                 storeName: '',
                 phone: '',
-                taxid: '',
-                file: null,
+                taxId: '',
+                taxFile: null,
                 email: '',
                 storeContact: ''
             }}
         >
-            {({handleSubmit, handleChange, setFieldValue, values, touched, errors, isSubmitting}) => (
+            {({handleSubmit, handleChange, values, errors, isSubmitting}) => (
                 <Form noValidate onSubmit={handleSubmit}>
                     <Row className="mb-3">
                         <Form.Group as={Col} md="6" controlId="validationFormikstoreId">
@@ -150,15 +150,15 @@ function StoreJoin() {
                                 <Form.Control
                                     type="text"
                                     placeholder="000-00-00000"
-                                    name="TaxId"
-                                    value={values.taxid}
+                                    name="taxId"
+                                    value={values.taxId}
                                     onChange={handleChange}
-                                    isInvalid={!!errors.taxid}>
+                                    isInvalid={!!errors.taxId}>
 
                                 </Form.Control>
                             </InputGroup>
                             <Form.Control.Feedback type="invalid">
-                                {errors.taxid}
+                                {errors.taxId}
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Row>
@@ -169,9 +169,9 @@ function StoreJoin() {
                         <Form.Control
                             type="file"
                             required
-                            name="file"
+                            name="taxFile"
                             onChange={handleChange}
-                            isInvalid={!!errors.file}/>
+                            isInvalid={!!errors.taxFile}/>
                     </Form.Group>
                     </Row>
 

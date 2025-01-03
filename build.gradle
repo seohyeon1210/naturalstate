@@ -47,8 +47,6 @@ dependencies {
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 
 	implementation 'com.oracle.database.jdbc:ojdbc8:19.8.0.0'
-
-
 }
 
 def frontendDir = "$projectDir/src/main/frontend"

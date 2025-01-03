@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fs.four.naturalstate.store.dao.StoreDAO">
+    <resultMap id="storeResult" type="storeVO">
+        <result property="storeId" column="storeId"/>
+        <result property="password" column="password"/>
+        <result property="storeName" column="storeName"/>
+        <result property="phone" column="phone"/>
+        <result property="taxId" column="taxId"/>
+        <result property="file" column="file"/>
+        <result property="email" column="email"/>
+        <result property="storeContact" column="storeContact"/>
+        <result property="joindate" column="joindate"/>
+    </resultMap>
+
+    <insert id="insertStore" parameterType="storeVO">
+        <![CDATA[
+        insert into store(storeId, password, storeName, phone, taxId, taxFile, email, storeContact)
+        values (#{storeId}, #{password}, #{storeName}, #{phone}, #{taxId}, #{taxFile}, #{email}, #{storeContact})
+        ]]>
+    </insert>
+</mapper>
