@@ -3,7 +3,6 @@ package fs.four.naturalstate.user.vo;
 import java.util.Date;
 
 public class UserVO {
-
     private String username;
     private String password;
     private String confirmPassword;
