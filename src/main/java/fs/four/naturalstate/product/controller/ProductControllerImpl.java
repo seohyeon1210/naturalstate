@@ -9,4 +9,9 @@ public class ProductControllerImpl {
     public String productdetail() {
         return "forward:/index.html";
     }
+
+    @GetMapping("/bestproduct")
+    public String bestproduct() {
+        return "forward:/index.html";
+    }
 }

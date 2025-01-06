@@ -28,10 +28,10 @@ function Join() {
     }, []);
 
     const schema = yup.object().shape({
-        username: yup.string().required('아이디는 필수입니다.'),
+        userId: yup.string().required('아이디는 필수입니다.'),
         password: yup.string().min(6, '비밀번호는 최소 6자 이상이어야 합니다.').required('비밀번호는 필수입니다.'),
         confirmPassword: yup.string().oneOf([yup.ref('password'), null], '비밀번호가 일치하지 않습니다.').required('비밀번호 확인은 필수입니다.'),
-        firstName: yup.string().required('이름은 필수입니다.'),
+        userName: yup.string().required('이름은 필수입니다.'),
         phone: yup.string()
             .matches(/^(\d{3})-(\d{4})-(\d{4})$/, '올바른 전화번호 형식은 010-1234-5678입니다.')
             .required('연락처는 필수입니다.'),
@@ -39,8 +39,7 @@ function Join() {
         address: yup.string().required('주소는 필수입니다.'),
         detailAddress: yup.string().required('상세주소는 필수입니다.'),
         email: yup.string().email('유효한 이메일을 입력해주세요.').required('이메일은 필수입니다.'),
-        receiveEmail: yup.bool().required('이메일 수신 동의는 필수입니다.').oneOf([true], '이메일 수신 동의를 해주세요.')
-    });
+        receiveEmail: yup.string().oneOf(['Y', 'N'], '유효한 값을 선택하세요.')    });
 
     const handleSearchPostcode = (setFieldValue) => {
         new window.daum.Postcode({
@@ -76,33 +75,33 @@ function Join() {
                     console.log("폼 데이터", values);
                 }}
                 initialValues={{
-                    username: '',
+                    userId: '',
                     password: '',
                     confirmPassword: '',
-                    firstName: '',
+                    userName: '',
                     phone: '',
                     zip: '',
                     address: '',
                     detailAddress: '',
                     email: '',
-                    receiveEmail: false
+                    receiveEmail: 'N'
                 }}
             >
                 {({handleSubmit, handleChange, setFieldValue, values, touched, errors, isSubmitting}) => (
                     <Form noValidate onSubmit={handleSubmit} className="join-form">
                         <Row className="mb-3">
-                            <Form.Group as={Col} md="6" controlId="validationFormikUsername">
+                            <Form.Group as={Col} md="6" controlId="validationFormikUserId">
                                 <Form.Label>아이디</Form.Label>
                                 <Form.Control
                                     type="text"
                                     placeholder="아이디"
-                                    name="username"
-                                    value={values.username}
+                                    name="userId"
+                                    value={values.userId}
                                     onChange={handleChange}
-                                    isInvalid={!!errors.username}
+                                    isInvalid={!!errors.userId}
                                 />
                                 <Form.Control.Feedback type="invalid">
-                                    {errors.username}
+                                    {errors.userId}
                                 </Form.Control.Feedback>
                             </Form.Group>
 
@@ -138,17 +137,17 @@ function Join() {
                                 </Form.Control.Feedback>
                             </Form.Group>
 
-                            <Form.Group as={Col} md="6" controlId="validationFormikFirstName">
+                            <Form.Group as={Col} md="6" controlId="validationFormikUserName">
                                 <Form.Label>이름</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    name="firstName"
-                                    value={values.firstName}
+                                    name="userName"
+                                    value={values.userName}
                                     onChange={handleChange}
-                                    isInvalid={!!errors.firstName}
+                                    isInvalid={!!errors.userName}
                                 />
                                 <Form.Control.Feedback type="invalid">
-                                    {errors.firstName}
+                                    {errors.userName}
                                 </Form.Control.Feedback>
                             </Form.Group>
                         </Row>
@@ -252,13 +251,10 @@ function Join() {
                                     type="checkbox"
                                     name="receiveEmail"
                                     label="이메일 수신 동의"
-                                    checked={values.receiveEmail}
-                                    onChange={handleChange}
-                                    isInvalid={!!errors.receiveEmail}
+                                    checked={values.receiveEmail === 'Y'}
+                                    onChange={() => {
+                                        setFieldValue('receiveEmail', values.receiveEmail === 'Y' ? 'N' : 'Y');}}
                                 />
-                                <Form.Control.Feedback type="invalid">
-                                    {errors.receiveEmail}
-                                </Form.Control.Feedback>
                             </Form.Group>
                         </Row>
 

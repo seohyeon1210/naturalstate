@@ -3,28 +3,29 @@ package fs.four.naturalstate.user.vo;
 import java.util.Date;
 
 public class UserVO {
-    private String username;
+
+    private String userId;
     private String password;
     private String confirmPassword;
-    private String firstName;
+    private String userName;
     private String phone;
     private String zip;
     private String address;
     private String detailAddress;
     private String email;
-    private boolean receiveEmail;
+    private char receiveEmail;
     private Date joindate;
 
     public UserVO(){
 
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getPassword() {
@@ -43,12 +44,12 @@ public class UserVO {
         this.confirmPassword = confirmPassword;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPhone() {
@@ -91,11 +92,11 @@ public class UserVO {
         this.email = email;
     }
 
-    public boolean isReceiveEmail() {
+    public char getReceiveEmail() {
         return receiveEmail;
     }
 
-    public void setReceiveEmail(boolean receiveEmail) {
+    public void setReceiveEmail(char receiveEmail) {
         this.receiveEmail = receiveEmail;
     }
 
