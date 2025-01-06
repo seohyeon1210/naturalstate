@@ -24,3 +24,10 @@
 .footer a:hover {
     color: #343a40;
 }
+
+footer {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    padding: 1rem;
+    border-top: 1px solid #dee2e6;
+}

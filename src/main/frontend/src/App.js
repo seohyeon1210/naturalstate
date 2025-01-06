@@ -11,7 +11,7 @@ import SecondHeader from "./components/Header/SecondHeader";
 import Login from "./components/Login/Login";
 import CustomerService from "./components/CustomerService/CustomerService";
 import StoreJoin from "./components/Join/StoreJoin";
-import PostForm from "./components/customerService/PostForm";
+import PostForm from "./components/CustomerService/PostForm";
 import Footer from "./components/Footer/Footer";
 import "./components/Main/Main.css"
 import Cart from "./components/Cart/Cart";
@@ -20,6 +20,9 @@ import Terms from "./components/Terms/Terms";
 import Report from "./components/Report/Report";
 import ProductWrite from "./components/Product/ProductWrite";
 import ProductDetail from "./components/Product/ProductDetail";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import BestProduct from "./components/Product/BestProduct";
 
 
 function App() {
@@ -66,6 +69,7 @@ function App() {
                     <Route path="/report" element={<Report/>}/>
                     <Route path="/productwrite" element={<ProductWrite/>}/>
                     <Route path="/productdetail" element={<ProductDetail/>}/>
+                    <Route path="/bestproduct" element={<BestProduct/>}/>
                 </Routes>
             </div>
             <Footer/>
