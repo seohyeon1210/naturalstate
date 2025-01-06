@@ -16,6 +16,8 @@ public class StoreRestController {
     @PostMapping("/storejoin")
     public ResponseEntity<String> storeJoin(@RequestBody StoreVO storeVO) throws Exception {
         System.out.println("입점신청 요청 데이터: " + storeVO);
+
+
         try {
             storeService.addStore(storeVO);
             return ResponseEntity.ok("성공");

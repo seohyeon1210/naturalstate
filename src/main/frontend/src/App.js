@@ -19,6 +19,7 @@ import DeliveryManage from "./components/DeliveryManagement/DeliveryManage";
 import Terms from "./components/Terms/Terms";
 import Report from "./components/Report/Report";
 import ProductWrite from "./components/Product/ProductWrite";
+import ProductDetail from "./components/Product/ProductDetail";
 
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
                     <Route path="/terms" element={<Terms/>}/>
                     <Route path="/report" element={<Report/>}/>
                     <Route path="/productwrite" element={<ProductWrite/>}/>
+                    <Route path="/productdetail" element={<ProductDetail/>}/>
                 </Routes>
             </div>
             <Footer/>
