@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
+import "./ProductSlider.css";
 
 const sliderSettings = {
     infinite: true,
@@ -7,6 +8,7 @@ const sliderSettings = {
     slidesToShow: 5,
     slidesToScroll: 1,
     centerMode: true,
+    centerPadding: "0px",
     autoplay: true,
     autoplaySpeed: 2500,
     responsive: [

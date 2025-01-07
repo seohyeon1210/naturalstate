@@ -17,15 +17,18 @@ function Main() {
             { id: 3, image: DefaultImg, title: "베스트 상품 C", price: "25,000", discount: "15%", reviews: "2,300" },
             { id: 4, image: DefaultImg, title: "베스트 상품 D", price: "25,000", discount: "15%", reviews: "2,300" },
             { id: 5, image: DefaultImg, title: "베스트 상품 E", price: "25,000", discount: "15%", reviews: "2,300" },
-            { id: 6, image: DefaultImg, title: "베스트 상품 F", price: "25,000", discount: "15%", reviews: "2,300" }
+            { id: 6, image: DefaultImg, title: "베스트 상품 F", price: "25,000", discount: "15%", reviews: "2,300" },
+            { id: 7, image: DefaultImg, title: "베스트 상품 G", price: "25,000", discount: "15%", reviews: "2,300" },
+            { id: 8, image: DefaultImg, title: "베스트 상품 H", price: "25,000", discount: "15%", reviews: "2,300" },
+            { id: 9, image: DefaultImg, title: "베스트 상품 I", price: "25,000", discount: "15%", reviews: "2,300" }
         ]);
 
         setRecommendedProducts([
-            { id: 7, image: DefaultImg, title: "추천 상품 A", price: "10,000", discount: "10%", reviews: "1,200" },
-            { id: 8, image: DefaultImg, title: "추천 상품 B", price: "45,000", discount: "8%", reviews: "500" },
-            { id: 9, image: DefaultImg, title: "추천 상품 C", price: "25,000", discount: "15%", reviews: "2,300" },
-            { id: 10, image: DefaultImg, title: "추천 상품 D", price: "25,000", discount: "15%", reviews: "2,300" },
-            { id: 11, image: DefaultImg, title: "추천 상품 E", price: "25,000", discount: "15%", reviews: "2,300" }
+            { id: 10, image: DefaultImg, title: "추천 상품 A", price: "10,000", discount: "10%", reviews: "1,200" },
+            { id: 11, image: DefaultImg, title: "추천 상품 B", price: "45,000", discount: "8%", reviews: "500" },
+            { id: 12, image: DefaultImg, title: "추천 상품 C", price: "25,000", discount: "15%", reviews: "2,300" },
+            { id: 13, image: DefaultImg, title: "추천 상품 D", price: "25,000", discount: "15%", reviews: "2,300" },
+            { id: 14, image: DefaultImg, title: "추천 상품 E", price: "25,000", discount: "15%", reviews: "2,300" }
         ]);
 
         // setRecommendedFruits([

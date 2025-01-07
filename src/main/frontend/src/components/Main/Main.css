@@ -1,3 +1,8 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
 #app-wrapper {
     display: flex;
     flex-direction: column;
@@ -6,6 +11,10 @@
 
 .main-container{
     padding-top: 50px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: visible;
 }
 
 .main-content {
@@ -14,37 +23,6 @@
 
 .product-section {
     margin-bottom: 100px;
-}
-
-.product-slider {
-    display: flex;
-    overflow-x: auto;
-    gap: 16px;
-    padding-bottom: 10px;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    justify-content: center;
-    align-items: center;
-}
-
-/* 상품 카드 스타일 */
-.product-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    max-width: 300px;
-    flex-shrink: 0;
-    margin: 0 auto;
-}
-
-.product-card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    display: block;
-    margin-bottom: 10px;
 }
 
 .section-header {
