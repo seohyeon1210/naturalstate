@@ -6,14 +6,14 @@ import "./Login.css";
 
 function Login({ onLogin }) {
     const [userId, setUserId] = useState("");
-    const [userPassword, setUserPassword] = useState("");
+    const [password, setpassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const data = { userId, userPassword };
+        const data = { userId, password };
 
         try {
             const response = await fetch("http://localhost:18080/api/login", {
@@ -74,8 +74,8 @@ function Login({ onLogin }) {
                     <label>비밀번호</label>
                     <input
                         type="password"
-                        value={userPassword}
-                        onChange={(e) => setUserPassword(e.target.value)}
+                        value={password}
+                        onChange={(e) => setpassword(e.target.value)}
                     />
                 </div>
                 {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
