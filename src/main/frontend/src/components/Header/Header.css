@@ -1,6 +1,8 @@
 #custom-navbar {
     height: 5rem;
     border-bottom: 1px solid #dee2e6;
+    display: flex;
+    align-items: center;
 }
 
 #custom-navbar .navbar-brand {
@@ -13,12 +15,35 @@
     margin-left: 1rem;
 }
 
+#custom-navbar .nav-link-right-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-left: 1rem;
+}
+
+#custom-navbar .nav-link-right-icons svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
 @media (max-width: 768px) {
-    .navbar-brand {
+    #custom-navbar {
+        height: 4rem;
+    }
+
+    #custom-navbar .navbar-brand {
         font-size: 1.2rem;
     }
 
-    .nav-link-right {
+    #custom-navbar .nav-link-right {
         font-size: 0.8rem;
+    }
+
+    #custom-navbar .nav-link-right-icons svg {
+        width: 1.2rem;
+        height: 1.2rem;
     }
 }

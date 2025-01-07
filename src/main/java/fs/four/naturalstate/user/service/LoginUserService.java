@@ -1,7 +1,7 @@
 package fs.four.naturalstate.user.service;
 
 import fs.four.naturalstate.user.dao.LoginUserDAO;
-import fs.four.naturalstate.user.vo.LoginUserVO;
+import fs.four.naturalstate.user.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.mindrot.jbcrypt.BCrypt;
@@ -20,7 +20,7 @@ public class LoginUserService {
      */
     public boolean authenticate(String userId, String rawPassword) {
         // 데이터베이스에서 사용자 정보 가져오기
-        LoginUserVO user = loginUserDAO.findByUserId(userId);
+        UserVO user = loginUserDAO.findByUserId(userId);
 
         // 사용자 존재 여부와 비밀번호 검증
         if (user != null) {
