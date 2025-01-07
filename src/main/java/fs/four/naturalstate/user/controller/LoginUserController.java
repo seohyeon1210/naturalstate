@@ -1,7 +1,7 @@
 package fs.four.naturalstate.user.controller;
 
 import fs.four.naturalstate.user.service.LoginUserService;
-import fs.four.naturalstate.user.vo.LoginUserVO;
+import fs.four.naturalstate.user.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +15,7 @@ public class LoginUserController {
 
     // 로그인 요청 처리
     @PostMapping
-    public String login(@RequestBody LoginUserVO loginRequest) {
+    public String login(@RequestBody UserVO loginRequest) {
         if (loginRequest.getUserId() == null || loginRequest.getPassword() == null) {
             System.out.println("로그인 요청: UserId 또는 Password가 null입니다.");
             return "UserId and Password must not be null!";
@@ -31,9 +31,10 @@ public class LoginUserController {
         }
     }
 
-    // React의 index.html로 포워딩
-    @GetMapping("/login")
-    public String loginPage() {
-        return "forward:/index.html";
-    }
+//   getMapping 404로 controller쪽으로 옮겨서 http://localhost:18080/login 잘 나올것
+//    // React의 index.html로 포워딩
+//    @GetMapping("/login")
+//    public String loginPage() {
+//        return "forward:/index.html";
+//    }
 }
