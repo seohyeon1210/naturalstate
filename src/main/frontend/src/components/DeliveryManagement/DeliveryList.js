@@ -1,37 +1,33 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import DeliveryPopup from "./DeliveryPopup"; // DeliveryPopup 컴포넌트 불러오기
 
 function DeliveryList() {
   const [addresses, setAddresses] = useState([
-    { id: 1, name: "홍길동", address: "서울특별시 강남구 테헤란로 123" },
-    { id: 2, name: "김철수", address: "부산광역시 해운대구 우동 456" },
+    { id: 1, name: "홍길동", address: "서울특별시 강남구 테헤란로 123", phone: "010-1234-5678" },
+    { id: 2, name: "김철수", address: "부산광역시 해운대구 우동 456", phone: "010-5678-1234" },
   ]);
-  const [formData, setFormData] = useState({ name: "", address: "" });
-  const navigate = useNavigate();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  // 입력값 변경 핸들러
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  // 팝업 열기
+  const openPopup = () => {
+    setIsPopupOpen(true);
   };
 
-  // 배송지 추가 핸들러
-  const handleAddAddress = (e) => {
-    e.preventDefault();
-    if (!formData.name || !formData.address) {
-      alert("모든 필드를 입력해주세요!");
-      return;
-    }
-    const newAddress = {
-      id: addresses.length + 1,
-      name: formData.name,
-      address: formData.address,
-    };
-    setAddresses([...addresses, newAddress]);
-    setFormData({ name: "", address: "" });
+  // 팝업 닫기
+  const closePopup = () => {
+    setIsPopupOpen(false);
   };
 
-  // 배송지 삭제 핸들러
+  // 새 배송지 추가
+  const handleSaveAddress = (newAddress) => {
+    const updatedAddresses = [
+      ...addresses,
+      { id: addresses.length + 1, ...newAddress },
+    ];
+    setAddresses(updatedAddresses);
+  };
+
+  // 배송지 삭제
   const handleDeleteAddress = (id) => {
     const updatedAddresses = addresses.filter((item) => item.id !== id);
     setAddresses(updatedAddresses);
@@ -48,6 +44,7 @@ function DeliveryList() {
             <th style={{ padding: "10px", textAlign: "center" }}>번호</th>
             <th style={{ padding: "10px", textAlign: "left" }}>이름</th>
             <th style={{ padding: "10px", textAlign: "left" }}>주소</th>
+            <th style={{ padding: "10px", textAlign: "center" }}>전화번호</th>
             <th style={{ padding: "10px", textAlign: "center" }}>삭제</th>
           </tr>
         </thead>
@@ -57,6 +54,7 @@ function DeliveryList() {
               <td style={{ padding: "10px", textAlign: "center" }}>{item.id}</td>
               <td style={{ padding: "10px" }}>{item.name}</td>
               <td style={{ padding: "10px" }}>{item.address}</td>
+              <td style={{ padding: "10px", textAlign: "center" }}>{item.phone}</td>
               <td style={{ padding: "10px", textAlign: "center" }}>
                 <button
                   onClick={() => handleDeleteAddress(item.id)}
@@ -77,46 +75,29 @@ function DeliveryList() {
         </tbody>
       </table>
 
-      {/* 배송지 추가 폼 */}
-      <form onSubmit={handleAddAddress} style={{ marginTop: "20px", maxWidth: "600px", margin: "0 auto" }}>
-        <div style={{ marginBottom: "10px" }}>
-          <label style={{ display: "block", marginBottom: "5px" }}>이름:</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px" }}
-          />
-        </div>
-        <div style={{ marginBottom: "10px" }}>
-          <label style={{ display: "block", marginBottom: "5px" }}>주소:</label>
-          <input
-            type="text"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-            required
-            style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px" }}
-          />
-        </div>
-        <div style={{ textAlign: "right" }}>
-          <button
-            type="submit"
-            style={{
-              padding: "10px 20px",
-              backgroundColor: "#007BFF",
-              color: "white",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-            }}
-          >
-            배송지 추가
-          </button>
-        </div>
-      </form>
+      {/* 팝업 열기 버튼 */}
+      <div style={{ textAlign: "right", marginTop: "20px" }}>
+        <button
+          onClick={openPopup}
+          style={{
+            padding: "10px 20px",
+            backgroundColor: "#007BFF",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          배송지 추가
+        </button>
+      </div>
+
+      {/* 팝업 컴포넌트 */}
+      <DeliveryPopup
+        isOpen={isPopupOpen}
+        onClose={closePopup}
+        onSave={handleSaveAddress}
+      />
     </div>
   );
 }

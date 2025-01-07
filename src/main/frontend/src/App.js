@@ -14,7 +14,7 @@ import PostForm from "./components/CustomerService/PostForm";
 import Footer from "./components/Footer/Footer";
 import "./components/Main/Main.css";
 import Cart from "./components/Cart/Cart";
-import DeliveryManage from "./components/DeliveryManagement/DeliveryManage";
+import DeliveryPopup from "./components/DeliveryManagement/DeliveryPopup";
 import Terms from "./components/Terms/Terms";
 import Report from "./components/Report/Report";
 import ProductWrite from "./components/Product/ProductWrite";
@@ -67,7 +67,7 @@ function App() {
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/customerservice" element={<CustomerService />} />
                     <Route path="/post" element={<PostForm />} />
-                    <Route path="/delivery" element={<DeliveryManage />} />
+                    <Route path="/deliverypopup" element={<DeliveryPopup />} />
                     <Route path="/terms" element={<Terms />} />
                     <Route path="/report" element={<Report />} />
                     <Route path="/productwrite" element={<ProductWrite />} />

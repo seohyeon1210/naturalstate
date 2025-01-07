@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class DeliveryControllerImpl {
 
-    @GetMapping("/delivery")
-    public String DeliveryManage() {
+    @GetMapping("/deliverypopup")
+    public String DeliveryPopup() {
         return "forward:/index.html";
     }
 
