@@ -22,6 +22,10 @@ import ProductDetail from "./components/Product/ProductDetail";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import BestProduct from "./components/Product/BestProduct";
+import Event from "./components/CustomerService/Event";
+import Notice from "./components/CustomerService/Notice";
+import Inquiry from "./components/CustomerService/Inquiry";
+import DeliveryList from "./components/DeliveryManagement/DeliveryList";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -69,6 +73,10 @@ function App() {
                     <Route path="/productwrite" element={<ProductWrite />} />
                     <Route path="/productdetail" element={<ProductDetail />} />
                     <Route path="/bestproduct" element={<BestProduct/>}/>
+                    <Route path="/events" element={<Event/>}/>
+                    <Route path="/notice" element={<Notice/>}/>
+                    <Route path="/Inquiry" element={<Inquiry/>}/>
+                    <Route path="/deliverylist" element={<DeliveryList/>}/>
                 </Routes>
             </div>
             <Footer />

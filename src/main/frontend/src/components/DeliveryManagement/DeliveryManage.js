@@ -1,128 +1,206 @@
 import React, { useState } from "react";
 
-function DeliveryManage() {
-  const [addresses, setAddresses] = useState([
-    { id: 1, name: "신창섭", address: "서울특별시 강남구 테헤란로 123" },
-    { id: 2, name: "강원기", address: "부산광역시 해운대구 우동 456" },
-    { id: 2, name: "일론머스크", address: "부산광역시 사하구 우동 456" },
-  ]);
-
+function DeliveryManage({ onClose }) {
   const [formData, setFormData] = useState({
-    name: "",
+    deliveryName: "",
+    recipient: "",
+    postalCode: "",
     address: "",
+    contact: "",
+    mobile: "",
+    message: "",
+    saveAsDefault: false,
   });
 
-  // .입력값 변경 핸들러
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
-  // 배송지 추가 핸들러
-  const handleAddAddress = (e) => {
-    e.preventDefault();
-    if (!formData.name || !formData.address) {
-      alert("모든 필드를 입력해주세요!");
-      return;
-    }
-    const newAddress = {
-      id: addresses.length + 1,
-      name: formData.name,
-      address: formData.address,
-    };
-    setAddresses([...addresses, newAddress]);
-    setFormData({ name: "", address: "" });
+  const handleSave = () => {
+    console.log("Saved Data:", formData);
+    alert("배송지가 저장되었습니다!");
+    onClose(); // 모달 닫기
   };
 
-  // 배송지 삭제 핸들러
-  const handleDeleteAddress = (id) => {
-    const updatedAddresses = addresses.filter((item) => item.id !== id);
-    setAddresses(updatedAddresses);
+  const handleCancel = () => {
+    onClose(); // 모달 닫기
   };
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <h1 style={{ textAlign: "center" }}>배송지 관리</h1>
-
-      {/* 배송지 목록 */}
-      <table style={{ width: "100%", borderCollapse: "collapse", marginTop: "20px" }}>
-        <thead>
-          <tr style={{ borderBottom: "2px solid #ccc" }}>
-            <th style={{ padding: "10px", textAlign: "center" }}>번호</th>
-            <th style={{ padding: "10px", textAlign: "left" }}>이름</th>
-            <th style={{ padding: "10px", textAlign: "left" }}>주소</th>
-            <th style={{ padding: "10px", textAlign: "center" }}>삭제</th>
-          </tr>
-        </thead>
-        <tbody>
-          {addresses.map((item) => (
-            <tr key={item.id} style={{ borderBottom: "1px solid #ddd" }}>
-              <td style={{ padding: "10px", textAlign: "center" }}>{item.id}</td>
-              <td style={{ padding: "10px" }}>{item.name}</td>
-              <td style={{ padding: "10px" }}>{item.address}</td>
-              <td style={{ padding: "10px", textAlign: "center" }}>
-                <button
-                  onClick={() => handleDeleteAddress(item.id)}
-                  style={{
-                    padding: "5px 10px",
-                    backgroundColor: "#FF6347",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "5px",
-                    cursor: "pointer",
-                  }}
-                >
-                  삭제
-                </button>
+    <div
+      style={{
+        position: "fixed",
+        top: "0",
+        left: "0",
+        width: "100%",
+        height: "100%",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        zIndex: "1000",
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: "white",
+          padding: "20px",
+          borderRadius: "8px",
+          width: "600px",
+          maxHeight: "90%",
+          overflowY: "auto",
+        }}
+      >
+        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>배송지 추가</h2>
+        <table style={{ width: "100%", borderCollapse: "collapse" }}>
+          <tbody>
+            <tr>
+              <td style={{ padding: "10px", fontWeight: "bold", width: "30%" }}>배송지명</td>
+              <td>
+                <input
+                  type="text"
+                  name="deliveryName"
+                  value={formData.deliveryName}
+                  onChange={handleChange}
+                  style={{ width: "100%", padding: "5px" }}
+                />
               </td>
             </tr>
-          ))}
-        </tbody>
-      </table>
+            <tr>
+              <td style={{ padding: "10px", fontWeight: "bold" }}>받는 사람</td>
+              <td>
+                <input
+                  type="text"
+                  name="recipient"
+                  value={formData.recipient}
+                  onChange={handleChange}
+                  style={{ width: "100%", padding: "5px" }}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td style={{ padding: "10px", fontWeight: "bold" }}>주소</td>
+              <td>
+                <div style={{ display: "flex", gap: "10px", marginBottom: "5px" }}>
+                  <input
+                    type="text"
+                    name="postalCode"
+                    value={formData.postalCode}
+                    onChange={handleChange}
+                    placeholder="우편번호"
+                    style={{ flex: "1", padding: "5px" }}
+                  />
+                  <button
+                    style={{
+                      padding: "5px 10px",
+                      backgroundColor: "#007BFF",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "4px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    우편번호 검색
+                  </button>
+                </div>
+                <input
+                  type="text"
+                  name="address"
+                  value={formData.address}
+                  onChange={handleChange}
+                  style={{ width: "100%", padding: "5px" }}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td style={{ padding: "10px", fontWeight: "bold" }}>연락처</td>
+              <td>
+                <input
+                  type="text"
+                  name="contact"
+                  value={formData.contact}
+                  onChange={handleChange}
+                  placeholder="000-0000-0000"
+                  style={{ width: "100%", padding: "5px" }}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td style={{ padding: "10px", fontWeight: "bold" }}>핸드폰</td>
+              <td>
+                <input
+                  type="text"
+                  name="mobile"
+                  value={formData.mobile}
+                  onChange={handleChange}
+                  placeholder="000-0000-0000"
+                  style={{ width: "100%", padding: "5px" }}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td style={{ padding: "10px", fontWeight: "bold" }}>주문메시지</td>
+              <td>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows="3"
+                  maxLength="100"
+                  style={{ width: "100%", padding: "5px" }}
+                ></textarea>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-      {/* 배송지 추가 폼 */}
-      <form onSubmit={handleAddAddress} style={{ marginTop: "20px", maxWidth: "600px", margin: "0 auto" }}>
-        <div style={{ marginBottom: "10px" }}>
-          <label style={{ display: "block", marginBottom: "5px" }}>이름:</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px" }}
-          />
+        <div style={{ marginTop: "10px" }}>
+          <label>
+            <input
+              type="checkbox"
+              name="saveAsDefault"
+              checked={formData.saveAsDefault}
+              onChange={handleChange}
+              style={{ marginRight: "5px" }}
+            />
+            기본 배송지로 저장
+          </label>
         </div>
-        <div style={{ marginBottom: "10px" }}>
-          <label style={{ display: "block", marginBottom: "5px" }}>주소:</label>
-          <input
-            type="text"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-            required
-            style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px" }}
-          />
-        </div>
-        <div style={{ textAlign: "right" }}>
+
+        <div style={{ marginTop: "20px", textAlign: "center" }}>
           <button
-            type="submit"
+            onClick={handleSave}
             style={{
               padding: "10px 20px",
               backgroundColor: "#007BFF",
               color: "white",
               border: "none",
               borderRadius: "5px",
+              marginRight: "10px",
               cursor: "pointer",
             }}
           >
-            배송지 추가
+            저장
+          </button>
+          <button
+            onClick={handleCancel}
+            style={{
+              padding: "10px 20px",
+              backgroundColor: "gray",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+          >
+            취소
           </button>
         </div>
-      </form>
+      </div>
     </div>
   );
 }

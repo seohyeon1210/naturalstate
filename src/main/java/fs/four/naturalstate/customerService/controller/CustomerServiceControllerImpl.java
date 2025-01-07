@@ -13,4 +13,12 @@ public class CustomerServiceControllerImpl {
     @GetMapping("/post")
     public String PostForm() { return "forward:/index.html"; }
 
+    @GetMapping("/events")
+    public String Event() { return "forward:/index.html"; }
+
+    @GetMapping("/inquiry")
+    public String Inquiry () { return "forward:/index.html"; }
+
+    @GetMapping("/notice")
+    public String Notice () { return "forward:/index.html"; }
 }
