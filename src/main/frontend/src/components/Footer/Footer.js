@@ -24,6 +24,9 @@ function Footer() {
                         <p>
                             <Link to="/customerservice">고객센터</Link>
                         </p>
+                        <p>
+                            <Link to="/webterms">이용약관</Link>
+                        </p>
                     </Col>
                 </Row>
                 <hr/>

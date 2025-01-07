@@ -9,4 +9,7 @@ public class TermsControllerImpl {
     public String terms() {
         return "forward:/index.html";
     }
+
+    @GetMapping("/webterms")
+    public String WebTerms () { return "forward:/index.html"; }
 }
