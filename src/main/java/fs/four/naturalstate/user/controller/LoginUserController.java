@@ -54,6 +54,6 @@ public class LoginUserController {
 //    // React의 index.html로 포워딩
 //    @GetMapping("/login")
 //    public String loginPage() {
-//        return "forward:/index.html";
+//        return "forward:/index.html".;
 //    }
 
