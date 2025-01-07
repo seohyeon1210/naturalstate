@@ -12,7 +12,7 @@ function DeliveryManage() {
     address: "",
   });
 
-  // 입력값 변경 핸들러
+  // .입력값 변경 핸들러
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({

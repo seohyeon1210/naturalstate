@@ -60,7 +60,7 @@ function PostForm() {
             style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px", height: "250px", }}
           ></textarea>
         </div>
-        {/* 버튼을 오른쪽으로 정렬 */}
+        {/* .버튼을 오른쪽으로 정렬 */}
         <div style={{ textAlign: "right" }}>
           <button
             type="submit"

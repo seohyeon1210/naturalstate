@@ -84,7 +84,7 @@ function CustomerService() {
         ))}
       </div>
 
-      {/* 글쓰기 버튼 (오른쪽 아래에 위치) */}
+      {/* .글쓰기 버튼 (오른쪽 아래에 위치) */}
       <button
         onClick={() => navigate("/post")} // "글쓰기(post url)" 페이지로 이동
         style={{
