@@ -14,7 +14,7 @@ import PostForm from "./components/CustomerService/PostForm";
 import Footer from "./components/Footer/Footer";
 import "./components/Main/Main.css";
 import Cart from "./components/Cart/Cart";
-import DeliveryManage from "./components/DeliveryManagement/DeliveryManage";
+import DeliveryPopup from "./components/DeliveryManagement/DeliveryPopup";
 import Terms from "./components/Terms/Terms";
 import Report from "./components/Report/Report";
 import ProductWrite from "./components/Product/ProductWrite";
@@ -22,6 +22,10 @@ import ProductDetail from "./components/Product/ProductDetail";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import BestProduct from "./components/Product/BestProduct";
+import Event from "./components/CustomerService/Event";
+import Notice from "./components/CustomerService/Notice";
+import Inquiry from "./components/CustomerService/Inquiry";
+import DeliveryList from "./components/DeliveryManagement/DeliveryList";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -63,12 +67,16 @@ function App() {
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/customerservice" element={<CustomerService />} />
                     <Route path="/post" element={<PostForm />} />
-                    <Route path="/delivery" element={<DeliveryManage />} />
+                    <Route path="/deliverypopup" element={<DeliveryPopup />} />
                     <Route path="/terms" element={<Terms />} />
                     <Route path="/report" element={<Report />} />
                     <Route path="/productwrite" element={<ProductWrite />} />
                     <Route path="/productdetail" element={<ProductDetail />} />
                     <Route path="/bestproduct" element={<BestProduct/>}/>
+                    <Route path="/events" element={<Event/>}/>
+                    <Route path="/notice" element={<Notice/>}/>
+                    <Route path="/Inquiry" element={<Inquiry/>}/>
+                    <Route path="/deliverylist" element={<DeliveryList/>}/>
                 </Routes>
             </div>
             <Footer />
