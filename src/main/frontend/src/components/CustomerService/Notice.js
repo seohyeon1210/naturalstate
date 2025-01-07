@@ -14,14 +14,25 @@ function Notice() {
   ];
 
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState(""); // 검색어 상태
   const itemsPerPage = 5;
+
+  // 검색 결과 필터링
+  const filteredNotices = notices.filter((notice) =>
+    notice.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentNotices = notices.slice(indexOfFirstItem, indexOfLastItem);
+  const currentNotices = filteredNotices.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+  };
+
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value); // 검색어 업데이트
+    setCurrentPage(1); // 검색 시 첫 페이지로 이동
   };
 
   return (
@@ -51,6 +62,8 @@ function Notice() {
         </select>
         <input
           type="text"
+          value={searchQuery} // 검색어 상태를 입력 필드에 연결
+          onChange={handleSearch} // 검색어 변경 이벤트 처리
           placeholder="검색어 입력"
           style={{
             padding: "5px",
@@ -71,6 +84,7 @@ function Notice() {
             fontSize: "12px",
             width: "80px",
           }}
+          onClick={() => setCurrentPage(1)} // 검색 시 첫 페이지로 이동
         >
           검색
         </button>
@@ -113,7 +127,7 @@ function Notice() {
       {/* 페이지네이션 */}
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "20px" }}>
         <div style={{ display: "flex", gap: "10px" }}>
-          {Array.from({ length: Math.ceil(notices.length / itemsPerPage) }, (_, index) => (
+          {Array.from({ length: Math.ceil(filteredNotices.length / itemsPerPage) }, (_, index) => (
             <button
               key={index + 1}
               onClick={() => handlePageChange(index + 1)}
@@ -135,6 +149,5 @@ function Notice() {
     </div>
   );
 }
-
 
 export default Notice;

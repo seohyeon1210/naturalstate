@@ -19,7 +19,7 @@ function CustomerService() {
               </a>
             </li>
             <li style={{ marginBottom: "10px" }}>
-              <a href="postform" style={{ textDecoration: "none", color: "#000" }}>
+              <a href="/post" style={{ textDecoration: "none", color: "#000" }}>
                 1:1 문의
               </a>
             </li>

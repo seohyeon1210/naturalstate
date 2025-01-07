@@ -26,6 +26,7 @@ import Event from "./components/CustomerService/Event";
 import Notice from "./components/CustomerService/Notice";
 import Inquiry from "./components/CustomerService/Inquiry";
 import DeliveryList from "./components/DeliveryManagement/DeliveryList";
+import WebTerms from "./components/Terms/WebTerms";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -77,6 +78,7 @@ function App() {
                     <Route path="/notice" element={<Notice/>}/>
                     <Route path="/Inquiry" element={<Inquiry/>}/>
                     <Route path="/deliverylist" element={<DeliveryList/>}/>
+                    <Route path="/webterms" element={<WebTerms/>}/>
                 </Routes>
             </div>
             <Footer />
