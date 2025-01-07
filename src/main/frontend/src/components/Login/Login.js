@@ -20,12 +20,13 @@ function Login({ onLogin }) {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),
+                credentials: "include",
             });
 
             const result = await response.text();
             if (result === "Login successful!") {
                 // 로그인 성공 시 localStorage에 사용자 정보 저장
-                localStorage.setItem("user", JSON.stringify({ userId }));
+//                localStorage.setItem("user", JSON.stringify({ userId }));
                 onLogin(); // App.js에서 로그인 상태 업데이트
                 alert("로그인 성공!");
                 navigate("/"); // 메인 페이지로 리다이렉트
