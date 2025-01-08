@@ -68,6 +68,7 @@ function Join() {
                         console.log('회원가입 성공:', response.data);
                         alert('회원가입이 완료되었습니다.');
                         resetForm();
+                        window.location.href = '/';
                     } catch (error) {
                         console.error('회원가입 실패:', error);
                         alert('회원가입에 실패하였습니다. 다시 시도해 주세요.');

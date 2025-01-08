@@ -7,7 +7,7 @@ function CustomerService() {
       <div className="customer-service-menu">
         {/* 왼쪽 고객센터 메뉴 */}
         <div className="customer-service-sidebar">
-          <h2>고객센터</h2>
+          <h2 className="cs-title">고객센터</h2>
           <ul>
             <li>
               <a href="/notice">공지사항</a>
@@ -30,11 +30,12 @@ function CustomerService() {
 
         {/* 공지사항 */}
         <div className="customer-service-section">
-          <h2>
+          <h2 className="cs-title">
             공지사항
             <a href="/notice">더보기 &gt;</a>
           </h2>
           <ul>
+            {/*내용 변경 요청*/}
             <li>마녀공장 멤버십 정책 변경 안내</li>
             <li>배송 지연 안내 (폭설, 강풍으로 인한 교통 통제)</li>
             <li>마녀공장 휴면 회원 정책 변경에 따른 이용약관&개인정보 안내</li>
@@ -45,7 +46,7 @@ function CustomerService() {
 
         {/* 이벤트 */}
         <div className="customer-service-section">
-          <h2>
+          <h2 className="cs-title">
             이벤트
             <a href="/events">더보기 &gt;</a>
           </h2>
