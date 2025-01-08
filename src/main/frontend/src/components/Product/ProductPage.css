@@ -59,10 +59,6 @@
     font-weight: bold;
 }
 
-button {
-    align-self: flex-end;
-}
-
 .mb-4 > .product-card {
     min-height: 350px;
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import "./Login.css";
-import appleImage from "../../assets/login/apple.jpg";
+import appleImage from "../../assets/Login/apple.jpg";
 
 function Login({ onLogin }) {
     const [userId, setUserId] = useState("");
@@ -67,7 +67,7 @@ function Login({ onLogin }) {
                             <Form.Check type="checkbox" label="아이디 기억하기" />
                         </Form.Group>
 
-                        <Button variant="primary" type="submit">
+                        <Button className="login-btn" variant="primary" type="submit">
                             로그인
                         </Button>
 
