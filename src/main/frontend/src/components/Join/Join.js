@@ -39,7 +39,8 @@ function Join() {
         address: yup.string().required('주소는 필수입니다.'),
         detailAddress: yup.string().required('상세주소는 필수입니다.'),
         email: yup.string().email('유효한 이메일을 입력해주세요.').required('이메일은 필수입니다.'),
-        receiveEmail: yup.string().oneOf(['Y', 'N'], '유효한 값을 선택하세요.')    });
+        receiveEmail: yup.string().oneOf(['Y', 'N'], '유효한 값을 선택하세요.')
+    });
 
     const handleSearchPostcode = (setFieldValue) => {
         new window.daum.Postcode({
@@ -89,9 +90,11 @@ function Join() {
             >
                 {({handleSubmit, handleChange, setFieldValue, values, touched, errors, isSubmitting}) => (
                     <Form noValidate onSubmit={handleSubmit} className="join-form">
+                        <h5 className="font-label">회원가입</h5>
+                        <hr/>
                         <Row className="mb-3">
-                            <Form.Group as={Col} md="6" controlId="validationFormikUserId">
-                                <Form.Label>아이디</Form.Label>
+                            <Form.Group as={Col} md="12" controlId="validationFormikUserId">
+                                <Form.Label className="font-label">아이디</Form.Label>
                                 <Form.Control
                                     type="text"
                                     placeholder="아이디"
@@ -104,9 +107,11 @@ function Join() {
                                     {errors.userId}
                                 </Form.Control.Feedback>
                             </Form.Group>
+                        </Row>
 
-                            <Form.Group as={Col} md="6" controlId="validationFormikPassword">
-                                <Form.Label>비밀번호</Form.Label>
+                        <Row className="mb-3">
+                            <Form.Group as={Col} md="12" controlId="validationFormikPassword">
+                                <Form.Label className="font-label">비밀번호</Form.Label>
                                 <Form.Control
                                     type="password"
                                     placeholder="비밀번호"
@@ -122,8 +127,8 @@ function Join() {
                         </Row>
 
                         <Row className="mb-3">
-                            <Form.Group as={Col} md="6" controlId="validationFormikConfirmPassword">
-                                <Form.Label>비밀번호 확인</Form.Label>
+                            <Form.Group as={Col} md="12" controlId="validationFormikConfirmPassword">
+                                <Form.Label className="font-label">비밀번호 확인</Form.Label>
                                 <Form.Control
                                     type="password"
                                     placeholder="비밀번호 확인"
@@ -136,9 +141,11 @@ function Join() {
                                     {errors.confirmPassword}
                                 </Form.Control.Feedback>
                             </Form.Group>
+                        </Row>
 
-                            <Form.Group as={Col} md="6" controlId="validationFormikUserName">
-                                <Form.Label>이름</Form.Label>
+                        <Row className="mb-3">
+                            <Form.Group as={Col} md="12" controlId="validationFormikUserName">
+                                <Form.Label className="font-label">이름</Form.Label>
                                 <Form.Control
                                     type="text"
                                     name="userName"
@@ -153,12 +160,12 @@ function Join() {
                         </Row>
 
                         <Row className="mb-3">
-                            <Form.Group as={Col} md="6" controlId="validationFormikPhone">
-                                <Form.Label>연락처</Form.Label>
+                            <Form.Group as={Col} md="12" controlId="validationFormikPhone">
+                                <Form.Label className="font-label">연락처</Form.Label>
                                 <InputGroup>
                                     <Form.Control
                                         type="text"
-                                        placeholder="010-0000-0000"
+                                        placeholder=""
                                         name="phone"
                                         value={values.phone}
                                         onChange={handleChange}
@@ -173,8 +180,8 @@ function Join() {
                         </Row>
 
                         <Row className="mb-3">
-                            <Form.Group as={Col} md="6" controlId="validationFormikZip">
-                                <Form.Label>우편번호</Form.Label>
+                            <Form.Group as={Col} md="12" controlId="validationFormikZip">
+                                <Form.Label className="font-label">우편번호</Form.Label>
                                 <InputGroup>
                                     <Form.Control
                                         type="text"
@@ -185,7 +192,7 @@ function Join() {
                                         isInvalid={!!errors.zip}
                                         readOnly
                                     />
-                                    <Button onClick={() => handleSearchPostcode(setFieldValue)}>우편번호 찾기</Button>
+                                    <Button className="font-label" onClick={() => handleSearchPostcode(setFieldValue)}>우편번호 찾기</Button>
                                 </InputGroup>
                                 <Form.Control.Feedback type="invalid">
                                     {errors.zip}
@@ -195,7 +202,7 @@ function Join() {
 
                         <Row className="mb-3">
                             <Form.Group as={Col} md="12" controlId="validationFormikAddress">
-                                <Form.Label>주소</Form.Label>
+                                <Form.Label className="font-label">주소</Form.Label>
                                 <Form.Control
                                     type="text"
                                     placeholder="도로명 주소"
@@ -213,7 +220,7 @@ function Join() {
 
                         <Row className="mb-3">
                             <Form.Group as={Col} md="12" controlId="validationFormikDetailAddress">
-                                <Form.Label>상세주소</Form.Label>
+                                <Form.Label className="font-label">상세주소</Form.Label>
                                 <Form.Control
                                     type="text"
                                     placeholder="상세주소"
@@ -229,8 +236,8 @@ function Join() {
                         </Row>
 
                         <Row className="mb-3">
-                            <Form.Group as={Col} md="6" controlId="validationFormikEmail">
-                                <Form.Label>이메일</Form.Label>
+                            <Form.Group as={Col} md="12" controlId="validationFormikEmail">
+                                <Form.Label className="font-label">이메일</Form.Label>
                                 <Form.Control
                                     type="email"
                                     placeholder="이메일"
@@ -247,19 +254,20 @@ function Join() {
 
                         <Row className="mb-3">
                             <Form.Group as={Col} md="6" controlId="validationFormikReceiveEmail">
-                                <Form.Check
+                                <Form.Check className="font-label"
                                     type="checkbox"
                                     name="receiveEmail"
                                     label="이메일 수신 동의"
                                     checked={values.receiveEmail === 'Y'}
                                     onChange={() => {
-                                        setFieldValue('receiveEmail', values.receiveEmail === 'Y' ? 'N' : 'Y');}}
+                                        setFieldValue('receiveEmail', values.receiveEmail === 'Y' ? 'N' : 'Y');
+                                    }}
                                 />
                             </Form.Group>
                         </Row>
 
-                        <Button type="submit" disabled={isSubmitting}>
-                            {isSubmitting ? "제출 중..." : "회원가입"}
+                        <Button className="font-label" type="submit" disabled={isSubmitting}>
+                            {isSubmitting ? "제출 중..." : "회원가입하기"}
                         </Button>
 
                     </Form>

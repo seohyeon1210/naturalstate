@@ -6,10 +6,12 @@
 
 .footer h5 {
     color: #343a40;
+    font-family: PretendardBold, sans-serif;
 }
 
 .footer p {
     margin: 0;
+    font-family: PretendardRegular, sans-serif;
 }
 
 .footer hr {

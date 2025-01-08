@@ -1,298 +1,148 @@
 import React, { useState } from "react";
-import DaumPostcode from "react-daum-postcode";
+import DaumPostcode from "react-daum-postcode"; // DaumPostcode 컴포넌트
+import "./DeliveryMod.css";
 
-function DeliveryPopup({ isOpen, onClose, onSave }) {
-  const [formData, setFormData] = useState({
-    country: "대한민국",
-    name: "",
-    postalCode: "",
-    address: "",
-    detailAddress: "",
-    email: "",
-    phone: "",
-    memo: "",
-  });
-  const [isAddressPopupOpen, setIsAddressPopupOpen] = useState(false); // 주소 검색 팝업 상태
+// 전화번호 포맷팅 함수
+const formatPhoneNumber = (phone) => {
+  if (!phone) return "";
+  const cleaned = phone.replace(/[^0-9]/g, ""); // 숫자 이외의 값 제거
+  const match = cleaned.match(/^(\d{3})(\d{4})(\d{4})$/);
+  if (match) {
+    return `${match[1]}-${match[2]}-${match[3]}`;
+  }
+  return phone;
+};
 
-  // 입력값 변경 핸들러
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+function DeliveryPopup({ onAdd, onClose }) {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [postcode, setPostcode] = useState("");
+  const [detailAddress, setDetailAddress] = useState(""); // 상세주소 상태 추가
+  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false); // 주소찾기 모달 상태
 
-  // 주소 검색 팝업 완료 핸들러
+  // DaumPostcode 완료 핸들러
   const handleCompleteAddress = (data) => {
-    const fullAddress = data.address;
-    const postalCode = data.zonecode;
-    setFormData({ ...formData, address: fullAddress, postalCode });
-    setIsAddressPopupOpen(false); // 팝업 닫기
+    const fullAddress = data.roadAddress || data.jibunAddress;
+    setAddress(fullAddress);
+    setPostcode(data.zonecode); // 우편번호 설정
+    setIsAddressModalOpen(false); // 모달 닫기
   };
 
-  // 저장 핸들러
-  const handleSave = () => {
-    if (!formData.name || !formData.postalCode || !formData.address || !formData.phone || !formData.email) {
-      alert("필수 항목을 입력해주세요.");
+  // 전화번호 입력 핸들러 (숫자만 허용, 11자리로 제한)
+  const handlePhoneChange = (e) => {
+    const value = e.target.value.replace(/[^0-9]/g, ""); // 숫자 이외의 값 제거
+    if (value.length <= 11) {
+      setPhone(value);
+    }
+  };
+
+  // 추가 버튼 클릭 핸들러
+  const handleAdd = () => {
+    if (!name || !phone || !address || !postcode || !detailAddress) {
+      alert("필수 입력값을 모두 입력해주세요.");
       return;
     }
-    onSave(formData); // 상위 컴포넌트로 데이터 전달
-    onClose(); // 팝업 닫기
+
+    const newAddress = {
+      name,
+      phone: formatPhoneNumber(phone), // 전화번호 포맷팅 적용
+      address,
+      postcode,
+      detailAddress, // 상세주소 추가
+    };
+    onAdd(newAddress); // 상위 컴포넌트로 전달
+    onClose(); // 모달 닫기
   };
 
-  if (!isOpen) return null; // 팝업이 열려있지 않으면 렌더링하지 않음
-
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
-        zIndex: 1000,
-      }}
-    >
-      <div
-        style={{
-          position: "fixed",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          backgroundColor: "#fff",
-          padding: "20px",
-          borderRadius: "10px",
-          width: "500px",
-          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
-        }}
-      >
-        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>배송지 변경</h2>
-        <form>
-          <div style={{ marginBottom: "10px" }}>
-            <label style={{ display: "block", marginBottom: "5px" }}>국가 *</label>
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <h2 className="modal-title">배송지 추가</h2>
+
+        {/* 이름 */}
+        <div className="form-group">
+          <label>이름</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="form-input"
+          />
+        </div>
+
+        {/* 전화번호 */}
+        <div className="form-group">
+          <label>전화번호</label>
+          <input
+            type="text"
+            value={phone}
+            onChange={handlePhoneChange}
+            className="form-input"
+            placeholder="숫자만 입력 (11자리)"
+          />
+        </div>
+
+        {/* 주소 */}
+        <div className="form-group">
+          <label>주소</label>
+          <div className="address-wrapper">
             <input
               type="text"
-              name="country"
-              value={formData.country}
-              onChange={handleChange}
+              value={address}
               readOnly
-              style={{
-                width: "100%",
-                padding: "8px",
-                border: "1px solid #ccc",
-                borderRadius: "4px",
-                backgroundColor: "#f9f9f9",
-              }}
+              className="form-input"
             />
-          </div>
-
-          <div style={{ marginBottom: "10px" }}>
-            <label style={{ display: "block", marginBottom: "5px" }}>이름 *</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              style={{
-                width: "100%",
-                padding: "8px",
-                border: "1px solid #ccc",
-                borderRadius: "4px",
-              }}
-            />
-          </div>
-
-          <div style={{ marginBottom: "10px", display: "flex", gap: "10px" }}>
-            <div style={{ flex: 2 }}>
-              <label style={{ display: "block", marginBottom: "5px" }}>우편번호 *</label>
-              <input
-                type="text"
-                name="postalCode"
-                value={formData.postalCode}
-                onChange={handleChange}
-                placeholder="우편번호"
-                readOnly
-                style={{
-                  width: "100%",
-                  padding: "8px",
-                  border: "1px solid #ccc",
-                  borderRadius: "4px",
-                  backgroundColor: "#f9f9f9",
-                }}
-              />
-            </div>
             <button
-              type="button"
-              onClick={() => setIsAddressPopupOpen(true)}
-              style={{
-                flex: 1,
-                padding: "8px",
-                backgroundColor: "#333",
-                color: "#fff",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-              }}
+              onClick={() => setIsAddressModalOpen(true)}
+              className="btn-address-search"
             >
-              주소 검색
+              주소찾기
             </button>
           </div>
+        </div>
 
-          <div style={{ marginBottom: "10px" }}>
-            <label style={{ display: "block", marginBottom: "5px" }}>주소 *</label>
-            <input
-              type="text"
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              placeholder="상세주소"
-              readOnly
-              style={{
-                width: "100%",
-                padding: "8px",
-                border: "1px solid #ccc",
-                borderRadius: "4px",
-                backgroundColor: "#f9f9f9",
-              }}
-            />
-          </div>
+        {/* 우편번호 */}
+        <div className="form-group">
+          <label>우편번호</label>
+          <input
+            type="text"
+            value={postcode}
+            readOnly
+            className="form-input"
+          />
+        </div>
 
-          <div style={{ marginBottom: "10px" }}>
-            <label style={{ display: "block", marginBottom: "5px" }}>상세 주소</label>
-            <input
-              type="text"
-              name="detailAddress"
-              value={formData.detailAddress}
-              onChange={handleChange}
-              placeholder="상세주소를 입력하세요"
-              style={{
-                width: "100%",
-                padding: "8px",
-                border: "1px solid #ccc",
-                borderRadius: "4px",
-              }}
-            />
-          </div>
+        {/* 상세주소 */}
+        <div className="form-group">
+          <label>상세주소</label>
+          <input
+            type="text"
+            value={detailAddress}
+            onChange={(e) => setDetailAddress(e.target.value)}
+            className="form-input"
+            placeholder="상세주소 입력"
+          />
+        </div>
 
-          <div style={{ marginBottom: "10px", display: "flex", gap: "10px" }}>
-            <div style={{ flex: 1 }}>
-              <label style={{ display: "block", marginBottom: "5px" }}>이메일 *</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                style={{
-                  width: "100%",
-                  padding: "8px",
-                  border: "1px solid #ccc",
-                  borderRadius: "4px",
-                }}
-              />
-            </div>
-            <div style={{ flex: 1 }}>
-              <label style={{ display: "block", marginBottom: "5px" }}>전화번호 *</label>
-              <input
-                type="text"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                style={{
-                  width: "100%",
-                  padding: "8px",
-                  border: "1px solid #ccc",
-                  borderRadius: "4px",
-                }}
-              />
-            </div>
-          </div>
+        {/* 추가 및 취소 버튼 */}
+        <div className="button-group">
+          <button onClick={onClose} className="btn-cancel">
+            취소
+          </button>
+          <button onClick={handleAdd} className="btn-submit">
+            추가하기
+          </button>
+        </div>
 
-          <div style={{ marginBottom: "10px" }}>
-            <label style={{ display: "block", marginBottom: "5px" }}>주문메모</label>
-            <textarea
-              name="memo"
-              value={formData.memo}
-              onChange={handleChange}
-              rows="3"
-              style={{
-                width: "100%",
-                padding: "8px",
-                border: "1px solid #ccc",
-                borderRadius: "4px",
-              }}
-            />
-          </div>
-
-          <div style={{ display: "flex", justifyContent: "space-between", marginTop: "20px" }}>
-            <button
-              type="button"
-              onClick={handleSave}
-              style={{
-                padding: "10px 20px",
-                backgroundColor: "#007BFF",
-                color: "white",
-                border: "none",
-                borderRadius: "5px",
-                cursor: "pointer",
-              }}
-            >
-              저장
-            </button>
-            <button
-              type="button"
-              onClick={onClose}
-              style={{
-                padding: "10px 20px",
-                backgroundColor: "#6c757d",
-                color: "white",
-                border: "none",
-                borderRadius: "5px",
-                cursor: "pointer",
-              }}
-            >
-              닫기
-            </button>
-          </div>
-        </form>
-
-        {/* 다음 주소 검색 팝업 */}
-        {isAddressPopupOpen && (
-          <div
-            style={{
-              position: "fixed",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
-              zIndex: 1000,
-            }}
-          >
-            <div
-              style={{
-                position: "fixed",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                backgroundColor: "#fff",
-                padding: "20px",
-                borderRadius: "10px",
-                width: "400px",
-                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
-              }}
-            >
+        {/* DaumPostcode 모달 */}
+        {isAddressModalOpen && (
+          <div className="modal-overlay">
+            <div className="address-modal">
               <DaumPostcode onComplete={handleCompleteAddress} />
               <button
-                type="button"
-                onClick={() => setIsAddressPopupOpen(false)}
-                style={{
-                  marginTop: "10px",
-                  padding: "10px 20px",
-                  backgroundColor: "#dc3545",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "5px",
-                  cursor: "pointer",
-                }}
+                onClick={() => setIsAddressModalOpen(false)}
+                className="btn-close-modal"
               >
                 닫기
               </button>

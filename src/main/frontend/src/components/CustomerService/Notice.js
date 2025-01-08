@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Notice.css"; // CSS 파일 import
 
 function Notice() {
   const notices = [
@@ -14,10 +15,9 @@ function Notice() {
   ];
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState(""); // 검색어 상태
+  const [searchQuery, setSearchQuery] = useState("");
   const itemsPerPage = 5;
 
-  // 검색 결과 필터링
   const filteredNotices = notices.filter((notice) =>
     notice.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -31,120 +31,71 @@ function Notice() {
   };
 
   const handleSearch = (event) => {
-    setSearchQuery(event.target.value); // 검색어 업데이트
-    setCurrentPage(1); // 검색 시 첫 페이지로 이동
+    setSearchQuery(event.target.value);
+    setCurrentPage(1);
   };
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "20px" }}>공지사항</h1>
+    <div className="notice-container">
+      <h1 className="notice-title">공지사항</h1>
 
       {/* 검색 및 필터 */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          marginBottom: "20px",
-          gap: "10px",
-        }}
-      >
-        <select
-          style={{
-            padding: "5px",
-            border: "1px solid #ddd",
-            borderRadius: "4px",
-            fontSize: "12px",
-            width: "100px",
-          }}
-        >
+      <div className="notice-search-container">
+        <select className="notice-search-select">
           <option value="title">제목</option>
         </select>
         <input
           type="text"
-          value={searchQuery} // 검색어 상태를 입력 필드에 연결
-          onChange={handleSearch} // 검색어 변경 이벤트 처리
+          value={searchQuery}
+          onChange={handleSearch}
           placeholder="검색어 입력"
-          style={{
-            padding: "5px",
-            border: "1px solid #ddd",
-            borderRadius: "4px",
-            fontSize: "12px",
-            width: "200px",
-          }}
+          className="notice-search-input"
         />
         <button
-          style={{
-            padding: "5px",
-            backgroundColor: "red",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer",
-            fontSize: "12px",
-            width: "80px",
-          }}
-          onClick={() => setCurrentPage(1)} // 검색 시 첫 페이지로 이동
+          className="notice-search-button"
+          onClick={() => setCurrentPage(1)}
         >
           검색
         </button>
       </div>
 
       {/* 공지사항 테이블 */}
-      <table
-        style={{
-          width: "100%",
-          borderCollapse: "collapse",
-          margin: "20px 0",
-          fontSize: "14px",
-          textAlign: "left",
-        }}
-      >
+      <table className="notice-table">
         <thead>
-          <tr style={{ borderBottom: "2px solid #ddd" }}>
-            <th style={{ padding: "10px", width: "10%", textAlign: "center" }}>번호</th>
-            <th style={{ padding: "10px", width: "15%" }}>말머리</th>
-            <th style={{ padding: "10px", width: "50%" }}>제목</th>
-            <th style={{ padding: "10px", width: "10%", textAlign: "center" }}>날짜</th>
-            <th style={{ padding: "10px", width: "10%", textAlign: "center" }}>작성자</th>
-            <th style={{ padding: "10px", width: "10%", textAlign: "center" }}>조회</th>
+          <tr>
+            <th>번호</th>
+            <th>말머리</th>
+            <th>제목</th>
+            <th>날짜</th>
+            <th>작성자</th>
+            <th>조회</th>
           </tr>
         </thead>
         <tbody>
           {currentNotices.map((notice) => (
-            <tr key={notice.id} style={{ borderBottom: "1px solid #eee" }}>
-              <td style={{ padding: "10px", textAlign: "center" }}>{notice.id}</td>
-              <td style={{ padding: "10px" }}>{notice.category}</td>
-              <td style={{ padding: "10px", color: "#000" }}>{notice.title}</td>
-              <td style={{ padding: "10px", textAlign: "center" }}>{notice.date}</td>
-              <td style={{ padding: "10px", textAlign: "center" }}>{notice.author}</td>
-              <td style={{ padding: "10px", textAlign: "center" }}>{notice.views}</td>
+            <tr key={notice.id}>
+              <td>{notice.id}</td>
+              <td>{notice.category}</td>
+              <td className="title">{notice.title}</td>
+              <td>{notice.date}</td>
+              <td>{notice.author}</td>
+              <td>{notice.views}</td>
             </tr>
           ))}
         </tbody>
       </table>
 
       {/* 페이지네이션 */}
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "20px" }}>
-        <div style={{ display: "flex", gap: "10px" }}>
-          {Array.from({ length: Math.ceil(filteredNotices.length / itemsPerPage) }, (_, index) => (
-            <button
-              key={index + 1}
-              onClick={() => handlePageChange(index + 1)}
-              style={{
-                padding: "5px 10px",
-                backgroundColor: currentPage === index + 1 ? "red" : "#ddd",
-                color: currentPage === index + 1 ? "white" : "black",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-                fontSize: "12px",
-              }}
-            >
-              {index + 1}
-            </button>
-          ))}
-        </div>
+      <div className="notice-pagination">
+        {Array.from({ length: Math.ceil(filteredNotices.length / itemsPerPage) }, (_, index) => (
+          <button
+            key={index + 1}
+            onClick={() => handlePageChange(index + 1)}
+            className={currentPage === index + 1 ? "active" : "inactive"}
+          >
+            {index + 1}
+          </button>
+        ))}
       </div>
     </div>
   );

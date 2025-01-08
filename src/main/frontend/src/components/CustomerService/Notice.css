@@ -1,0 +1,105 @@
+/* 공지사항 컨테이너 */
+.notice-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* 제목 */
+.notice-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 검색 및 필터 */
+.notice-search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.notice-search-select {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 12px;
+  width: 100px;
+}
+
+.notice-search-input {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 12px;
+  width: 200px;
+}
+
+.notice-search-button {
+  padding: 5px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  width: 80px;
+}
+
+/* 공지사항 테이블 */
+.notice-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 14px;
+  text-align: left;
+}
+
+.notice-table thead tr {
+  border-bottom: 2px solid #ddd;
+}
+
+.notice-table th,
+.notice-table td {
+  padding: 10px;
+}
+
+.notice-table th {
+  text-align: center;
+}
+
+.notice-table td {
+  border-bottom: 1px solid #eee;
+}
+
+.notice-table td.title {
+  color: #000;
+  text-align: left;
+}
+
+/* 페이지네이션 */
+.notice-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.notice-pagination button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.notice-pagination button.active {
+  background-color: red;
+  color: white;
+}
+
+.notice-pagination button.inactive {
+  background-color: #ddd;
+  color: black;
+}

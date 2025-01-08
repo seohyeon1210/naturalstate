@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'PretendardBold';
+  src: url('./fonts/Pretendard-Bold.otf');
+
+}
+
+@font-face {
+  font-family: 'PretendardThin';
+  src: url('./fonts/Pretendard-Thin.otf');
+}
+
+@font-face{
+  font-family: 'PretendardRegular';
+  src: url('./fonts/Pretendard-Regular.otf');
+}
+
+@font-face {
+  font-family: 'PretendardLight';
+  src: url('./fonts/Pretendard-Light.otf');
+}

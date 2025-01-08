@@ -11,7 +11,7 @@ public class DeliveryControllerImpl {
         return "forward:/index.html";
     }
 
-    @GetMapping("/deliverylist")
+    @GetMapping("/mypage/deliverylist")
     public String DeliveryList() { return "forward:/index.html"; }
 
 }

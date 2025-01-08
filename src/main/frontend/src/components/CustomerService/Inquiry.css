@@ -1,0 +1,86 @@
+/* 전체 컨테이너 */
+.inquiry-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* 제목 */
+.inquiry-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 상단 버튼 */
+.inquiry-button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.inquiry-secondary-button {
+  padding: 10px 20px;
+  background-color: #f2f2f2;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.inquiry-primary-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* 질문 목록 */
+.inquiry-question-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.inquiry-question-item {
+  border-bottom: 1px solid #eee;
+  padding: 15px 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.inquiry-question-title {
+  font-weight: bold;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 화살표 버튼 */
+.inquiry-toggle-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transform: rotate(0deg);
+  transition: transform 0.2s;
+}
+
+.inquiry-toggle-button.open {
+  transform: rotate(180deg);
+}
+
+/* 답변 */
+.inquiry-answer {
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+  display: none; /* 기본적으로 숨김 */
+}
+
+.inquiry-answer.open {
+  display: block; /* 열림 상태일 때 표시 */
+}
