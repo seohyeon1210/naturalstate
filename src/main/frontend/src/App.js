@@ -45,6 +45,7 @@ import VegetablesProduct from "./components/Product/VegetablesProduct";
 // User mypage import
 import Mypage from "./components/Mypage/Mypage";
 import DeliveryList from "./components/Mypage/DeliveryList";
+import ProductPage from "./components/Product/ProductPage";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -70,7 +71,7 @@ function App() {
     };
 
     // Main 페이지에만 SecondHeader 표시
-    const isMainPage = location.pathname === '/' || location.pathname === '/main';
+    const isMainPage = location.pathname === '/' || location.pathname === '/main' || location.pathname === '/productpage' || location.pathname === '/bestproduct' || location.pathname === '/recommendedproduct' || location.pathname === '/fruitsproduct' || location.pathname === '/grainsproduct' || location.pathname === '/vegetablesproduct';
 
     return (
         <div id="app-wrapper">
@@ -100,6 +101,7 @@ function App() {
                     {/*상품*/}
                     <Route path="/productwrite" element={<ProductWrite />} />
                     <Route path="/productdetail" element={<ProductDetail />} />
+                    <Route path="/productpage" element={<ProductPage/>}/>
                     <Route path="/bestproduct" element={<BestProduct/>}/>
                     <Route path="/recommendedproduct" element={<RecommendedProduct/>}/>
                     <Route path="/fruitsproduct" element={<FruitsProduct/>}/>

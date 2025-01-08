@@ -34,4 +34,9 @@ public class ProductControllerImpl {
     public String vegetablesproduct() {
         return "forward:/index.html";
     }
+
+    @GetMapping("productpage")
+    public String productpage() {
+        return "forward:/index.html";
+    }
 }

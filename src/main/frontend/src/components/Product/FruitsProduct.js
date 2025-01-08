@@ -1,8 +1,13 @@
 import React from "react";
+import ProductPage from "./ProductPage";
+import {Container} from "react-bootstrap";
 
 function FruitsProduct() {
     return(
-        <h1>과일 상품 페이지입니다.</h1>
+        <Container>
+            <h5>과일 상품 페이지</h5>
+            <ProductPage/>
+        </Container>
     )
 }
 

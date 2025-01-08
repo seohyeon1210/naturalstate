@@ -1,8 +1,12 @@
 {
   "files": {
-    "main.css": "/static/css/main.3880c5b8.css",
-    "main.js": "/static/js/main.9ca71b69.js",
+    "main.css": "/static/css/main.c09af730.css",
+    "main.js": "/static/js/main.903b55fc.js",
     "static/js/488.e75445ad.chunk.js": "/static/js/488.e75445ad.chunk.js",
+    "static/media/Pretendard-Light.otf": "/static/media/Pretendard-Light.65372b5df865e8aa758a.otf",
+    "static/media/Pretendard-Bold.otf": "/static/media/Pretendard-Bold.4e72d46e664b88a6b5c8.otf",
+    "static/media/Pretendard-Regular.otf": "/static/media/Pretendard-Regular.57ca7a4b20797e3b9625.otf",
+    "static/media/Pretendard-Thin.otf": "/static/media/Pretendard-Thin.e45abc28d4828e92dd10.otf",
     "static/media/001.png": "/static/media/001.52f18b4b648b2ff0018e.png",
     "static/media/002.png": "/static/media/002.8b8ec0fc77ff71600c02.png",
     "static/media/styled.png": "/static/media/styled.3df87f84c81b1f2bf024.png",
@@ -12,12 +16,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
-    "main.3880c5b8.css.map": "/static/css/main.3880c5b8.css.map",
-    "main.9ca71b69.js.map": "/static/js/main.9ca71b69.js.map",
+    "main.c09af730.css.map": "/static/css/main.c09af730.css.map",
+    "main.903b55fc.js.map": "/static/js/main.903b55fc.js.map",
     "488.e75445ad.chunk.js.map": "/static/js/488.e75445ad.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3880c5b8.css",
-    "static/js/main.9ca71b69.js"
+    "static/css/main.c09af730.css",
+    "static/js/main.903b55fc.js"
   ]
 }

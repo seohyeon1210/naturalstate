@@ -1,8 +1,13 @@
 import React from "react";
+import ProductPage from "./ProductPage";
+import {Container} from "react-bootstrap";
 
 function RecommendedProduct() {
     return(
-        <h1>추천 상품 페이지입니다.</h1>
+        <Container>
+            <h5>추천 상품 페이지</h5>
+            <ProductPage/>
+        </Container>
     )
 }
 
