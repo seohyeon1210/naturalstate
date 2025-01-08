@@ -13,8 +13,8 @@ import StoreJoin from "./components/Join/StoreJoin";
 import PostForm from "./components/CustomerService/PostForm";
 import Footer from "./components/Footer/Footer";
 import "./components/Main/Main.css";
-import Cart from "./components/Cart/Cart";
-import DeliveryPopup from "./components/DeliveryManagement/DeliveryPopup";
+import Cart from "./components/Mypage/Cart";
+import DeliveryPopup from "./components/Mypage/DeliveryPopup";
 import Terms from "./components/Terms/Terms";
 import Report from "./components/Report/Report";
 import ProductWrite from "./components/Product/ProductWrite";
@@ -25,8 +25,11 @@ import BestProduct from "./components/Product/BestProduct";
 import Event from "./components/CustomerService/Event";
 import Notice from "./components/CustomerService/Notice";
 import Inquiry from "./components/CustomerService/Inquiry";
-import DeliveryList from "./components/DeliveryManagement/DeliveryList";
+import DeliveryList from "./components/Mypage/DeliveryList";
 import WebTerms from "./components/Terms/WebTerms";
+import Sidebar from "./components/Mypage/MypageSidebar";
+import Mypage from "./components/Mypage/Mypage";
+
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -65,10 +68,8 @@ function App() {
                     <Route path="/login" element={<Login onLogin={handleLogin} />} />
                     <Route path="/join" element={<Join />} />
                     <Route path="/storejoin" element={<StoreJoin />} />
-                    <Route path="/cart" element={<Cart />} />
                     <Route path="/customerservice" element={<CustomerService />} />
                     <Route path="/post" element={<PostForm />} />
-                    <Route path="/deliverypopup" element={<DeliveryPopup />} />
                     <Route path="/terms" element={<Terms />} />
                     <Route path="/report" element={<Report />} />
                     <Route path="/productwrite" element={<ProductWrite />} />
@@ -77,8 +78,10 @@ function App() {
                     <Route path="/events" element={<Event/>}/>
                     <Route path="/notice" element={<Notice/>}/>
                     <Route path="/Inquiry" element={<Inquiry/>}/>
-                    <Route path="/deliverylist" element={<DeliveryList/>}/>
                     <Route path="/webterms" element={<WebTerms/>}/>
+                    <Route path="/mypage/*" element={<Mypage />} />
+
+
                 </Routes>
             </div>
             <Footer />

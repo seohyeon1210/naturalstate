@@ -24,6 +24,7 @@ const Header = ({ isLoggedIn, onLogout }) => {
                             <>
                                 <Nav.Link as={Link} to="/login" className="nav-link-right">로그인</Nav.Link>
                                 <Nav.Link as={Link} to="/join" className="nav-link-right">회원가입</Nav.Link>
+                                <Nav.Link as={Link} to="/mypage" className="nav-link-right">마이페이지</Nav.Link>
                             </>
                         )}
                     </Nav>
