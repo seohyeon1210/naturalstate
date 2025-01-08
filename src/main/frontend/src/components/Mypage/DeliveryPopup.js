@@ -18,6 +18,7 @@ function DeliveryPopup({ onAdd, onClose }) {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [postcode, setPostcode] = useState("");
+  const [detailAddress, setDetailAddress] = useState(""); // 상세주소 상태 추가
   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false); // 주소찾기 모달 상태
 
   // DaumPostcode 완료 핸들러
@@ -38,7 +39,7 @@ function DeliveryPopup({ onAdd, onClose }) {
 
   // 추가 버튼 클릭 핸들러
   const handleAdd = () => {
-    if (!name || !phone || !address || !postcode) {
+    if (!name || !phone || !address || !postcode || !detailAddress) {
       alert("필수 입력값을 모두 입력해주세요.");
       return;
     }
@@ -48,6 +49,7 @@ function DeliveryPopup({ onAdd, onClose }) {
       phone: formatPhoneNumber(phone), // 전화번호 포맷팅 적용
       address,
       postcode,
+      detailAddress, // 상세주소 추가
     };
     onAdd(newAddress); // 상위 컴포넌트로 전달
     onClose(); // 모달 닫기
@@ -108,6 +110,18 @@ function DeliveryPopup({ onAdd, onClose }) {
             value={postcode}
             readOnly
             className="form-input"
+          />
+        </div>
+
+        {/* 상세주소 */}
+        <div className="form-group">
+          <label>상세주소</label>
+          <input
+            type="text"
+            value={detailAddress}
+            onChange={(e) => setDetailAddress(e.target.value)}
+            className="form-input"
+            placeholder="상세주소 입력"
           />
         </div>
 

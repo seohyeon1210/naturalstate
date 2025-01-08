@@ -7,6 +7,7 @@ function DeliveryMod({ currentAddress, onSave, onClose }) {
   const [phone, setPhone] = useState(currentAddress.phone);
   const [address, setAddress] = useState(currentAddress.address);
   const [postcode, setPostcode] = useState(currentAddress.postcode || "");
+  const [detailAddress, setDetailAddress] = useState(currentAddress.detailAddress || ""); // 상세주소 상태 추가
   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
 
   // DaumPostcode 완료 핸들러
@@ -27,7 +28,7 @@ function DeliveryMod({ currentAddress, onSave, onClose }) {
 
   // 저장 버튼 클릭 핸들러
   const handleSave = () => {
-    if (!name || !phone || !address || !postcode) {
+    if (!name || !phone || !address || !postcode || !detailAddress) {
       alert("필수 입력값을 모두 입력해주세요.");
       return;
     }
@@ -38,6 +39,7 @@ function DeliveryMod({ currentAddress, onSave, onClose }) {
       phone,
       address,
       postcode,
+      detailAddress, // 상세주소 추가
     };
     onSave(updatedAddress);
   };
@@ -97,6 +99,18 @@ function DeliveryMod({ currentAddress, onSave, onClose }) {
             value={postcode}
             readOnly
             className="form-input"
+          />
+        </div>
+
+        {/* 상세주소 */}
+        <div className="form-group">
+          <label>상세주소</label>
+          <input
+            type="text"
+            value={detailAddress}
+            onChange={(e) => setDetailAddress(e.target.value)}
+            className="form-input"
+            placeholder="상세주소 입력"
           />
         </div>
 
