@@ -14,4 +14,24 @@ public class ProductControllerImpl {
     public String bestproduct() {
         return "forward:/index.html";
     }
+
+    @GetMapping("/recommendedproduct")
+    public String recommendedproduct() {
+        return "forward:/index.html";
+    }
+
+    @GetMapping("/fruitsproduct")
+    public String fruitsproduct() {
+        return "forward:/index.html";
+    }
+
+    @GetMapping("/grainsproduct")
+    public String grainsproduct() {
+        return "forward:/index.html";
+    }
+
+    @GetMapping("vegetablesproduct")
+    public String vegetablesproduct() {
+        return "forward:/index.html";
+    }
 }

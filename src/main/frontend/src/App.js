@@ -27,6 +27,10 @@ import Notice from "./components/CustomerService/Notice";
 import Inquiry from "./components/CustomerService/Inquiry";
 import DeliveryList from "./components/DeliveryManagement/DeliveryList";
 import WebTerms from "./components/Terms/WebTerms";
+import RecommendedProduct from "./components/Product/RecommendedProduct";
+import FruitsProduct from "./components/Product/FruitsProduct";
+import GrainsProduct from "./components/Product/GrainsProduct";
+import VegetablesProduct from "./components/Product/VegetablesProduct";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -74,6 +78,10 @@ function App() {
                     <Route path="/productwrite" element={<ProductWrite />} />
                     <Route path="/productdetail" element={<ProductDetail />} />
                     <Route path="/bestproduct" element={<BestProduct/>}/>
+                    <Route path="/recommendedproduct" element={<RecommendedProduct/>}/>
+                    <Route path="/fruitsproduct" element={<FruitsProduct/>}/>
+                    <Route path="/grainsproduct" element={<GrainsProduct/>}/>
+                    <Route path="/vegetablesproduct" element={<VegetablesProduct/>}/>
                     <Route path="/events" element={<Event/>}/>
                     <Route path="/notice" element={<Notice/>}/>
                     <Route path="/Inquiry" element={<Inquiry/>}/>
