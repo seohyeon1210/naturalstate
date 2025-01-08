@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import Sidebar from "./MypageSidebar";
 import DeliveryList from "./DeliveryList";
-import Cart from "./Cart";
+import Cart from "../Cart/Cart";
 
 
 const Container = styled.div`

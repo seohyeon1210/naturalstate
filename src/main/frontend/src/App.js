@@ -1,35 +1,49 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
-import Header from "./components/Header/Header";
-import MainBanner from "./components/Main/MainBanner";
-import Main from "./components/Main/Main";
-import Join from "./components/Join/Join";
+
+// CSS import
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MainAlert from "./components/Main/MainAlert";
-import SecondHeader from "./components/Header/SecondHeader";
-import Login from "./components/Login/Login";
-import CustomerService from "./components/CustomerService/CustomerService";
-import StoreJoin from "./components/Join/StoreJoin";
-import PostForm from "./components/CustomerService/PostForm";
-import Footer from "./components/Footer/Footer";
 import "./components/Main/Main.css";
-import Cart from "./components/Mypage/Cart";
-import DeliveryPopup from "./components/Mypage/DeliveryPopup";
-import Terms from "./components/Terms/Terms";
-import Report from "./components/Report/Report";
-import ProductWrite from "./components/Product/ProductWrite";
-import ProductDetail from "./components/Product/ProductDetail";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import BestProduct from "./components/Product/BestProduct";
+
+// Header, Footer import
+import Header from "./components/Header/Header";
+import MainBanner from "./components/Main/MainBanner";
+import SecondHeader from "./components/Header/SecondHeader";
+import Footer from "./components/Footer/Footer";
+
+// Main, User import
+import MainAlert from "./components/Main/MainAlert";
+import Main from "./components/Main/Main";
+import Join from "./components/Join/Join";
+import Login from "./components/Login/Login";
+import StoreJoin from "./components/Join/StoreJoin";
+
+// CustomerService import
+import CustomerService from "./components/CustomerService/CustomerService";
+import PostForm from "./components/CustomerService/PostForm";
+import WebTerms from "./components/Terms/WebTerms";
+import Terms from "./components/Terms/Terms";
+import Report from "./components/Report/Report";
 import Event from "./components/CustomerService/Event";
 import Notice from "./components/CustomerService/Notice";
 import Inquiry from "./components/CustomerService/Inquiry";
-import DeliveryList from "./components/Mypage/DeliveryList";
-import WebTerms from "./components/Terms/WebTerms";
-import Sidebar from "./components/Mypage/MypageSidebar";
-import Mypage from "./components/Mypage/Mypage";
 
+// Cart import
+import Cart from "./components/Cart/Cart";
+
+// Product import
+import ProductWrite from "./components/Product/ProductWrite";
+import ProductDetail from "./components/Product/ProductDetail";
+import BestProduct from "./components/Product/BestProduct";
+import RecommendedProduct from "./components/Product/RecommendedProduct";
+import FruitsProduct from "./components/Product/FruitsProduct";
+import GrainsProduct from "./components/Product/GrainsProduct";
+import VegetablesProduct from "./components/Product/VegetablesProduct";
+
+// User mypage import
+import Mypage from "./components/Mypage/Mypage";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -64,21 +78,35 @@ function App() {
             {isMainPage && <SecondHeader />}
             <div className="main-content">
                 <Routes>
+                    {/*메인*/}
                     <Route path="/" element={<><MainBanner /><Main /></>} />
+
+                    {/*회원가입, 로그인, 입점신청*/}
                     <Route path="/login" element={<Login onLogin={handleLogin} />} />
                     <Route path="/join" element={<Join />} />
                     <Route path="/storejoin" element={<StoreJoin />} />
+                    
+                    {/*고객센터*/}
                     <Route path="/customerservice" element={<CustomerService />} />
                     <Route path="/post" element={<PostForm />} />
                     <Route path="/terms" element={<Terms />} />
                     <Route path="/report" element={<Report />} />
+                    <Route path="/events" element={<Event/>}/>
+                    <Route path="/notice" element={<Notice/>}/>
+                    <Route path="/inquiry" element={<Inquiry/>}/>
+                    <Route path="/webterms" element={<WebTerms/>}/>
+                    
+                    {/*상품*/}
                     <Route path="/productwrite" element={<ProductWrite />} />
                     <Route path="/productdetail" element={<ProductDetail />} />
                     <Route path="/bestproduct" element={<BestProduct/>}/>
-                    <Route path="/events" element={<Event/>}/>
-                    <Route path="/notice" element={<Notice/>}/>
-                    <Route path="/Inquiry" element={<Inquiry/>}/>
-                    <Route path="/webterms" element={<WebTerms/>}/>
+                    <Route path="/recommendedproduct" element={<RecommendedProduct/>}/>
+                    <Route path="/fruitsproduct" element={<FruitsProduct/>}/>
+                    <Route path="/grainsproduct" element={<GrainsProduct/>}/>
+                    <Route path="/vegetablesproduct" element={<VegetablesProduct/>}/>
+                    <Route path="/cart" element={<Cart/>}/>
+                    
+                    {/*마이페이지*/}
                     <Route path="/mypage/*" element={<Mypage />} />
 
 
