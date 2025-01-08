@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import "./Login.css";
+import appleImage from "../../assets/login/apple.jpg";
 
 function Login({ onLogin }) {
     const [userId, setUserId] = useState("");
@@ -37,48 +38,54 @@ function Login({ onLogin }) {
     };
 
     return (
-        <div>
-            <h2>로그인</h2>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>아이디</Form.Label>
-                    <Form.Control
-                        type="text"
-                        placeholder="아이디"
-                        value={userId}
-                        onChange={(e) => setUserId(e.target.value)}
-                    />
-                </Form.Group>
+        <div className="login-wrapper">
+            <div className="login-content">
+                <div className="login-form">
+                    <h2>그대로</h2>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>아이디</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="아이디"
+                                value={userId}
+                                onChange={(e) => setUserId(e.target.value)}
+                            />
+                        </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>비밀번호</Form.Label>
-                    <Form.Control
-                        type="password"
-                        placeholder="비밀번호"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>비밀번호</Form.Label>
+                            <Form.Control
+                                type="password"
+                                placeholder="비밀번호"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="아이디 기억하기" />
-                </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                            <Form.Check type="checkbox" label="아이디 기억하기" />
+                        </Form.Group>
 
-                <Button variant="primary" type="submit">
-                    로그인
-                </Button>
+                        <Button variant="primary" type="submit">
+                            로그인
+                        </Button>
 
-                <div className="mt-3">
-                    <Button variant="link" onClick={() => navigate("/findid")}>
-                        아이디 찾기
-                    </Button>
-                    <Button variant="link" onClick={() => navigate("/findpw")}>
-                        비밀번호 찾기
-                    </Button>
+                        <div className="mt-3">
+                            <Button variant="link" onClick={() => navigate("/findid")}>
+                                아이디 찾기
+                            </Button>
+                            <Button variant="link" onClick={() => navigate("/findpw")}>
+                                비밀번호 찾기
+                            </Button>
+                        </div>
+                    </Form>
+                    {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
                 </div>
-            </Form>
-
-            {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+                <div className="login-image">
+                    <img src={appleImage} alt="Login Illustration" />
+                </div>
+            </div>
         </div>
     );
 }
