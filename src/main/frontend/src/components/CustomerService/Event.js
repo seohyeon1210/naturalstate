@@ -1,4 +1,5 @@
 import React from "react";
+import "./Event.css"; // CSS 파일 import
 
 function EventPage() {
   const events = [
@@ -33,48 +34,18 @@ function EventPage() {
   ];
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "20px" }}>진행 중인 이벤트</h1>
+    <div className="event-container">
+      <h1 className="event-title">진행 중인 이벤트</h1>
 
       {/* 이벤트 목록 */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-          gap: "20px",
-        }}
-      >
+      <div className="event-grid">
         {events.map((event) => (
-          <div
-            key={event.id}
-            style={{
-              border: "1px solid #ddd",
-              borderRadius: "8px",
-              overflow: "hidden",
-              boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
-            }}
-          >
-            <img
-              src={event.image}
-              alt={event.title}
-              style={{ width: "100%", height: "200px", objectFit: "cover" }}
-            />
-            <div style={{ padding: "15px" }}>
-              <span
-                style={{
-                  display: "inline-block",
-                  backgroundColor: "#000",
-                  color: "#fff",
-                  padding: "3px 8px",
-                  borderRadius: "4px",
-                  fontSize: "12px",
-                  marginBottom: "10px",
-                }}
-              >
-                {event.label}
-              </span>
-              <h2 style={{ fontSize: "18px", margin: "10px 0" }}>{event.title}</h2>
-              <p style={{ fontSize: "14px", color: "#666" }}>{event.description}</p>
+          <div key={event.id} className="event-card">
+            <img src={event.image} alt={event.title} />
+            <div className="event-card-content">
+              <span className="event-card-label">{event.label}</span>
+              <h2 className="event-card-title">{event.title}</h2>
+              <p className="event-card-description">{event.description}</p>
             </div>
           </div>
         ))}

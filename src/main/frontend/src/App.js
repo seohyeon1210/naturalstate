@@ -44,6 +44,7 @@ import VegetablesProduct from "./components/Product/VegetablesProduct";
 
 // User mypage import
 import Mypage from "./components/Mypage/Mypage";
+import DeliveryList from "./components/Mypage/DeliveryList";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -108,7 +109,7 @@ function App() {
                     
                     {/*마이페이지*/}
                     <Route path="/mypage/*" element={<Mypage />} />
-
+                    <Route path="/mypage/deliverylist" element={<DeliveryList />} />
 
                 </Routes>
             </div>

@@ -1,0 +1,61 @@
+/* 전체 컨테이너 */
+.event-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* 제목 */
+.event-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 이벤트 목록 */
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* 이벤트 카드 */
+.event-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 카드 이미지 */
+.event-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* 카드 내용 */
+.event-card-content {
+  padding: 15px;
+}
+
+/* 라벨 */
+.event-card-label {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+/* 제목 */
+.event-card-title {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+/* 설명 */
+.event-card-description {
+  font-size: 14px;
+  color: #666;
+}

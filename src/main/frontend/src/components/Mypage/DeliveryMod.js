@@ -1,62 +1,51 @@
 import React, { useState } from "react";
 import DaumPostcode from "react-daum-postcode"; // DaumPostcode 컴포넌트
-import "./DeliveryMod.css";
+import "./DeliveryMod.css"; // 분리된 CSS 파일 import
 
-// 전화번호 포맷팅 함수
-const formatPhoneNumber = (phone) => {
-  if (!phone) return "";
-  const cleaned = phone.replace(/[^0-9]/g, ""); // 숫자 이외의 값 제거
-  const match = cleaned.match(/^(\d{3})(\d{4})(\d{4})$/);
-  if (match) {
-    return `${match[1]}-${match[2]}-${match[3]}`;
-  }
-  return phone;
-};
-
-function DeliveryPopup({ onAdd, onClose }) {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
-  const [postcode, setPostcode] = useState("");
-  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false); // 주소찾기 모달 상태
+function DeliveryMod({ currentAddress, onSave, onClose }) {
+  const [name, setName] = useState(currentAddress.name);
+  const [phone, setPhone] = useState(currentAddress.phone);
+  const [address, setAddress] = useState(currentAddress.address);
+  const [postcode, setPostcode] = useState(currentAddress.postcode || "");
+  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
 
   // DaumPostcode 완료 핸들러
   const handleCompleteAddress = (data) => {
     const fullAddress = data.roadAddress || data.jibunAddress;
     setAddress(fullAddress);
-    setPostcode(data.zonecode); // 우편번호 설정
-    setIsAddressModalOpen(false); // 모달 닫기
+    setPostcode(data.zonecode);
+    setIsAddressModalOpen(false);
   };
 
   // 전화번호 입력 핸들러 (숫자만 허용, 11자리로 제한)
   const handlePhoneChange = (e) => {
-    const value = e.target.value.replace(/[^0-9]/g, ""); // 숫자 이외의 값 제거
+    const value = e.target.value.replace(/[^0-9]/g, "");
     if (value.length <= 11) {
       setPhone(value);
     }
   };
 
-  // 추가 버튼 클릭 핸들러
-  const handleAdd = () => {
+  // 저장 버튼 클릭 핸들러
+  const handleSave = () => {
     if (!name || !phone || !address || !postcode) {
       alert("필수 입력값을 모두 입력해주세요.");
       return;
     }
 
-    const newAddress = {
+    const updatedAddress = {
+      ...currentAddress,
       name,
-      phone: formatPhoneNumber(phone), // 전화번호 포맷팅 적용
+      phone,
       address,
       postcode,
     };
-    onAdd(newAddress); // 상위 컴포넌트로 전달
-    onClose(); // 모달 닫기
+    onSave(updatedAddress);
   };
 
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h2 className="modal-title">배송지 추가</h2>
+        <h2 className="modal-title">배송지 수정</h2>
 
         {/* 이름 */}
         <div className="form-group">
@@ -111,13 +100,13 @@ function DeliveryPopup({ onAdd, onClose }) {
           />
         </div>
 
-        {/* 추가 및 취소 버튼 */}
+        {/* 저장 및 취소 버튼 */}
         <div className="button-group">
           <button onClick={onClose} className="btn-cancel">
             취소
           </button>
-          <button onClick={handleAdd} className="btn-submit">
-            추가하기
+          <button onClick={handleSave} className="btn-submit">
+            저장하기
           </button>
         </div>
 
@@ -140,4 +129,4 @@ function DeliveryPopup({ onAdd, onClose }) {
   );
 }
 
-export default DeliveryPopup;
+export default DeliveryMod;
