@@ -52,7 +52,7 @@
   border-collapse: collapse;
   margin: 20px 0;
   font-size: 14px;
-  text-align: left;
+  text-align: center;
 }
 
 .notice-table thead tr {
@@ -74,7 +74,7 @@
 
 .notice-table td.title {
   color: #000;
-  text-align: left;
+  text-align: center;
 }
 
 /* 페이지네이션 */

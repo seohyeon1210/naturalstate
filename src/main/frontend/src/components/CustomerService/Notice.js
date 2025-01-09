@@ -64,11 +64,10 @@ function Notice() {
         <thead>
           <tr>
             <th>번호</th>
-            <th>말머리</th>
+            <th>카테고리</th>
             <th>제목</th>
             <th>날짜</th>
             <th>작성자</th>
-            <th>조회</th>
           </tr>
         </thead>
         <tbody>
