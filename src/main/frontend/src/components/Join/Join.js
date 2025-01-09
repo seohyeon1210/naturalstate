@@ -82,7 +82,8 @@ function Join() {
                     address: '',
                     detailAddress: '',
                     email: '',
-                    receiveEmail: 'N'
+                    receiveEmail: 'N',
+                    auth: 'user'
                 }}
             >
                 {({handleSubmit, handleChange, setFieldValue, values, touched, errors, isSubmitting}) => (

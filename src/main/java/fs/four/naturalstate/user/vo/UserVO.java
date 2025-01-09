@@ -15,6 +15,7 @@ public class UserVO {
     private String email;
     private char receiveEmail;
     private Date joindate;
+    private String auth;
 
     public UserVO(){
 
@@ -106,5 +107,13 @@ public class UserVO {
 
     public void setJoindate(Date joindate) {
         this.joindate = joindate;
+    }
+
+    public String getAuth() {
+        return auth;
+    }
+
+    public void setAuth(String auth) {
+        this.auth = auth;
     }
 }

@@ -62,10 +62,10 @@ function StoreJoin() {
                         <hr/>
                         <Row className="form-group">
                             <Form.Group as={Col} md="12" controlId="validationFormikstoreId">
-                                <Form.Label className="font-label">샵 아이디</Form.Label>
+                                <Form.Label className="font-label">회사 아이디</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    placeholder="샵 아이디"
+                                    placeholder="회사 아이디"
                                     name="storeId"
                                     value={values.storeId}
                                     onChange={handleChange}

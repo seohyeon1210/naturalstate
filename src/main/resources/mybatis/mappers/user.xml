@@ -12,12 +12,13 @@
         <result property="email" column="email"/>
         <result property="receiveEmail" column="receiveEmail"/>
         <result property="joindate" column="joindate"/>
+        <result property="auth" column="auth"/>
     </resultMap>
 
     <insert id="insertUser" parameterType="userVO">
         <![CDATA[
-        insert into users(userId, password, userName, phone, zip, address, detailAddress, email, receiveEmail)
-        values (#{userId}, #{password}, #{userName}, #{phone}, #{zip}, #{address}, #{detailAddress}, #{email}, #{receiveEmail})
+        insert into users(userId, password, userName, phone, zip, address, detailAddress, email, receiveEmail, auth)
+        values (#{userId}, #{password}, #{userName}, #{phone}, #{zip}, #{address}, #{detailAddress}, #{email}, #{receiveEmail}, #{auth})
         ]]>
     </insert>
 
