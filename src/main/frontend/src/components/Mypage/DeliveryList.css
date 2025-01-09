@@ -1,66 +1,92 @@
-/*css className이나 id로 구분해야 css 충돌 안일어남*/
+.delivery-container {
+  width: 80%;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
 
-/*.container {*/
-/*  padding: 20px;*/
-/*}*/
+.delivery-manage {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
 
-/*h1 {*/
-/*  text-align: center;*/
-/*  margin-bottom: 20px;*/
-/*}*/
+.delivery-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto 20px auto;
+  text-align: center;
+}
 
-/*!* 테이블 스타일 *!*/
-/*table {*/
-/*  width: 100%;*/
-/*  border-collapse: collapse;*/
-/*  margin-bottom: 20px;*/
-/*}*/
+.delivery-table th,
+.delivery-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+}
 
-/*thead tr {*/
-/*  border-bottom: 2px solid #ddd;*/
-/*}*/
+.delivery-table th {
+  background-color: #f4f4f4;
+  font-size: 16px;
+  font-weight: bold;
+}
 
-/*th,*/
-/*td {*/
-/*  padding: 10px;*/
-/*  text-align: center;*/
-/*}*/
+.delivery-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
 
-/*th {*/
-/*  text-align: center;*/
-/*}*/
+.delivery-table tr:hover {
+  background-color: #f1f1f1;
+}
 
-/*td {*/
-/*  border-bottom: 1px solid #ddd;*/
-/*}*/
+.delivery-table td {
+  font-size: 14px;
+}
 
-/*td:nth-child(2),*/
-/*td:nth-child(3) {*/
-/*  text-align: left;*/
-/*}*/
+.delete {
+  background-color: #ff5252;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
 
-/*!* 버튼 스타일 *!*/
-/*button {*/
-/*  padding: 5px 10px;*/
-/*  border: none;*/
-/*  border-radius: 4px;*/
-/*  cursor: pointer;*/
-/*}*/
+.delete:hover {
+  background-color: #ff0000;
+}
 
-/*button.delete {*/
-/*  background-color: #ff6347;*/
-/*  color: white;*/
-/*  margin-right: 10px;*/
-/*}*/
+.edit {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 5px;
+}
 
-/*button.edit {*/
-/*  background-color: #007bff;*/
-/*  color: white;*/
-/*}*/
+.edit:hover {
+  background-color: #1976d2;
+}
 
-/*button.add {*/
-/*  padding: 10px 20px;*/
-/*  background-color: #28a745;*/
-/*  color: white;*/
-/*  text-align: right;*/
-/*}*/
+.add {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.add:hover {
+  background-color: #388e3c;
+}
+
+.add-container {
+  text-align: right;
+  margin-top: 10px;
+}
