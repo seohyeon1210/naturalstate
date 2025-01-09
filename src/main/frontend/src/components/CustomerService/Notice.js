@@ -78,7 +78,6 @@ function Notice() {
               <td className="title">{notice.title}</td>
               <td>{notice.date}</td>
               <td>{notice.author}</td>
-              <td>{notice.views}</td>
             </tr>
           ))}
         </tbody>
