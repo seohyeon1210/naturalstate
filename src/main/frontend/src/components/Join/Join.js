@@ -163,7 +163,7 @@ function Join() {
                                 <InputGroup>
                                     <Form.Control
                                         type="text"
-                                        placeholder=""
+                                        placeholder="010-1234-5678"
                                         name="phone"
                                         value={values.phone}
                                         onChange={handleChange}

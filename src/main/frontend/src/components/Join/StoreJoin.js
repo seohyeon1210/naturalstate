@@ -134,6 +134,7 @@ function StoreJoin() {
                                     <Form.Control
                                         type="text"
                                         name="phone"
+                                        placeholder="010-1234-5678"
                                         value={values.phone}
                                         onChange={handleChange}
                                         isInvalid={!!errors.phone}
