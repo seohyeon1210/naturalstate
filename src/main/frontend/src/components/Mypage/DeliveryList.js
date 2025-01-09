@@ -84,7 +84,7 @@ function DeliveryList() {
             <th style={{ padding: "10px", textAlign: "left" }}>주소</th>
             <th style={{ padding: "10px", textAlign: "center" }}>우편번호</th>
             <th style={{ padding: "10px", textAlign: "center" }}>전화번호</th>
-            <th style={{ padding: "10px", textAlign: "center" }}>액션</th>
+            <th style={{ padding: "10px", textAlign: "center" }}>삭제/수정</th>
           </tr>
         </thead>
         <tbody>
