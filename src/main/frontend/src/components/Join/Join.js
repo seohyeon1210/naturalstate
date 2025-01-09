@@ -1,9 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Row from 'react-bootstrap/Row';
+import { Button, Col, Form, InputGroup, Row } from 'react-bootstrap';
 import * as formik from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
@@ -267,7 +263,7 @@ function Join() {
                             </Form.Group>
                         </Row>
 
-                        <Button className="font-label" type="submit" disabled={isSubmitting}>
+                        <Button className="btn-submit" type="submit" disabled={isSubmitting}>
                             {isSubmitting ? "제출 중..." : "회원가입하기"}
                         </Button>
 
