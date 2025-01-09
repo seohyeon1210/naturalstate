@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 function FindPW() {
     const [userId, setUserId] = useState("");
@@ -36,9 +37,10 @@ function FindPW() {
     };
 
     return (
-        <div>
-            <h2>비밀번호 찾기</h2>
-            <Form onSubmit={handleFindPW}>
+        <div className="login-container">
+            <h5 className="font-label">비밀번호 찾기</h5>
+            <hr />
+            <Form className="login-form" onSubmit={handleFindPW}>
                 <Form.Group className="mb-3" controlId="formUserId">
                     <Form.Label>아이디</Form.Label>
                     <Form.Control

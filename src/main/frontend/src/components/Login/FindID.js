@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 function FindID() {
     const [name, setName] = useState("");
@@ -35,9 +36,10 @@ function FindID() {
     };
 
     return (
-        <div>
-            <h2>아이디 찾기</h2>
-            <Form onSubmit={handleFindID}>
+        <div className="login-container">
+            <h5 className="font-label">아이디 찾기</h5>
+            <hr />
+            <Form className="login-form" onSubmit={handleFindID}>
                 <Form.Group className="mb-3" controlId="formName">
                     <Form.Label>이름</Form.Label>
                     <Form.Control
@@ -68,7 +70,7 @@ function FindID() {
                     />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button className="font-label btn-submit" type="submit">
                     아이디 찾기
                 </Button>
             </Form>
