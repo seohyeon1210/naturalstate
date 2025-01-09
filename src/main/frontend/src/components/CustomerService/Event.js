@@ -7,29 +7,29 @@ function EventPage() {
       id: 1,
       label: "이벤트",
       image: "https://via.placeholder.com/300x200", // Placeholder image
-      title: "SSG PICK! 신규 입점 브랜드",
-      description: "새로운 브랜드 상품을 만나보세요.",
+      title: "신규 입점 스토어",
+      description: "새롭게 입점신청한 스토어를 만나보세요.",
     },
     {
       id: 2,
       label: "이벤트",
       image: "https://via.placeholder.com/300x200", // Placeholder image
-      title: "[체험단] 개과천선 프레디 강아지 펫...",
+      title: "우수 스토어 리뷰 이벤트!",
       description: "총 10명 모집. 댓글로 기대평을 남겨주세요~!",
     },
     {
       id: 3,
       label: "이벤트",
       image: "https://via.placeholder.com/300x200", // Placeholder image
-      title: "단 일주일, 아울렛 슈퍼위크",
-      description: "~12% 쿠폰 & 카드 할인",
+      title: "단 일주일! 연휴 전 특별 할인 이벤트!",
+      description: "~20% 쿠폰 & 카드 할인",
     },
     {
       id: 4,
       label: "이벤트",
       image: "https://via.placeholder.com/300x200", // Placeholder image
-      title: "럭셔리 뷰티 기프트",
-      description: "에스티 로더, 라메르 외 SSG 단독 사은증정 & 상품권",
+      title: "1월 특별 할인 이벤트!",
+      description: "1월 세일 이벤트 예고",
     },
   ];
 
