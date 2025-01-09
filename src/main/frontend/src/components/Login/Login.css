@@ -5,8 +5,7 @@
     background-color: #fff;
     border-radius: 8px;
     margin: 50px auto;
-    font-family: Arial, sans-serif;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: PretendardRegular, sans-serif;
 }
 
 /* 로그인 폼 */
@@ -29,8 +28,6 @@
 }
 
 .login-form .form-control {
-    height: 40px;
-    padding: 0 12px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 5px;
