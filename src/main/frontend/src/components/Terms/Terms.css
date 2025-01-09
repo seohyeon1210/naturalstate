@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
 
-body {
-  font-family: "Gowun Batang", serif !important;
-  font-weight: 400;
-  font-style: normal;
-}
 
 /* 모달 배경 */
 .modal-overlay {
@@ -22,7 +17,7 @@ body {
 
 /* 모달 내용 */
 .modal-content {
-  background-color: #bf9999;
+  background-color: rgba(191, 153, 153);
   padding: 20px;
   border-radius: 10px;
   width: 80%;
