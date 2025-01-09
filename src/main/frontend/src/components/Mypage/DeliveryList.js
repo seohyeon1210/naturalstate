@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import DeliveryMod from "./DeliveryMod";
 import DeliveryPopup from "./DeliveryPopup";
+import "./DeliveryList.css"; // CSS 파일 import
 
 // 전화번호 포맷팅 함수
 const formatPhoneNumber = (phone) => {
@@ -17,14 +18,14 @@ function DeliveryList() {
   const [addresses, setAddresses] = useState([
     {
       id: 1,
-      name: "홍길동",
+      name: "김창섭",
       address: "서울 서초구 언남길 5",
       postcode: "06608",
       phone: "898-9800-0000",
     },
     {
       id: 2,
-      name: "김철수",
+      name: "강원기",
       address: "부산광역시 해운대구 우동 456",
       postcode: "48060",
       phone: "010-5678-1234",
@@ -59,67 +60,43 @@ function DeliveryList() {
   // 추가 완료 핸들러
   const handleAddAddress = (newAddress) => {
     const newId = addresses.length ? addresses[addresses.length - 1].id + 1 : 1;
-    const updatedAddresses = [
-      ...addresses,
-      { id: newId, ...newAddress },
-    ];
+    const updatedAddresses = [...addresses, { id: newId, ...newAddress }];
     setAddresses(updatedAddresses);
     setIsAdding(false);
   };
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "20px" }}>배송지 관리</h1>
-      <table
-        style={{
-          width: "100%",
-          borderCollapse: "collapse",
-          marginBottom: "20px",
-        }}
-      >
+    <div className="container">
+      <h1>배송지 관리</h1>
+      <table>
         <thead>
-          <tr style={{ borderBottom: "2px solid #ddd" }}>
-            <th style={{ padding: "10px", textAlign: "center" }}>번호</th>
-            <th style={{ padding: "10px", textAlign: "left" }}>이름</th>
-            <th style={{ padding: "10px", textAlign: "left" }}>주소</th>
-            <th style={{ padding: "10px", textAlign: "center" }}>우편번호</th>
-            <th style={{ padding: "10px", textAlign: "center" }}>전화번호</th>
-            <th style={{ padding: "10px", textAlign: "center" }}>삭제/수정</th>
+          <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>주소</th>
+            <th>우편번호</th>
+            <th>전화번호</th>
+            <th>삭제/수정</th>
           </tr>
         </thead>
         <tbody>
           {addresses.map((item) => (
-            <tr key={item.id} style={{ borderBottom: "1px solid #ddd" }}>
-              <td style={{ padding: "10px", textAlign: "center" }}>{item.id}</td>
-              <td style={{ padding: "10px" }}>{item.name}</td>
-              <td style={{ padding: "10px" }}>{item.address}</td>
-              <td style={{ padding: "10px", textAlign: "center" }}>{item.postcode}</td>
-              <td style={{ padding: "10px", textAlign: "center" }}>{item.phone}</td>
-              <td style={{ padding: "10px", textAlign: "center" }}>
+            <tr key={item.id}>
+              <td>{item.id}</td>
+              <td>{item.name}</td>
+              <td>{item.address}</td>
+              <td>{item.postcode}</td>
+              <td>{item.phone}</td>
+              <td>
                 <button
+                  className="delete"
                   onClick={() => handleDeleteAddress(item.id)}
-                  style={{
-                    padding: "5px 10px",
-                    backgroundColor: "#FF6347",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "4px",
-                    marginRight: "10px",
-                    cursor: "pointer",
-                  }}
                 >
                   삭제
                 </button>
                 <button
+                  className="edit"
                   onClick={() => handleEditAddress(item)}
-                  style={{
-                    padding: "5px 10px",
-                    backgroundColor: "#007BFF",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "4px",
-                    cursor: "pointer",
-                  }}
                 >
                   수정
                 </button>
@@ -128,23 +105,11 @@ function DeliveryList() {
           ))}
         </tbody>
       </table>
-
       <div style={{ textAlign: "right" }}>
-        <button
-          onClick={() => setIsAdding(true)}
-          style={{
-            padding: "10px 20px",
-            backgroundColor: "#28a745",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer",
-          }}
-        >
+        <button className="add" onClick={() => setIsAdding(true)}>
           배송지 추가
         </button>
       </div>
-
       {isEditing && (
         <DeliveryMod
           currentAddress={currentAddress}
@@ -152,7 +117,6 @@ function DeliveryList() {
           onClose={() => setIsEditing(false)}
         />
       )}
-
       {isAdding && (
         <DeliveryPopup
           onAdd={handleAddAddress}

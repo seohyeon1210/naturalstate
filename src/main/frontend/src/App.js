@@ -118,6 +118,7 @@ function App() {
                     <Route path="/mypage/*" element={<Mypage />} />
                     <Route path="/mypage/deliverylist" element={<DeliveryList />} />
 
+
                 </Routes>
             </div>
             <Footer />
