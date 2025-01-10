@@ -8,7 +8,7 @@
 .customer-service-menu {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 /* 왼쪽 메뉴 */
@@ -86,5 +86,6 @@
 }
 
 .cs-title {
-    font-family: PretendardBold, sans-serif;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }

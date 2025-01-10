@@ -116,7 +116,6 @@ function App() {
                     
                     {/*마이페이지*/}
                     <Route path="/mypage/*" element={<Mypage />} />
-                    <Route path="/mypage/deliverylist" element={<DeliveryList />} />
 
 
                 </Routes>
