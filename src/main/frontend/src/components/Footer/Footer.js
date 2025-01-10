@@ -17,7 +17,6 @@ function Footer() {
                         </p>
                     </Col>
                     <Col md={6} className="text-md-end">
-                        <h5>입점 신청</h5>
                         <p>
                             <Link to="/storejoin">입점신청</Link>
                         </p>
@@ -25,7 +24,10 @@ function Footer() {
                             <Link to="/customerservice">고객센터</Link>
                         </p>
                         <p>
-                            <Link to="/webterms">이용약관</Link>
+                            <Link to="/webterms">개인정보 처리방침</Link>
+                        </p>
+                        <p>
+                            파트너 개인정보 처리방침
                         </p>
                     </Col>
                 </Row>
