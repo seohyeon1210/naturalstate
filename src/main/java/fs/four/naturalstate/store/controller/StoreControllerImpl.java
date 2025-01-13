@@ -9,9 +9,4 @@ public class StoreControllerImpl {
     public String StoreJoin() {
         return "forward:/index.html";
     }
-
-    @GetMapping("/productwrite")
-    public String ProductWrite() {
-        return "forward:/index.html";
-    }
 }

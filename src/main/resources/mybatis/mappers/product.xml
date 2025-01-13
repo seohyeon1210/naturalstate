@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fs.four.naturalstate.product.dao.ProductWriteDAO">
+    <resultMap id="productResult" type="fs.four.naturalstate.product.vo.ProductWriteVO">
+        <result property="product_number" column="product_number"/>
+        <result property="product_category" column="product_category"/>
+        <result property="product_title" column="product_title"/>
+        <result property="product_thumbnail_name" column="product_thumbnail_name"/>
+        <result property="product_thumbnail_path" column="product_thumbnail_path"/>
+        <result property="product_detail_name" column="product_detail_name"/>
+        <result property="product_detail_path" column="product_detail_path"/>
+        <result property="product_price" column="product_price"/>
+        <result property="product_content" column="product_content"/>
+    </resultMap>
+
+    <insert id="insertProductWrite" parameterType="productWriteVO">
+        <selectKey keyProperty="product_number" resultType="int" order="BEFORE">
+            SELECT product_seq.nextval FROM DUAL
+        </selectKey>
+        <![CDATA[
+    insert into product(product_number, product_category, product_title, product_thumbnail_name,
+                        product_thumbnail_path, product_detail_name, product_detail_path, product_price,
+                        product_content)
+    values (#{product_number}, #{product_category}, #{product_title}, #{product_thumbnail_name},
+            #{product_thumbnail_path}, #{product_detail_name}, #{product_detail_path}, #{product_price},
+            #{product_content})
+    ]]>
+    </insert>
+</mapper>

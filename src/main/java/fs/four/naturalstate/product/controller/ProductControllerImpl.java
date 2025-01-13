@@ -39,4 +39,9 @@ public class ProductControllerImpl {
     public String productpage() {
         return "forward:/index.html";
     }
+
+    @GetMapping("productwrite")
+    public String Productwrite() {
+        return "forward:/index.html";
+    }
 }

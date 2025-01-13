@@ -5,6 +5,19 @@ import * as formik from 'formik';
 import * as yup from 'yup';
 import DefaultImg from '../../assets/default.jpg';
 import './ProductWrite.css';
+import axios from "axios";
+
+const dataURLtoBlob = (dataURL) => {
+    const arr = dataURL.split(',');
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], { type: mime });
+};
 
 function ProductWrite() {
     const { Formik } = formik;
@@ -93,12 +106,66 @@ function ProductWrite() {
     return (
         <Formik
             validationSchema={schema}
-            onSubmit={(values) => console.log(values)}
+            onSubmit={async(values, {setSubmitting, resetForm}) => {
+                console.log('폼 제출 시작:', values);
+
+                try {
+                    const formData = new FormData();
+                    const thumbnailFileName = `${values.productName}_thumbnail.jpg`;
+                    const detailFileName = `${values.productName}_detail.jpg`;
+
+                    formData.append('productCategory', values.productCategory);
+                    formData.append('productName', values.productName);
+                    formData.append('productPrice', values.productPrice);
+                    formData.append('productContent', values.productContent);
+
+                    const productData = {
+                        product_category: values.productCategory,
+                        product_title: values.productName,
+                        product_price: values.productPrice,
+                        product_content: values.productContent,
+                    };
+                    formData.append("productData", JSON.stringify(productData));
+
+                    if (thumbnailPreview && thumbnailPreview !== DefaultImg) {
+                        const thumbnailBlob = dataURLtoBlob(thumbnailPreview);
+                        formData.append('productThumbnailImg', thumbnailBlob, thumbnailFileName);
+                    }
+
+                    if (detailPreview && detailPreview !== DefaultImg) {
+                        const detailBlob = dataURLtoBlob(detailPreview);
+                        formData.append('productDetailImg', detailBlob, detailFileName);
+                    }
+
+                    formData.forEach((value, key) => {
+                        console.log(`${key}:`, value);
+                    });
+
+                    const response = await axios.post('http://localhost:18080/api/productwrite', formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                        },
+                    });
+
+                    console.log('상품 등록 성공:', response.data);
+                    alert('상품 등록이 완료되었습니다.');
+                    resetForm();
+                    setThumbnailPreview(DefaultImg);
+                    setDetailPreview(DefaultImg);
+                } catch (error) {
+                    console.error('상품 등록 실패:', error);
+                    alert('상품 등록에 실패하였습니다. 다시 시도해 주세요.');
+                }
+
+                setSubmitting(false);
+            }}
             initialValues={{
                 productCategory: '',
                 productName: '',
                 productPrice: '',
                 productContent: '',
+                thumbnailImg: '',
+                detailImg: '',
             }}
         >
             {({ handleSubmit, handleChange, values, touched, errors }) => (
