@@ -74,7 +74,7 @@ function MypageSidebar() {
 
 
     const personalMenus = [
-        { name: "회원정보수정", path: "/mypage/editprofile" },
+        { name: "회원정보수정", path: "/mypage/usermypage" },
         { name: "회원탈퇴", path: "/mypage/deleteaccount" },
     ];
 

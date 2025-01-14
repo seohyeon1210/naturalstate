@@ -1,3 +1,4 @@
+/* 전체 애플리케이션 스타일 */
 .App {
   text-align: center;
 }
@@ -28,6 +29,34 @@
   color: #61dafb;
 }
 
+/* 애플리케이션 Wrapper 설정 */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 전체 화면 높이 설정 */
+}
+
+/* 메인 콘텐츠 영역 */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+/* Footer 스타일 */
+.footer {
+  background-color: #f8f9fa;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #e9ecef;
+}
+
+/* Footer가 특정 요소와 겹치지 않도록 추가 마진 설정 */
+.footer-margin {
+  margin-top: 20px; /* 필요한 경우 추가적인 마진을 부여 */
+}
+
+/* 애니메이션 설정 */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -5,12 +5,14 @@ import Sidebar from "./MypageSidebar";
 import DeliveryList from "./DeliveryList";
 import Cart from "../Cart/Cart";
 import OrderList from "./OrderList";
+import UserMypage from "./UserMypage";
 
 // 스타일 정의
 const Container = styled.div`
     display: flex;
     width: 100%;
-    height: 100vh;
+    min-height: calc(100vh - 80px); /* 푸터 높이(80px)를 제외한 최소 높이 설정 */
+    background-color: #f9f9f9;
 `;
 
 const Content = styled.div`
@@ -127,6 +129,7 @@ function Mypage() {
                 <Routes>
                     <Route path="deliverylist" element={<DeliveryList />} />
                     <Route path="cart" element={<Cart />} />
+                    <Route path="usermypage" element={<UserMypage />} />
                 </Routes>
             </Content>
         </Container>
