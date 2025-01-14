@@ -1,48 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
-
-
-.terms-container {
-  margin: 20px auto;
-  padding: 20px;
-  max-width: 800px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  background-color: #f9f9f9;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.terms-header {
-  text-align: center;
-  margin-bottom: 20px;
+/* 전체 컨테이너 */
+.web-terms-container {
+  font-family: 'PretendardRegular';
   color: #333;
+  line-height: 1.6;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
 }
 
-.terms-section {
-  margin: 20px 0;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+/* 콘텐츠 영역 */
+.web-terms-content {
+  padding: 20px;
 }
 
-.terms-section h5 {
-  margin-bottom: 10px;
+.web-terms-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
   color: #222;
-  font-size: 16px;
 }
 
-.terms-section p {
-  margin: 0;
+.web-terms-section {
+  margin-bottom: 20px;
+}
+
+.web-terms-section h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.web-terms-section p {
   font-size: 14px;
-  color: #555;
+  margin-bottom: 10px;
 }
 
-.terms-section ul {
+.web-terms-section ul {
   padding-left: 20px;
   margin: 10px 0;
 }
 
-.terms-section ul li {
+.web-terms-section ul li {
   font-size: 14px;
-  color: #555;
+  margin-bottom: 5px;
 }

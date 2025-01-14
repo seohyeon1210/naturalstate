@@ -1,146 +1,186 @@
-/* 전체 컨테이너 */
-.product-container {
+/* DetailDetail.css */
+
+/* 전체 컨테이너 스타일 */
+.detail-container {
   display: flex;
+  gap: 20px;
   padding: 20px;
-  font-family: Arial, sans-serif;
+  background-color: #f0f8ff; /* 파란색 톤의 배경 */
 }
 
-/* 이미지 섹션 */
-.product-image-section {
+/* 이미지 섹션 스타일 */
+.detail-image-section {
   flex: 1;
-  padding-right: 20px;
+  text-align: center;
 }
 
-.main-image {
+.detail-main-image {
   width: 100%;
-  border-radius: 8px;
+  max-width: 400px;
+  border: 2px solid #87ceeb;
+  border-radius: 10px;
 }
 
-.thumbnail-container {
+.detail-thumbnail-container {
   display: flex;
-  margin-top: 10px;
   gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
 }
 
-.thumbnail-image {
+.detail-thumbnail-image {
   width: 80px;
   height: 80px;
-  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid #4682b4;
+  border-radius: 5px;
   cursor: pointer;
+  transition: transform 0.2s;
 }
 
-/* 상세 정보 섹션 */
-.product-detail-section {
-  flex: 1.5;
+.detail-thumbnail-image:hover {
+  transform: scale(1.1);
+  border-color: #1e90ff;
 }
 
-.product-title {
+/* 상세 정보 섹션 스타일 */
+.detail-detail-section {
+  flex: 2;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 2px solid #87ceeb;
+  border-radius: 10px;
+}
+
+.detail-title {
   font-size: 24px;
   font-weight: bold;
+  color: #1e90ff;
   margin-bottom: 10px;
 }
 
-.product-brand {
-  font-size: 14px;
-  color: #888;
+.detail-brand {
+  font-size: 16px;
+  color: #4682b4;
   margin-bottom: 10px;
 }
 
-.product-price {
+.detail-price {
   font-size: 20px;
   font-weight: bold;
-  color: #FF5722;
+  color: #1e90ff;
   margin-bottom: 20px;
 }
 
-.product-benefits {
-  margin-bottom: 20px;
+/* 혜택 정보 스타일 */
+.detail-benefits p {
   font-size: 14px;
-  line-height: 1.5;
+  color: #555;
+  margin: 5px 0;
 }
 
-.product-option,
-.product-additional-option {
-  margin-bottom: 20px;
-}
-
-.product-label {
+/* 옵션 선택 스타일 */
+.detail-label {
+  font-size: 14px;
   font-weight: bold;
-  display: block;
+  color: #4682b4;
   margin-bottom: 5px;
+  display: block;
 }
 
-.product-select {
+.detail-select {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 8px;
+  border: 2px solid #87ceeb;
+  border-radius: 5px;
+  margin-bottom: 20px;
   font-size: 14px;
 }
 
-.quantity-control {
+/* 수량 선택 스타일 */
+.detail-quantity-control {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  gap: 10px;
+  margin: 20px 0;
 }
 
-.quantity-button {
-  padding: 10px;
-  background-color: #ddd;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.quantity-display {
-  margin: 0 10px;
-  font-size: 16px;
-}
-
-.total-price {
+.detail-quantity-button {
+  padding: 10px 15px;
   font-size: 16px;
   font-weight: bold;
+  color: white;
+  background-color: #1e90ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.detail-quantity-button:hover {
+  background-color: #4682b4;
+}
+
+.detail-quantity-display {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* 총 금액 스타일 */
+.detail-total-price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1e90ff;
   margin-bottom: 20px;
 }
 
-.action-buttons {
+/* 버튼 스타일 */
+.detail-action-buttons {
   display: flex;
   gap: 10px;
 }
 
-.cart-button,
-.buy-now-button {
+.detail-cart-button,
+.detail-buy-now-button {
   flex: 1;
-  padding: 15px;
-  border: none;
-  border-radius: 4px;
+  padding: 10px;
   font-size: 16px;
-  cursor: pointer;
-}
-
-.cart-button {
-  background-color: #FFD700;
-}
-
-.buy-now-button {
-  background-color: #FF5722;
+  font-weight: bold;
   color: white;
+  background-color: #1e90ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-/* 스크롤 섹션 */
-.scroll-section {
+.detail-cart-button:hover {
+  background-color: #4682b4;
+}
+
+.detail-buy-now-button:hover {
+  background-color: #4169e1;
+}
+
+/* 하단 스크롤 섹션 스타일 */
+.detail-scroll-section {
+  margin-top: 40px;
   padding: 20px;
-  background-color: #f9f9f9;
-  border-top: 1px solid #ddd;
+  background-color: #f0f8ff;
+  border-top: 2px solid #87ceeb;
 }
 
-.section-title {
-  font-size: 20px;
+.detail-section-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #4682b4;
   margin-bottom: 10px;
 }
 
-.additional-image {
+.detail-additional-image {
   width: 100%;
-  border-radius: 8px;
+  max-width: 600px;
+  margin-top: 20px;
+  border: 2px solid #87ceeb;
+  border-radius: 10px;
 }
