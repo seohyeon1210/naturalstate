@@ -10,6 +10,7 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  font-family: 'PretendardRegular';
 }
 
 /* 모달 콘텐츠 */
@@ -17,7 +18,8 @@
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
-  width: 500px;
+  width: 700px; /* 너비를 700px로 증가 */
+  max-width: 90%; /* 화면 크기에 따라 조정되도록 최대 너비 설정 */
   max-height: 80vh; /* 화면 높이의 80%로 제한 */
   display: flex;
   flex-direction: column;
