@@ -6,6 +6,7 @@ import DeliveryList from "./DeliveryList";
 import Cart from "../Cart/Cart";
 import OrderList from "./OrderList";
 import UserMypage from "./UserMypage";
+import UserDelete from "./UserDelete";
 
 // 스타일 정의
 const Container = styled.div`
@@ -130,6 +131,7 @@ function Mypage() {
                     <Route path="deliverylist" element={<DeliveryList />} />
                     <Route path="cart" element={<Cart />} />
                     <Route path="usermypage" element={<UserMypage />} />
+                    <Route path="userdelete" element={<UserDelete />} />
                 </Routes>
             </Content>
         </Container>

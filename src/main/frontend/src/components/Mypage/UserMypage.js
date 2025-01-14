@@ -103,7 +103,7 @@ function UserInfoEdit() {
 
     const fetchUserData = async () => {
         try {
-            const response = await fetch("http://localhost:18080/api/user/detail");
+            const response = await fetch("http://localhost:18080/api/login/detail");
             const data = await response.json();
             setUserData(data);
         } catch (error) {
@@ -114,7 +114,7 @@ function UserInfoEdit() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://localhost:18080/api/user/update", {
+            const response = await fetch("http://localhost:18080/api/login/update", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

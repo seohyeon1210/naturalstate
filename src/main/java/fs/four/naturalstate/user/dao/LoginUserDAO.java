@@ -12,4 +12,6 @@ public interface LoginUserDAO {
      * @return 사용자 정보 (LoginUserVO)
      */
     UserVO findByUserId(String userId);
+    // 사용자 정보 삭제
+    void deleteByUserId(String userId);
 }

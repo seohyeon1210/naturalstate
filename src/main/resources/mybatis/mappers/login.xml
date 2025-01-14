@@ -12,4 +12,10 @@
         WHERE userId = #{userId}
         ]]>
     </select>
+
+    <!-- 사용자 삭제 -->
+    <delete id="deleteByUserId">
+        DELETE FROM users
+        WHERE userId = #{userId}
+    </delete>
 </mapper>

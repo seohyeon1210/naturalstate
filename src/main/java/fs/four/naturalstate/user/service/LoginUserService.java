@@ -54,4 +54,14 @@ public class LoginUserService {
         System.out.println("해당 사용자 ID를 찾을 수 없습니다.");
         return null;
     }
+    //회원삭제 메서드
+    public boolean deleteUser(String userId) {
+        try {
+            loginUserDAO.deleteByUserId(userId);
+            return true;
+        } catch (Exception e) {
+            System.err.println("회원탈퇴 중 오류 발생: " + e.getMessage());
+            return false;
+        }
+    }
 }
