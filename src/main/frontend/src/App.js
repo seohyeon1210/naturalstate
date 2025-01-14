@@ -49,6 +49,7 @@ import VegetablesProduct from "./components/Product/VegetablesProduct";
 import Mypage from "./components/Mypage/Mypage";
 import DeliveryList from "./components/Mypage/DeliveryList";
 import ProductPage from "./components/Product/ProductPage";
+import OrderList from "./components/Mypage/OrderList";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -113,10 +114,13 @@ function App() {
                     <Route path="/grainsproduct" element={<GrainsProduct/>}/>
                     <Route path="/vegetablesproduct" element={<VegetablesProduct/>}/>
                     <Route path="/cart" element={<Cart/>}/>
-                    
+
                     {/*마이페이지*/}
                     <Route path="/mypage/*" element={<Mypage />} />
 
+                    //매핑 수정할때 이거 지우면 됨. - 건우
+                    <Route path="/mypage/orderlist" element={<OrderList />} />
+                    //매핑 수정할때 이거 지우면 됨. - 건우
 
                 </Routes>
             </div>
