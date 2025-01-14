@@ -19,7 +19,10 @@ const Header = ({ isLoggedIn, onLogout }) => {
                             </svg>
                         </Nav.Link>
                         {isLoggedIn ? (
-                            <Nav.Link onClick={onLogout} className="nav-link-right">로그아웃</Nav.Link>
+                            <>
+                                <Nav.Link onClick={onLogout} className="nav-link-right">로그아웃</Nav.Link>
+                                <Nav.Link as={Link} to="/mypage" className="nav-link-right">마이페이지</Nav.Link>
+                            </>
                         ) : (
                             <>
                                 <Nav.Link as={Link} to="/login" className="nav-link-right">로그인</Nav.Link>
