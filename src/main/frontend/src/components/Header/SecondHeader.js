@@ -20,6 +20,7 @@ function SecondHeader(){
                             </NavDropdown.Item>
                             <NavDropdown.Item as={Link} to="/grainsproduct">곡물</NavDropdown.Item>
                         </NavDropdown>
+                        <Nav.Link as={Link} to="/productwrite">글 쓰기</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
