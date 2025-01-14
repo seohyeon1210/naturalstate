@@ -22,13 +22,13 @@ function Login({ onLogin }) {
                 credentials: "include",
             });
 
-            const result = await response.text();
-            if (result === "Login successful!") {
-                onLogin();
+            if (response.ok) {
                 alert("로그인 성공!");
+                onLogin();
                 navigate("/"); // 메인 페이지로 이동
             } else {
-                setErrorMessage(result);
+                const error = await response.text();
+                setErrorMessage(error);
             }
         } catch (error) {
             console.error("로그인 요청 실패:", error);

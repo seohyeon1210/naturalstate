@@ -5,9 +5,9 @@
 
 <mapper namespace="fs.four.naturalstate.user.dao.LoginUserDAO">
     <!-- 사용자 정보를 userId로 검색 -->
-    <select id="findByUserId" resultType="userVO">
+    <select id="findByUserId" resultType="fs.four.naturalstate.user.vo.UserVO">
         <![CDATA[
-        SELECT userId, password
+        SELECT userId, password, userName, phone, zip, address, detailAddress, email, receiveEmail, auth
         FROM users
         WHERE userId = #{userId}
         ]]>
