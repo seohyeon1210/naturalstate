@@ -36,4 +36,22 @@ public class LoginUserService {
         System.out.println("해당 사용자 ID를 찾을 수 없습니다.");
         return false;
     }
+
+    /**
+     * 사용자 상세 정보 조회 메서드
+     * @param userId 사용자 ID
+     * @return 사용자 정보 (UserVO 객체)
+     */
+    public UserVO getUserDetails(String userId) {
+        // 데이터베이스에서 사용자 정보 가져오기
+        UserVO user = loginUserDAO.findByUserId(userId);
+
+        if (user != null) {
+            System.out.println("사용자 정보 조회 성공: " + user.toString());
+            return user;
+        }
+
+        System.out.println("해당 사용자 ID를 찾을 수 없습니다.");
+        return null;
+    }
 }

@@ -5,6 +5,8 @@ import fs.four.naturalstate.user.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 
 @RestController
 @RequestMapping("/api/login")
@@ -31,7 +33,7 @@ public class LoginUserController {
         }
     }
 
-    // 현재 로그인한 사용자 정보 조회
+    // 현재 로그인한 사용자 ID 조회
     @GetMapping("/session")
     public String getSessionUser(HttpSession session) {
         String userId = (String) session.getAttribute("user");
@@ -48,12 +50,17 @@ public class LoginUserController {
         session.invalidate(); // 세션 무효화
         return "Logout successful!";
     }
+
+    // 현재 로그인한 사용자 상세 정보 조회
+    @GetMapping("/session/detail")
+    public ResponseEntity<UserVO> getSessionUserDetails(HttpSession session) {
+        String userId = (String) session.getAttribute("user");
+        if (userId != null) {
+            UserVO user = loginUserService.getUserDetails(userId);
+            if (user != null) {
+                return ResponseEntity.ok(user); // 사용자 데이터 반환
+            }
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // 인증되지 않은 상태 반환
+    }
 }
-
-//   getMapping 404로 controller쪽으로 옮겨서 http://localhost:18080/login 잘 나올것
-//    // React의 index.html로 포워딩
-//    @GetMapping("/login")
-//    public String loginPage() {
-//        return "forward:/index.html".;
-//    }
-
