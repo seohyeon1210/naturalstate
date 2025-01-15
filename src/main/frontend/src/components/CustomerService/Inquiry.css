@@ -1,13 +1,13 @@
 /* 전체 컨테이너 */
 .inquiry-container {
   padding: 20px;
-  font-family: 'PretendardBold';
 }
 
 /* 제목 */
 .inquiry-title {
   text-align: center;
   margin-bottom: 20px;
+  font-family: PretendardBold, sans-serif;
 }
 
 /* 상단 버튼 */
@@ -15,6 +15,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+  font-family: PretendardBold, sans-serif;
 }
 
 .inquiry-secondary-button {
@@ -41,6 +42,7 @@
 .inquiry-question-list {
   list-style-type: none;
   padding: 0;
+  font-family: PretendardLight, sans-serif;
 }
 
 .inquiry-question-item {

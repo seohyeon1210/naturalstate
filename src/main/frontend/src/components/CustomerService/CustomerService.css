@@ -1,7 +1,7 @@
 /* 전체 컨테이너 스타일 */
 .customer-service-container {
     padding: 20px;
-    font-family: 'PretendardBold';
+    /*font-family: 'PretendardBold';*/
 }
 
 /* 고객센터 메뉴 */
@@ -20,11 +20,13 @@
 
 .customer-service-sidebar h2 {
     margin-bottom: 20px;
+    font-family: PretendardBold, sans-serif;
 }
 
 .customer-service-sidebar ul {
     list-style-type: none;
     padding: 0;
+    font-family: PretendardRegular, sans-serif;
 }
 
 .customer-service-sidebar li {
@@ -43,11 +45,13 @@
 .customer-service-sidebar .phone-number {
     font-size: 18px;
     font-weight: bold;
+    font-family: PretendardBold, sans-serif;
 }
 
 .customer-service-sidebar .working-hours {
     font-size: 14px;
     margin-top: 10px;
+    font-family: PretendardLight, sans-serif;
 }
 
 /* 공지사항 및 이벤트 */
@@ -66,6 +70,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    font-family: PretendardBold, sans-serif;
 }
 
 .customer-service-section h2 a {
@@ -77,6 +82,7 @@
 .customer-service-section ul {
     list-style-type: none;
     padding: 0;
+    font-family: PretendardLight, sans-serif;
 }
 
 .customer-service-section li {
