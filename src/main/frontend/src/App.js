@@ -55,6 +55,8 @@ import { FailPage } from "./components/Payment/Fail";
 //Adminpage import
 import Adminpage from "./components/Adminpage/Adminpage";
 import AdminOrder from "./components/Adminpage/AdminOrder";
+import AdminUserlist from "./components/Adminpage/AdminUserlist";
+import AdminConfirmlist from "./components/Adminpage/AdminConfirmlist";
 
 function App() {
     // 로그인 상태와 사용자 정보 관리
@@ -169,8 +171,8 @@ function App() {
                     {/*관리자 페이지*/}
                     <Route path="/adminpage" element={<Adminpage />} />
                     <Route path="/adminorder" element={<AdminOrder />} />
-                    <Route path="/adminuserlist" element={AdminUserlist />} />
-                    <Route path="/adminconfirmlist" element={AdminConfirmlist />} />
+                    <Route path="/adminuserlist" element={<AdminUserlist />} />
+                    <Route path="/adminconfirmlist" element={<AdminConfirmlist />} />
                 </Routes>
             </div>
             <Footer />

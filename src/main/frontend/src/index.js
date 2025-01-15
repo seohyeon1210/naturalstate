@@ -31,6 +31,8 @@ import Mypage from "./components/Mypage/Mypage";
 import OrderList from "./components/Mypage/OrderList";
 import AdminPage from "./components/Adminpage/Adminpage";
 import AdminOrder from "./components/Adminpage/AdminOrder";
+import AdminUserlist from "./components/Adminpage/AdminUserlist";
+import AdminConfirmlist from "./components/Adminpage/AdminConfirmlist";
 
 
 
@@ -64,6 +66,8 @@ const router = createBrowserRouter([
             { path: "orderlist", element: <OrderList /> },
             { path: "adminpage", element: <AdminPage/>},
             { path: "adminorder", element: <AdminOrder/>},
+            { path: "adminuserlist", element: <AdminUserlist/>},
+            { path: "adminconfirmlist", element: <AdminConfirmlist/>},
             {
                 path: "sandbox",
                 children: [
