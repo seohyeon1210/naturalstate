@@ -49,6 +49,10 @@ import DeliveryList from "./components/Mypage/DeliveryList";
 import ProductPage from "./components/Product/ProductPage";
 import OrderList from "./components/Mypage/OrderList";
 
+//Adminpage import
+import Adminpage from "./components/Adminpage/Adminpage";
+import AdminOrder from "./components/Adminpage/AdminOrder";
+
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userData, setUserData] = useState(null);
@@ -137,6 +141,10 @@ function App() {
 
                     {/*마이페이지*/}
                     <Route path="/mypage/*" element={<Mypage />} />
+
+                    {/*관리자페이지*/}
+                    <Route path="/adminpage" element={<Adminpage />} />
+                    <Route path="/adminorder" element={<AdminOrder />} />
 
                 </Routes>
             </div>

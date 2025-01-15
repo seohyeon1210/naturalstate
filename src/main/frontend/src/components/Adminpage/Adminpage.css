@@ -1,0 +1,105 @@
+/* 전체 컨테이너 */
+.admin-container {
+  padding: 20px;
+  background-color: #fff; /* 하얀색 배경 */
+  font-family: 'PretendardRegular';
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  margin-top : 50px;
+  margin-bottom : 50px;
+}
+
+/* 제목 스타일 */
+.admin-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #4682b4;
+  margin-bottom: 20px;
+}
+
+/* 섹션 스타일 */
+.admin-section {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #87ceeb;
+  border-radius: 10px;
+  background-color: #f0f8ff;
+}
+
+/* 버튼 스타일 */
+.admin-button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #1e90ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.admin-button:hover {
+  background-color: #4682b4;
+}
+
+/* 주문 현황 스타일 */
+.admin-summary {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  gap:50px;
+}
+
+.admin-summary-item {
+  flex: 1;
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid #87ceeb;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.admin-summary-item h3 {
+  font-size: 16px;
+  color: #4682b4;
+  margin-bottom: 5px;
+}
+
+.admin-summary-item p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* 상태 현황 스타일 */
+.admin-status {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  gap: 5px;
+}
+
+.admin-status-item {
+  flex: 1;
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid #87ceeb;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.admin-status-item h3 {
+  font-size: 14px;
+  color: #4682b4;
+  margin-bottom: 5px;
+}
+
+.admin-status-item p {
+  font-size: 16px;
+  font-weight: bold;
+}

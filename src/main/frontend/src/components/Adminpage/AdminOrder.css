@@ -1,0 +1,166 @@
+/* 전체 컨테이너 */
+.admin-order-container {
+  padding: 20px;
+  background-color: #fff;
+  font-family: 'PretendardRegular';
+  max-width: 1000px;
+  margin: 0 auto;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  margin-top:50px;
+  margin-bottom:50px;
+}
+
+/* 제목 스타일 */
+.admin-order-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #4682b4;
+  margin-bottom: 20px;
+}
+
+/* 상단 헤더 스타일 */
+.admin-order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.admin-order-total {
+  font-size: 16px;
+  font-weight: bold;
+  color: #4682b4;
+}
+
+.admin-order-search {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  padding: 5px 10px;
+  border: 1px solid #87ceeb;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.search-button {
+  padding: 5px 15px;
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.search-button:hover {
+  background-color: #4682b4;
+}
+
+/* 테이블 스타일 */
+.admin-order-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.admin-order-table th,
+.admin-order-table td {
+  border: 1px solid #87ceeb;
+  text-align: center;
+  padding: 10px;
+}
+
+.admin-order-table th {
+  background-color: #f0f8ff;
+  color: #4682b4;
+  font-weight: bold;
+}
+
+.admin-order-table td img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 5px;
+}
+
+/* 페이지네이션 스타일 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.pagination-button {
+  padding: 5px 10px;
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.pagination-button:hover {
+  background-color: #4682b4;
+}
+
+/* 테이블 열 너비 조정 */
+.admin-order-table th:nth-child(1),
+.admin-order-table td:nth-child(1) {
+  width: 100px;
+}
+
+.admin-order-table th:nth-child(2),
+.admin-order-table td:nth-child(2) {
+  width: 150px;
+}
+
+.admin-order-table th:nth-child(3),
+.admin-order-table td:nth-child(3) {
+  width: 100px;
+}
+
+.admin-order-table th:nth-child(4),
+.admin-order-table td:nth-child(4) {
+  width: 200px;
+}
+
+.admin-order-table th:nth-child(5),
+.admin-order-table td:nth-child(5) {
+  width: 100px; /* 수량 열 너비 */
+}
+
+.admin-order-table th:nth-child(6),
+.admin-order-table td:nth-child(6) {
+  width: 150px; /* 상품금액 열 너비 */
+}
+
+.admin-order-table th:nth-child(7),
+.admin-order-table td:nth-child(7) {
+  width: 180px; /* 주문상태 열 너비 */
+}
+
+.admin-order-table th:nth-child(8),
+.admin-order-table td:nth-child(8) {
+  width: 150px; /* 판매자명 열 너비 */
+}
+
+.admin-order-table th:nth-child(9),
+.admin-order-table td:nth-child(9) {
+  width: 150px; /* 주문자 열 너비 */
+}
+
+.admin-order-table th:nth-child(10),
+.admin-order-table td:nth-child(10) {
+  width: 100px; /* 총주문액 열 너비 */
+}
+
+.admin-order-table th:nth-child(11),
+.admin-order-table td:nth-child(11) {
+  width: 200px;
+}
