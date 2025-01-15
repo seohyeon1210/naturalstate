@@ -2,7 +2,7 @@ import {useEffect, useRef, useState} from "react";
 import {loadTossPayments, ANONYMOUS} from "@tosspayments/tosspayments-sdk";
 import './Payment.css';
 
-const generateRandomString = () => window.btoa(Math.randtest_ck_AQ92ymxN34ZqloXJj9gKrajRKXvdom()).slice(0, 20);
+const generateRandomString = () => window.btoa(Math.random()).slice(0, 20);
 const clientKey = "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm";
 
 export function CheckoutPage() {

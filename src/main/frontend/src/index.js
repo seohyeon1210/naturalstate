@@ -29,6 +29,8 @@ import VegetablesProduct from "./components/Product/VegetablesProduct";
 import {Cart} from "react-bootstrap-icons";
 import Mypage from "./components/Mypage/Mypage";
 import OrderList from "./components/Mypage/OrderList";
+import AdminPage from "./components/Adminpage/Adminpage";
+import AdminOrder from "./components/Adminpage/AdminOrder";
 
 
 
@@ -60,6 +62,8 @@ const router = createBrowserRouter([
             { path: "cart", element: <Cart /> },
             { path: "/mypage/*", element: <Mypage /> },
             { path: "orderlist", element: <OrderList /> },
+            { path: "adminpage", element: <AdminPage/>},
+            { path: "adminorder", element: <AdminOrder/>},
             {
                 path: "sandbox",
                 children: [
