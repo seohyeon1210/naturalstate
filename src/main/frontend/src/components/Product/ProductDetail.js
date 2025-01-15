@@ -49,7 +49,7 @@ function ProductDetail() {
 
         {/* 오른쪽 상세 정보 영역 */}
         <div className="detail-detail-section">
-          <h2 className="detail-title">New Color 모던 트롤리 스윙 3단 빨래바구니</h2>
+          <h2 className="detail-title">[첫 구매 할인] 감귤 1박스</h2>
           <p className="detail-brand">네이버리빙 | 브랜드</p>
           <p className="detail-price">17,900원</p>
 
