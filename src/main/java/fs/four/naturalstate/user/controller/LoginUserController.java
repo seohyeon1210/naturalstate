@@ -3,10 +3,10 @@ package fs.four.naturalstate.user.controller;
 import fs.four.naturalstate.user.service.LoginUserService;
 import fs.four.naturalstate.user.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.HttpStatus;
 
 @RestController
 @RequestMapping("/api/login")
@@ -18,53 +18,51 @@ public class LoginUserController {
 
     // 로그인 요청 처리
     @PostMapping
-    public String login(@RequestBody UserVO loginRequest, HttpSession session) {
+    public ResponseEntity<String> login(@RequestBody UserVO loginRequest, HttpSession session) {
         if (loginRequest.getUserId() == null || loginRequest.getPassword() == null) {
-            return "UserId and Password must not be null!";
+            return ResponseEntity.badRequest().body("UserId and Password must not be null!");
         }
 
         boolean isAuthenticated = loginUserService.authenticate(loginRequest.getUserId(), loginRequest.getPassword());
         if (isAuthenticated) {
-            // 사용자 정보를 세션에 저장
-            session.setAttribute("user", loginRequest.getUserId());
-            return "Login successful!";
+            // 사용자 정보를 DB에서 조회 후 세션에 저장
+            UserVO user = loginUserService.getUserDetails(loginRequest.getUserId());
+            session.setAttribute("user", user);
+            return ResponseEntity.ok("Login successful!");
         } else {
-            return "Invalid userId or password!";
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid userId or password!");
         }
     }
 
     // 현재 로그인한 사용자 ID 조회
     @GetMapping("/session")
-    public String getSessionUser(HttpSession session) {
-        String userId = (String) session.getAttribute("user");
-        if (userId != null) {
-            return "Logged-in user: " + userId;
+    public ResponseEntity<String> getSessionUser(HttpSession session) {
+        UserVO user = (UserVO) session.getAttribute("user");
+        if (user != null) {
+            return ResponseEntity.ok("Logged-in user: " + user.getUserId());
         } else {
-            return "No user is currently logged in.";
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No user is currently logged in.");
         }
-    }
-
-    // 로그아웃 처리
-    @PostMapping("/logout")
-    public String logout(HttpSession session) {
-        session.invalidate(); // 세션 무효화
-        return "Logout successful!";
     }
 
     // 현재 로그인한 사용자 상세 정보 조회
     @GetMapping("/session/detail")
     public ResponseEntity<UserVO> getSessionUserDetails(HttpSession session) {
-        String userId = (String) session.getAttribute("user");
-        if (userId != null) {
-            UserVO user = loginUserService.getUserDetails(userId);
-            if (user != null) {
-                return ResponseEntity.ok(user); // 사용자 데이터 반환
-            }
+        UserVO user = (UserVO) session.getAttribute("user");
+        if (user != null) {
+            return ResponseEntity.ok(user);
         }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // 인증되지 않은 상태 반환
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
     }
 
-    // 회원탈퇴 요청 처리
+    // 로그아웃 처리
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(HttpSession session) {
+        session.invalidate(); // 세션 무효화
+        return ResponseEntity.ok("Logout successful!");
+    }
+
+    // 회원 탈퇴 요청 처리
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteUser(HttpSession session) {
         UserVO user = (UserVO) session.getAttribute("user");

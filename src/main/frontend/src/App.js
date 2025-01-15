@@ -57,27 +57,35 @@ import Adminpage from "./components/Adminpage/Adminpage";
 import AdminOrder from "./components/Adminpage/AdminOrder";
 
 function App() {
+    // 로그인 상태와 사용자 정보 관리
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userData, setUserData] = useState(null);
     const location = useLocation();
 
-    // fetch 에러 수정 요청
-    // useEffect(() => {
-    //     const checkSession = async () => {
-    //         const response = await fetch("http://localhost:18080/api/login/session/detail", {
-    //             method: "GET",
-    //             credentials: "include",
-    //         });
-    //         if (response.ok) {
-    //             const user = await response.json();
-    //             setIsLoggedIn(true);
-    //             setUserData(user);
-    //         } else {
-    //             setIsLoggedIn(false);
-    //             setUserData(null);
-    //         }
-    //     };
-    //     checkSession();
-    // }, []);
+    // 세션에서 로그인 상태 확인
+    useEffect(() => {
+        const checkSession = async () => {
+            try {
+                const response = await fetch("http://localhost:18080/api/login/session/detail", {
+                    method: "GET",
+                    credentials: "include",
+                });
+                if (response.ok) {
+                    const user = await response.json();
+                    setIsLoggedIn(true);
+                    setUserData(user);
+                } else {
+                    setIsLoggedIn(false);
+                    setUserData(null);
+                }
+            } catch (error) {
+                console.error("Error checking session:", error);
+                setIsLoggedIn(false);
+                setUserData(null);
+            }
+        };
+        checkSession();
+    }, []);
 
     // 로그인 성공 시 호출
     const handleLogin = () => {
@@ -85,11 +93,20 @@ function App() {
     };
 
     // 로그아웃 시 호출
-    const handleLogout = () => {
-        localStorage.removeItem("user");
-        setIsLoggedIn(false);
+    const handleLogout = async () => {
+        try {
+            const response = await fetch("http://localhost:18080/api/login/logout", {
+                method: "POST",
+                credentials: "include",
+            });
+            if (response.ok) {
+                setIsLoggedIn(false);
+                setUserData(null);
+            }
+        } catch (error) {
+            console.error("Error logging out:", error);
+        }
     };
-
 
     // Main 페이지에만 SecondHeader 표시
     const isMainPage = [
@@ -106,12 +123,12 @@ function App() {
     return (
         <div id="app-wrapper">
             <MainAlert />
-            <Header isLoggedIn={isLoggedIn} onLogout={() => setIsLoggedIn(false)} />
+            <Header isLoggedIn={isLoggedIn} user={userData} onLogout={handleLogout} />
             {isMainPage && <SecondHeader />}
             <div className="main-content">
                 <Routes>
                     {/* 메인 */}
-                    <Route path="/" element={<><MainBanner/><Main/></>} />
+                    <Route path="/" element={<><MainBanner /><Main /></>} />
 
                     {/* 결제 */}
                     <Route path="/sandbox" element={<CheckoutPage />} />
@@ -119,7 +136,7 @@ function App() {
                     <Route path="/sandbox/fail" element={<FailPage />} />
 
                     {/* 회원가입, 로그인, 입점신청 */}
-                    <Route path="/login" element={<Login onLogin={() => setIsLoggedIn(true)} />} />
+                    <Route path="/login" element={<Login onLogin={handleLogin} />} />
                     <Route path="/join" element={<Join />} />
                     <Route path="/storejoin" element={<StoreJoin />} />
                     <Route path="/findUser" element={<FindUser />} />
