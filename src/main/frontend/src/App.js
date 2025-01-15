@@ -166,7 +166,6 @@ function App() {
 
                     {/* 마이페이지 */}
                     <Route path="/mypage/*" element={<Mypage />} />
-                    <Route path="/mypage/orderlist" element={<OrderList />} />
 
                     {/*관리자 페이지*/}
                     <Route path="/adminpage" element={<Adminpage />} />
