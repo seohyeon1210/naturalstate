@@ -19,9 +19,7 @@ import Main from "./components/Main/Main";
 import Join from "./components/Join/Join";
 import Login from "./components/Login/Login";
 import StoreJoin from "./components/Join/StoreJoin";
-import FindID from "./components/Login/FindID";
-import FindPW from "./components/Login/FindPW";
-
+import FindUser from "./components/Login/FindUser";
 
 // CustomerService import
 import CustomerService from "./components/CustomerService/CustomerService";
@@ -114,9 +112,8 @@ function App() {
                     <Route path="/login" element={<Login onLogin={handleLogin} />} />
                     <Route path="/join" element={<Join />} />
                     <Route path="/storejoin" element={<StoreJoin />} />
-                    <Route path="/findid" element={<FindID />} />
-                    <Route path="/findpw" element={<FindPW />} />
-                    
+                    <Route path="/findUser" element={<FindUser />} />
+
                     {/*고객센터*/}
                     <Route path="/customerservice" element={<CustomerService />} />
                     <Route path="/post" element={<PostForm />} />

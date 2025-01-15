@@ -85,20 +85,13 @@ function Login({ onLogin }) {
                 </Button>
 
                 <div className="login-links">
-                    <Button
-                        variant="link"
-                        className="font-label"
-                        onClick={() => navigate("/findid")}
-                    >
-                        아이디 찾기
-                    </Button>
-                    <Button
-                        variant="link"
-                        className="font-label"
-                        onClick={() => navigate("/findpw")}
-                    >
-                        비밀번호 찾기
-                    </Button>
+                                    <Button
+                                        variant="link"
+                                        className="font-label"
+                                        onClick={() => navigate("/finduser")}
+                                    >
+                                        아이디 / 비밀번호 찾기
+                                    </Button>
                 </div>
             </Form>
         </div>
