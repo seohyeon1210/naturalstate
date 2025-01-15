@@ -141,10 +141,6 @@ function App() {
                     {/*마이페이지*/}
                     <Route path="/mypage/*" element={<Mypage />} />
 
-                    //매핑 수정할때 이거 지우면 됨. - 건우
-                    <Route path="/mypage/orderlist" element={<OrderList />} />
-                    //매핑 수정할때 이거 지우면 됨. - 건우
-
                 </Routes>
             </div>
             <Footer />

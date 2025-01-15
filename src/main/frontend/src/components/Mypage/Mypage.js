@@ -132,6 +132,7 @@ function Mypage() {
                     <Route path="cart" element={<Cart />} />
                     <Route path="usermypage" element={<UserMypage />} />
                     <Route path="userdelete" element={<UserDelete />} />
+                    <Route path="orderlist" element={<OrderList />} />
                 </Routes>
             </Content>
         </Container>
