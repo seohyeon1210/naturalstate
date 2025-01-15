@@ -169,7 +169,8 @@ function App() {
                     {/*관리자 페이지*/}
                     <Route path="/adminpage" element={<Adminpage />} />
                     <Route path="/adminorder" element={<AdminOrder />} />
-
+                    <Route path="/adminuserlist" element={AdminUserlist />} />
+                    <Route path="/adminconfirmlist" element={AdminConfirmlist />} />
                 </Routes>
             </div>
             <Footer />
