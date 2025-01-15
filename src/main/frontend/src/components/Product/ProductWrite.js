@@ -265,7 +265,7 @@ function ProductWrite() {
                                 />
                             </Form.Group>
 
-                            <div className="button-group">
+                            <div id="product-write-button-group" className="product-write-button-group">
                                 <Button type="submit" className="me-2">
                                     등록
                                 </Button>

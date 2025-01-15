@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 // CSS import
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -48,14 +48,15 @@ import Mypage from "./components/Mypage/Mypage";
 import DeliveryList from "./components/Mypage/DeliveryList";
 import ProductPage from "./components/Product/ProductPage";
 import OrderList from "./components/Mypage/OrderList";
+import { CheckoutPage } from "./components/Payment/Checkout";
+import { SuccessPage } from "./components/Payment/Success";
+import { FailPage } from "./components/Payment/Fail";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [userData, setUserData] = useState(null);
     const location = useLocation();
 
     // fetch 에러 수정 요청
-    // 로그인 상태를 관리
     // useEffect(() => {
     //     const checkSession = async () => {
     //         const response = await fetch("http://localhost:18080/api/login/session/detail", {
@@ -85,6 +86,7 @@ function App() {
         setIsLoggedIn(false);
     };
 
+
     // Main 페이지에만 SecondHeader 표시
     const isMainPage = [
         "/",
@@ -97,47 +99,51 @@ function App() {
         "/vegetablesproduct",
     ].includes(location.pathname);
 
-
     return (
         <div id="app-wrapper">
             <MainAlert />
-            <Header isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+            <Header isLoggedIn={isLoggedIn} onLogout={() => setIsLoggedIn(false)} />
             {isMainPage && <SecondHeader />}
             <div className="main-content">
                 <Routes>
-                    {/*메인*/}
-                    <Route path="/" element={<><MainBanner /><Main /></>} />
+                    {/* 메인 */}
+                    <Route path="/" element={<><MainBanner/><Main/></>} />
 
-                    {/*회원가입, 로그인, 입점신청*/}
-                    <Route path="/login" element={<Login onLogin={handleLogin} />} />
+                    {/* 결제 */}
+                    <Route path="/sandbox" element={<CheckoutPage />} />
+                    <Route path="/sandbox/success" element={<SuccessPage />} />
+                    <Route path="/sandbox/fail" element={<FailPage />} />
+
+                    {/* 회원가입, 로그인, 입점신청 */}
+                    <Route path="/login" element={<Login onLogin={() => setIsLoggedIn(true)} />} />
                     <Route path="/join" element={<Join />} />
                     <Route path="/storejoin" element={<StoreJoin />} />
                     <Route path="/findUser" element={<FindUser />} />
 
-                    {/*고객센터*/}
+                    {/* 고객센터 */}
                     <Route path="/customerservice" element={<CustomerService />} />
                     <Route path="/post" element={<PostForm />} />
                     <Route path="/terms" element={<Terms />} />
                     <Route path="/report" element={<Report />} />
-                    <Route path="/events" element={<Event/>}/>
-                    <Route path="/notice" element={<Notice/>}/>
-                    <Route path="/inquiry" element={<Inquiry/>}/>
-                    <Route path="/webterms" element={<WebTerms/>}/>
-                    
-                    {/*상품*/}
+                    <Route path="/events" element={<Event />} />
+                    <Route path="/notice" element={<Notice />} />
+                    <Route path="/inquiry" element={<Inquiry />} />
+                    <Route path="/webterms" element={<WebTerms />} />
+
+                    {/* 상품 */}
                     <Route path="/productwrite" element={<ProductWrite />} />
                     <Route path="/productdetail" element={<ProductDetail />} />
-                    <Route path="/productpage" element={<ProductPage/>}/>
-                    <Route path="/bestproduct" element={<BestProduct/>}/>
-                    <Route path="/recommendedproduct" element={<RecommendedProduct/>}/>
-                    <Route path="/fruitsproduct" element={<FruitsProduct/>}/>
-                    <Route path="/grainsproduct" element={<GrainsProduct/>}/>
-                    <Route path="/vegetablesproduct" element={<VegetablesProduct/>}/>
-                    <Route path="/cart" element={<Cart/>}/>
+                    <Route path="/productpage" element={<ProductPage />} />
+                    <Route path="/bestproduct" element={<BestProduct />} />
+                    <Route path="/recommendedproduct" element={<RecommendedProduct />} />
+                    <Route path="/fruitsproduct" element={<FruitsProduct />} />
+                    <Route path="/grainsproduct" element={<GrainsProduct />} />
+                    <Route path="/vegetablesproduct" element={<VegetablesProduct />} />
+                    <Route path="/cart" element={<Cart />} />
 
-                    {/*마이페이지*/}
+                    {/* 마이페이지 */}
                     <Route path="/mypage/*" element={<Mypage />} />
-
+                    <Route path="/mypage/orderlist" element={<OrderList />} />
                 </Routes>
             </div>
             <Footer />
@@ -145,10 +151,4 @@ function App() {
     );
 }
 
-export default function AppWrapper() {
-    return (
-        <Router>
-            <App />
-        </Router>
-    );
-}
+export default App;

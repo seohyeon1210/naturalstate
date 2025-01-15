@@ -72,13 +72,13 @@
     padding: 0.375rem 0.75rem;
 }
 
-.product-write-form .button-group {
+.product-write-form .product-write-button-group .button-group {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
 }
 
-.product-write-form .btn {
+.product-write-form .product-write-button-group .btn {
     width: 75px;
     height: 45px;
     font-size: 14px;
@@ -90,6 +90,6 @@
     transition: background-color 0.3s ease;
 }
 
-.product-write-form .btn:hover {
+.product-write-form .product-write-button-group .btn:hover {
     background-color: #0056b3;
 }
