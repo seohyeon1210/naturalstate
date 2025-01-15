@@ -1,13 +1,13 @@
 /* 공지사항 컨테이너 */
 .notice-container {
   padding: 20px;
-  font-family: 'PretendardRegular';
 }
 
 /* 제목 */
 .notice-title {
   text-align: center;
   margin-bottom: 20px;
+  font-family: PretendardBold, sans-serif;
 }
 
 /* 검색 및 필터 */
@@ -17,6 +17,7 @@
   align-items: center;
   margin-bottom: 20px;
   gap: 10px;
+  font-family: PretendardRegular, sans-serif;
 }
 
 .notice-search-select {
@@ -57,6 +58,7 @@
 
 .notice-table thead tr {
   border-bottom: 2px solid #ddd;
+  font-family: PretendardBold, sans-serif;
 }
 
 .notice-table th,
@@ -70,11 +72,13 @@
 
 .notice-table td {
   border-bottom: 1px solid #eee;
+  font-family: PretendardLight, sans-serif;
 }
 
 .notice-table td.title {
   color: #000;
   text-align: center;
+  font-family: PretendardLight, sans-serif;
 }
 
 /* 페이지네이션 */
@@ -84,6 +88,7 @@
   align-items: center;
   margin-top: 20px;
   gap: 10px;
+  font-family: PretendardRegular, sans-serif;
 }
 
 .notice-pagination button {
