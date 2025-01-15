@@ -63,4 +63,20 @@ public class LoginUserController {
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // 인증되지 않은 상태 반환
     }
+
+    // 회원탈퇴 요청 처리
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteUser(HttpSession session) {
+        UserVO user = (UserVO) session.getAttribute("user");
+        if (user != null) {
+            boolean isDeleted = loginUserService.deleteUser(user.getUserId());
+            if (isDeleted) {
+                session.invalidate(); // 세션 무효화
+                return ResponseEntity.ok("User deleted successfully.");
+            } else {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete user.");
+            }
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not logged in.");
+    }
 }
