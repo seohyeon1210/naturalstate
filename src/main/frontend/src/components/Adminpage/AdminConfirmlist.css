@@ -1,7 +1,8 @@
 .admin-confirmlist {
-  font-family: Arial, sans-serif;
+  font-family: 'PretendardRegular';
   margin: 20px;
   color: #333;
+  margin-top: 50px;
 }
 
 .admin-confirmlist h1 {
