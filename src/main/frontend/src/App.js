@@ -52,6 +52,10 @@ import { CheckoutPage } from "./components/Payment/Checkout";
 import { SuccessPage } from "./components/Payment/Success";
 import { FailPage } from "./components/Payment/Fail";
 
+//Adminpage import
+import Adminpage from "./components/Adminpage/Adminpage";
+import AdminOrder from "./components/Adminpage/AdminOrder";
+
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const location = useLocation();
@@ -144,6 +148,11 @@ function App() {
                     {/* 마이페이지 */}
                     <Route path="/mypage/*" element={<Mypage />} />
                     <Route path="/mypage/orderlist" element={<OrderList />} />
+
+                    {/*관리자 페이지*/}
+                    <Route path="/adminpage" element={<Adminpage />} />
+                    <Route path="/adminorder" element={<AdminOrder />} />
+
                 </Routes>
             </div>
             <Footer />

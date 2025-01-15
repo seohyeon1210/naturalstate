@@ -12,4 +12,10 @@ public class AdminControllerImpl{
 
     @GetMapping ("/adminorder")
     public String AdminOrder () { return "forward:/index.html"; }
+
+    @GetMapping ("/adminuserlist")
+    public String AdminUserlist () { return "forward:/index.html"; }
+
+    @GetMapping ("/adminconfirmlist")
+    public String AdminConfirmlist () { return "forward:/index.html"; }
 }

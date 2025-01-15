@@ -1,0 +1,59 @@
+/* 전체 컨테이너 */
+.admin-userlist-container {
+  padding: 20px;
+  background-color: #f0f8ff; /* 연한 파란색 배경 */
+  font-family: Arial, sans-serif;
+  max-width: 1000px;
+  margin: 0 auto;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+}
+
+/* 제목 스타일 */
+.admin-userlist-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #4682b4;
+  margin-bottom: 20px;
+}
+
+/* 테이블 스타일 */
+.admin-userlist-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-userlist-table th,
+.admin-userlist-table td {
+  border: 1px solid #87ceeb;
+  text-align: center;
+  padding: 10px;
+}
+
+.admin-userlist-table th {
+  background-color: #f0f8ff;
+  color: #4682b4;
+  font-weight: bold;
+}
+
+.admin-userlist-table td {
+  background-color: #ffffff;
+  font-size: 14px;
+  color: #555;
+}
+
+/* 삭제 버튼 스타일 */
+.delete-button {
+  padding: 5px 10px;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.delete-button:hover {
+  background-color: #ff4040;
+}
