@@ -77,4 +77,23 @@ public class LoginUserController {
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not logged in.");
     }
+
+    //회원정보 수정
+    @PostMapping("/update")
+    public ResponseEntity<String> updateUserInfo(@RequestBody UserVO updatedUser, HttpSession session) {
+        UserVO user = (UserVO) session.getAttribute("user");
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인 상태가 아닙니다.");
+        }
+
+        try {
+            // 기존 사용자 정보 업데이트
+            loginUserService.updateUserInfo(updatedUser);
+            // 세션 정보도 갱신
+            session.setAttribute("user", updatedUser);
+            return ResponseEntity.ok("회원정보가 성공적으로 수정되었습니다.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("회원정보 수정에 실패했습니다.");
+        }
+    }
 }

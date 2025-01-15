@@ -14,4 +14,7 @@ public interface LoginUserDAO {
     UserVO findByUserId(String userId);
     // 사용자 정보 삭제
     void deleteByUserId(String userId);
+    // 회원정보 수정
+    void updateUserInfo(UserVO user);
+
 }

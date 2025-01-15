@@ -64,4 +64,9 @@ public class LoginUserService {
             return false;
         }
     }
+    //회원정보 수정메서드
+    public void updateUserInfo(UserVO updatedUser) {
+        loginUserDAO.updateUserInfo(updatedUser);
+    }
+
 }

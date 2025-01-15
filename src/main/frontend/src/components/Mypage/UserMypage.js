@@ -44,17 +44,6 @@ const Input = styled.input`
     cursor: ${(props) => (props.readOnly ? "not-allowed" : "text")};
 `;
 
-const Textarea = styled.textarea`
-    font-size: 14px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%;
-    height: 100px;
-    box-sizing: border-box;
-    resize: none;
-`;
-
 const Select = styled.select`
     font-size: 14px;
     padding: 10px;
@@ -96,19 +85,30 @@ function UserInfoEdit() {
         auth: "",
     });
 
+    useEffect(() => {
+        // 사용자 정보를 세션에서 가져오기
+        const fetchUserData = async () => {
+            try {
+                const response = await fetch("http://localhost:18080/api/login/session/detail", {
+                    credentials: "include", // 세션 쿠키 포함
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    setUserData(data); // 상태 업데이트
+                } else {
+                    console.error("Failed to fetch user data:", response.status);
+                }
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
+        };
+
+        fetchUserData();
+    }, []);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setUserData({ ...userData, [name]: value });
-    };
-
-    const fetchUserData = async () => {
-        try {
-            const response = await fetch("http://localhost:18080/api/login/detail");
-            const data = await response.json();
-            setUserData(data);
-        } catch (error) {
-            console.error("Failed to fetch user data:", error);
-        }
     };
 
     const handleSubmit = async (e) => {
@@ -132,31 +132,6 @@ function UserInfoEdit() {
             alert("정보 수정 중 오류가 발생했습니다.");
         }
     };
-
-    const handleAddressSearch = () => {
-        new window.daum.Postcode({
-            oncomplete: function (data) {
-                const fullAddress = data.roadAddress; // 도로명 주소
-                const zonecode = data.zonecode; // 우편번호
-
-                setUserData((prevState) => ({
-                    ...prevState,
-                    address: fullAddress,
-                    zip: zonecode,
-                }));
-            },
-        }).open();
-    };
-
-    useEffect(() => {
-        if (!window.daum) {
-            const script = document.createElement("script");
-            script.src =
-                "https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
-            script.async = true;
-            document.body.appendChild(script);
-        }
-    }, []);
 
     return (
         <Container>
@@ -195,26 +170,11 @@ function UserInfoEdit() {
                 </div>
                 <div>
                     <Label>우편번호</Label>
-                    <div style={{ display: "flex", gap: "10px" }}>
-                        <Input
-                            type="text"
-                            name="zip"
-                            value={userData.zip}
-                            readOnly
-                        />
-                        <Button type="button" onClick={handleAddressSearch}>
-                            찾기
-                        </Button>
-                    </div>
+                    <Input type="text" name="zip" value={userData.zip} readOnly />
                 </div>
                 <div>
                     <Label>주소</Label>
-                    <Input
-                        type="text"
-                        name="address"
-                        value={userData.address}
-                        readOnly
-                    />
+                    <Input type="text" name="address" value={userData.address} readOnly />
                 </div>
                 <div>
                     <Label>상세주소</Label>

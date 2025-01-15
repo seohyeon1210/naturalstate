@@ -7,15 +7,39 @@
     <!-- 사용자 정보를 userId로 검색 -->
     <select id="findByUserId" resultType="fs.four.naturalstate.user.vo.UserVO">
         <![CDATA[
-        SELECT userId, password, userName, phone, zip, address, detailAddress, email, receiveEmail, auth
-        FROM users
-        WHERE userId = #{userId}
+        SELECT USERID as userId,
+               PASSWORD as password,
+               USERNAME as userName,
+               PHONE as phone,
+               ZIP as zip,
+               ADDRESS as address,
+               DETAILADDRESS as detailAddress,
+               EMAIL as email,
+               RECEIVEEMAIL as receiveEmail,
+               AUTH as auth
+        FROM USERS
+        WHERE USERID = #{userId}
         ]]>
     </select>
 
     <!-- 사용자 삭제 -->
     <delete id="deleteByUserId">
-        DELETE FROM users
-        WHERE userId = #{userId}
+        DELETE FROM USERS
+        WHERE USERID = #{userId}
     </delete>
+
+    <!-- 사용자 정보 수정 -->
+    <update id="updateUserInfo" parameterType="fs.four.naturalstate.user.vo.UserVO">
+        UPDATE USERS
+        SET
+            PASSWORD = #{password},
+            USERNAME = #{userName},
+            PHONE = #{phone},
+            ZIP = #{zip},
+            ADDRESS = #{address},
+            DETAILADDRESS = #{detailAddress},
+            EMAIL = #{email},
+            RECEIVEEMAIL = #{receiveEmail}
+        WHERE USERID = #{userId}
+    </update>
 </mapper>
