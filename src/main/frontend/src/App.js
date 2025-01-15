@@ -56,24 +56,25 @@ function App() {
     const [userData, setUserData] = useState(null);
     const location = useLocation();
 
+    // fetch 에러 수정 요청
     // 로그인 상태를 관리
-    useEffect(() => {
-        const checkSession = async () => {
-            const response = await fetch("http://localhost:18080/api/login/session/detail", {
-                method: "GET",
-                credentials: "include",
-            });
-            if (response.ok) {
-                const user = await response.json();
-                setIsLoggedIn(true);
-                setUserData(user);
-            } else {
-                setIsLoggedIn(false);
-                setUserData(null);
-            }
-        };
-        checkSession();
-    }, []);
+    // useEffect(() => {
+    //     const checkSession = async () => {
+    //         const response = await fetch("http://localhost:18080/api/login/session/detail", {
+    //             method: "GET",
+    //             credentials: "include",
+    //         });
+    //         if (response.ok) {
+    //             const user = await response.json();
+    //             setIsLoggedIn(true);
+    //             setUserData(user);
+    //         } else {
+    //             setIsLoggedIn(false);
+    //             setUserData(null);
+    //         }
+    //     };
+    //     checkSession();
+    // }, []);
 
     // 로그인 성공 시 호출
     const handleLogin = () => {
