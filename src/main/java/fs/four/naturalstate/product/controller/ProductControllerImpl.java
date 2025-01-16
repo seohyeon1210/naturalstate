@@ -1,10 +1,22 @@
 package fs.four.naturalstate.product.controller;
 
+import fs.four.naturalstate.product.service.ProductWriteServiceImpl;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-@Controller
-public class ProductControllerImpl {
+import java.util.List;
+
+@Controller("productController")
+public class ProductControllerImpl implements ProductController {
+    private final ProductWriteServiceImpl productWriteService;
+
+    public ProductControllerImpl(ProductWriteServiceImpl productWriteService) {
+        this.productWriteService = productWriteService;
+    }
+
     @GetMapping("/productdetail")
     public String productdetail() {
         return "forward:/index.html";
@@ -43,5 +55,15 @@ public class ProductControllerImpl {
     @GetMapping("productwrite")
     public String Productwrite() {
         return "forward:/index.html";
+    }
+
+    @Override
+    public ModelAndView listProducts(HttpServletRequest request,
+                                     HttpServletResponse response) throws Exception {
+        List productsList = productWriteService.listProducts();
+
+        ModelAndView mav = new ModelAndView("forward:/index.html");
+        mav.addObject("productsList", productsList);
+        return mav;
     }
 }

@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -30,6 +32,17 @@ public class ProductRestController {
         } catch (Exception e) {
             System.err.println("상품 등록 처리 중 오류 발생: " + e.getMessage());
             return ResponseEntity.status(500).body("상품 등록 실패");
+        }
+    }
+
+    @GetMapping("/products")
+    public ResponseEntity<List> getAllProducts() {
+        try {
+            List productsList = productWriteService.listProducts();
+
+            return ResponseEntity.ok(productsList);
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
         }
     }
 }
