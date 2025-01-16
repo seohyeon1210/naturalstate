@@ -43,11 +43,16 @@ public class ProductWriteServiceImpl implements ProductWriteService {
         directory = directory.endsWith("/") ? directory : directory + "/";
         File dir = new File(directory);
 
-        String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
-        File destFile = new File(directory + fileName);
+        String encodedFileName = file.getOriginalFilename();
+        if (encodedFileName == null) {
+            throw new Exception("파일 이름을 가져올 수 없습니다.");
+        }
+        String decodedFileName = java.net.URLDecoder.decode(encodedFileName, "UTF-8");
+        File destFile = new File(directory + decodedFileName);
+        
         file.transferTo(destFile);
 
-        return fileName;
+        return decodedFileName;
     }
 
     @Override
