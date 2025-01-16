@@ -26,4 +26,12 @@
             #{product_content})
     ]]>
     </insert>
+
+    <select id="selectAllProductList" resultType="ProductWriteVO">
+        <![CDATA[
+        select *
+        from product
+        order by product_number desc
+        ]]>
+    </select>
 </mapper>

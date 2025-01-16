@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.util.List;
 import java.util.UUID;
 
 @Service("productWriteService")
@@ -39,6 +40,7 @@ public class ProductWriteServiceImpl implements ProductWriteService {
 
     private String saveFile(MultipartFile file) throws Exception {
         String directory = System.getProperty("user.dir") + "/src/main/resources/static/images/product/";
+        directory = directory.endsWith("/") ? directory : directory + "/";
         File dir = new File(directory);
 
         String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
@@ -46,5 +48,13 @@ public class ProductWriteServiceImpl implements ProductWriteService {
         file.transferTo(destFile);
 
         return fileName;
+    }
+
+    @Override
+    public List listProducts() throws Exception{
+        List productsList = null;
+        productsList = productWriteDAO.selectAllProductList();
+
+        return productsList;
     }
 }

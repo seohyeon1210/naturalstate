@@ -111,8 +111,8 @@ function ProductWrite() {
 
                 try {
                     const formData = new FormData();
-                    const thumbnailFileName = `${values.productName}_thumbnail.jpg`;
-                    const detailFileName = `${values.productName}_detail.jpg`;
+                    const thumbnailFileName = encodeURIComponent(`${values.productName}_thumbnail.jpg`);
+                    const detailFileName = encodeURIComponent(`${values.productName}_detail.jpg`);
 
                     formData.append('productCategory', values.productCategory);
                     formData.append('productName', values.productName);
