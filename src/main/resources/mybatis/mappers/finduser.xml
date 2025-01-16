@@ -19,26 +19,26 @@
     <!-- 아이디 찾기 -->
     <select id="findByNameAndPhoneAndEmail" parameterType="map" resultMap="userResult">
         SELECT *
-        FROM users
-        WHERE userName = #{userName}
-        AND phone = #{phone}
-        AND email = #{email}
+        FROM USERS
+        WHERE USERNAME = #{userName}
+        AND PHONE = #{phone}
+        AND EMAIL = #{email}
     </select>
 
     <!-- 비밀번호 찾기 -->
     <select id="findByUserIdAndNameAndPhoneAndEmail" parameterType="map" resultMap="userResult">
         SELECT *
-        FROM users
-        WHERE userId = #{userId}
-        AND userName = #{userName}
-        AND phone = #{phone}
-        AND email = #{email}
+        FROM USERS
+        WHERE USERID = #{userId}
+        AND USERNAME = #{userName}
+        AND PHONE = #{phone}
+        AND EMAIL = #{email}
     </select>
 
     <!-- 비밀번호 업데이트 -->
     <update id="updatePassword" parameterType="map">
-        UPDATE users
-        SET password = #{password}
-        WHERE userId = #{userId}
+        UPDATE USERS
+        SET PASSWORD = #{password}
+        WHERE USERID = #{userId}
     </update>
 </mapper>
