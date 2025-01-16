@@ -2,11 +2,12 @@
 .registered-product-container {
   padding: 20px;
   background-color: #fff; /* 배경은 하얀색 */
-  font-family: Arial, sans-serif;
+  font-family: 'PretendardRegular';
   max-width: 1000px;
   margin: 0 auto;
   border: 1px solid #dcdcdc;
   border-radius: 10px;
+  margin-top: 50px;
 }
 
 /* 제목 스타일 */

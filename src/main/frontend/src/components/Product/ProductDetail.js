@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "./ProductDetail.css"; // 분리된 CSS 파일 import
+import TangerineImage from '../../images/감귤한박스.png';
+import Thumbnail1 from '../../images/감귤한박스1.jpg';
+import TangerineDescImage from '../../images/감귤설명1.jpg'
 
 function ProductDetail() {
   const [selectedOption, setSelectedOption] = useState(""); // 옵션 선택 상태
@@ -30,7 +33,7 @@ function ProductDetail() {
         {/* 왼쪽 이미지 영역 */}
         <div className="detail-image-section">
           <img
-            src="https://via.placeholder.com/400"
+            src={TangerineImage}
             alt="Product"
             className="detail-main-image"
           />
@@ -39,7 +42,7 @@ function ProductDetail() {
             {[1, 2, 3, 4].map((item) => (
               <img
                 key={item}
-                src={`https://via.placeholder.com/100?text=Img${item}`}
+                src={Thumbnail1}
                 alt={`Thumbnail ${item}`}
                 className="detail-thumbnail-image"
               />
@@ -131,7 +134,7 @@ function ProductDetail() {
 
         <h3 className="detail-section-title">사진</h3>
         <img
-          src="https://via.placeholder.com/600x300"
+          src={TangerineDescImage}
           alt="Additional Info"
           className="detail-additional-image"
         />

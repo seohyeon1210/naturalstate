@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "./RegisteredProduct.css";
+import sweetPotatoImage from '../../images/군고구마.png';
+import strawBerryImage from '../../images/딸기.jpg';
+import babyPumpkinImage from '../../images/애호박.jpg'
 
 function RegisteredProduct() {
   const [products, setProducts] = useState([
@@ -8,7 +11,7 @@ function RegisteredProduct() {
       date: "24-12-19 21:52",
       productNumber: "P12345",
       productName: "맛있는 군고구마",
-      image: "https://via.placeholder.com/50",
+      image: sweetPotatoImage,
       productPrice: 30000,
       totalPrice: 30000,
     },
@@ -17,7 +20,7 @@ function RegisteredProduct() {
       date: "24-12-20 23:12",
       productNumber: "P12346",
       productName: "꿀맛나는 딸기",
-      image: "https://via.placeholder.com/50",
+      image: strawBerryImage,
       productPrice: 20000,
       totalPrice: 60000,
     },
@@ -26,7 +29,7 @@ function RegisteredProduct() {
       date: "24-12-25 12:25",
       productNumber: "P12347",
       productName: "친환경 애호박",
-      image: "https://via.placeholder.com/50",
+      image: babyPumpkinImage,
       productPrice: 5000,
       totalPrice: 10000,
     },

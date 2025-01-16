@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DeliveryMod from "./DeliveryMod";
 import DeliveryPopup from "./DeliveryPopup";
 import "./DeliveryList.css";
 
+// 전화번호 포맷팅 함수
 const formatPhoneNumber = (phone) => {
   if (!phone) return "";
   const cleaned = phone.replace(/[^0-9]/g, "");
@@ -14,52 +15,100 @@ const formatPhoneNumber = (phone) => {
 };
 
 function DeliveryList() {
-  const [addresses, setAddresses] = useState([
-    {
-      id: 1,
-      name: "김창섭",
-      address: "서울 서초구 언남길 5",
-      detailAddress: "101호",
-      postcode: "06608",
-      phone: "898-9800-0000",
-    },
-    {
-      id: 2,
-      name: "강원기",
-      address: "부산광역시 해운대구 우동 456",
-      detailAddress: "202호",
-      postcode: "48060",
-      phone: "010-5678-1234",
-    },
-  ]);
+  const [addresses, setAddresses] = useState([]); // 배송지 목록
+  const [isEditing, setIsEditing] = useState(false); // 수정 상태
+  const [currentAddress, setCurrentAddress] = useState(null); // 현재 수정 중인 주소
+  const [isAdding, setIsAdding] = useState(false); // 추가 상태
 
-  const [isEditing, setIsEditing] = useState(false);
-  const [currentAddress, setCurrentAddress] = useState(null);
-  const [isAdding, setIsAdding] = useState(false);
+  // 세션 데이터 불러오기
+  useEffect(() => {
+    const fetchAddresses = async () => {
+      try {
+        const response = await fetch("http://localhost:18080/api/delivery/list", {
+          credentials: "include", // 세션 정보 포함
+        });
+        const data = await response.json();
+        if (response.ok) {
+          setAddresses(data); // 배송지 목록 설정
+        } else {
+          console.error("배송지 목록 불러오기 실패:", data);
+        }
+      } catch (error) {
+        console.error("배송지 목록 요청 중 오류:", error);
+      }
+    };
+    fetchAddresses();
+  }, []);
 
+  // 수정 저장 핸들러
+  const handleSaveAddress = async (updatedAddress) => {
+    try {
+      const response = await fetch("http://localhost:18080/api/delivery/update", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify(updatedAddress),
+      });
+      if (response.ok) {
+        // 성공적으로 업데이트된 경우 로컬 상태도 업데이트
+        const updatedAddresses = addresses.map((item) =>
+          item.id === updatedAddress.id ? updatedAddress : item
+        );
+        setAddresses(updatedAddresses);
+        setIsEditing(false);
+      } else {
+        console.error("배송지 수정 실패");
+      }
+    } catch (error) {
+      console.error("배송지 수정 요청 중 오류:", error);
+    }
+  };
+
+  // 삭제 핸들러
+  const handleDeleteAddress = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:18080/api/delivery/delete/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+      });
+      if (response.ok) {
+        // 성공적으로 삭제된 경우 로컬 상태 업데이트
+        const updatedAddresses = addresses.filter((item) => item.id !== id);
+        setAddresses(updatedAddresses);
+      } else {
+        console.error("배송지 삭제 실패");
+      }
+    } catch (error) {
+      console.error("배송지 삭제 요청 중 오류:", error);
+    }
+  };
+
+  // 추가 핸들러
+  const handleAddAddress = async (newAddress) => {
+    try {
+      const response = await fetch("http://localhost:18080/api/delivery/add", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify(newAddress),
+      });
+      const addedAddress = await response.json();
+      if (response.ok) {
+        // 성공적으로 추가된 경우 로컬 상태 업데이트
+        setAddresses((prevAddresses) => [...prevAddresses, addedAddress]);
+        setIsAdding(false);
+      } else {
+        console.error("배송지 추가 실패");
+      }
+    } catch (error) {
+      console.error("배송지 추가 요청 중 오류:", error);
+    }
+  };
+
+  // 수정 시작 핸들러
   const handleEditAddress = (address) => {
     setIsEditing(true);
     setCurrentAddress(address);
-  };
-
-  const handleSaveAddress = (updatedAddress) => {
-    const updatedAddresses = addresses.map((item) =>
-      item.id === updatedAddress.id ? updatedAddress : item
-    );
-    setAddresses(updatedAddresses);
-    setIsEditing(false);
-  };
-
-  const handleDeleteAddress = (id) => {
-    const updatedAddresses = addresses.filter((item) => item.id !== id);
-    setAddresses(updatedAddresses);
-  };
-
-  const handleAddAddress = (newAddress) => {
-    const newId = addresses.length ? addresses[addresses.length - 1].id + 1 : 1;
-    const updatedAddresses = [...addresses, { id: newId, ...newAddress }];
-    setAddresses(updatedAddresses);
-    setIsAdding(false);
   };
 
   return (
@@ -78,14 +127,14 @@ function DeliveryList() {
           </tr>
         </thead>
         <tbody>
-          {addresses.map((item) => (
+          {addresses.map((item, index) => (
             <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.name}</td>
+              <td>{index + 1}</td>
+              <td>{item.userName}</td>
               <td>{item.address}</td>
               <td>{item.detailAddress}</td>
-              <td>{item.postcode}</td>
-              <td>{item.phone}</td>
+              <td>{item.zip}</td>
+              <td>{formatPhoneNumber(item.phone)}</td>
               <td>
                 <button
                   className="delete"

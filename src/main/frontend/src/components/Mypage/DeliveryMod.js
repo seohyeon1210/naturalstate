@@ -1,24 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DaumPostcode from "react-daum-postcode"; // DaumPostcode 컴포넌트
-import "./DeliveryMod.css"; // 분리된 CSS 파일 import
+import "./DeliveryMod.css"; // CSS 파일 import
 
-function DeliveryMod({ currentAddress, onSave, onClose }) {
-  const [name, setName] = useState(currentAddress.name);
-  const [phone, setPhone] = useState(currentAddress.phone);
-  const [address, setAddress] = useState(currentAddress.address);
-  const [postcode, setPostcode] = useState(currentAddress.postcode || "");
-  const [detailAddress, setDetailAddress] = useState(currentAddress.detailAddress || ""); // 상세주소 상태 추가
-  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
+function DeliveryMod({ onSave, onClose }) {
+  const [username, setUsername] = useState(""); // 이름 상태
+  const [phone, setPhone] = useState(""); // 전화번호 상태
+  const [address, setAddress] = useState(""); // 주소 상태
+  const [zip, setZip] = useState(""); // 우편번호 상태
+  const [detailAddress, setDetailAddress] = useState(""); // 상세주소 상태
+  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false); // 주소 모달 상태
+
+  // 세션 데이터 불러오기
+  useEffect(() => {
+    const fetchSessionData = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:18080/api/login/session/detail",
+          {
+            credentials: "include",
+          }
+        );
+        const data = await response.json();
+        if (response.ok) {
+          setUsername(data.username); // 올바른 변수로 변경
+          setPhone(data.phone);
+          setAddress(data.address);
+          setZip(data.zip); // 올바른 변수로 변경
+          setDetailAddress(data.detailAddress);
+        } else {
+          console.error("세션 정보 불러오기 실패:", data);
+        }
+      } catch (error) {
+        console.error("세션 정보 요청 중 오류:", error);
+      }
+    };
+    fetchSessionData();
+  }, []);
 
   // DaumPostcode 완료 핸들러
   const handleCompleteAddress = (data) => {
     const fullAddress = data.roadAddress || data.jibunAddress;
     setAddress(fullAddress);
-    setPostcode(data.zonecode);
+    setZip(data.zonecode);
     setIsAddressModalOpen(false);
   };
 
-  // 전화번호 입력 핸들러 (숫자만 허용, 11자리로 제한)
+  // 전화번호 입력 핸들러
   const handlePhoneChange = (e) => {
     const value = e.target.value.replace(/[^0-9]/g, "");
     if (value.length <= 11) {
@@ -27,21 +54,38 @@ function DeliveryMod({ currentAddress, onSave, onClose }) {
   };
 
   // 저장 버튼 클릭 핸들러
-  const handleSave = () => {
-    if (!name || !phone || !address || !postcode || !detailAddress) {
+  const handleSave = async () => {
+    if (!username || !phone || !address || !zip || !detailAddress) {
       alert("필수 입력값을 모두 입력해주세요.");
       return;
     }
 
     const updatedAddress = {
-      ...currentAddress,
-      name,
+      username,
       phone,
       address,
-      postcode,
-      detailAddress, // 상세주소 추가
+      zip,
+      detailAddress,
     };
-    onSave(updatedAddress);
+
+    try {
+      const response = await fetch("http://localhost:18080/api/delivery/update", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify(updatedAddress),
+      });
+      const result = await response.json();
+      if (response.ok) {
+        alert("배송지가 성공적으로 수정되었습니다.");
+        onSave(updatedAddress); // 상위 컴포넌트에 업데이트된 데이터 전달
+      } else {
+        alert("수정 실패: " + result.message);
+      }
+    } catch (error) {
+      console.error("배송지 수정 요청 실패:", error);
+      alert("배송지 수정 요청 중 오류가 발생했습니다.");
+    }
   };
 
   return (
@@ -54,8 +98,8 @@ function DeliveryMod({ currentAddress, onSave, onClose }) {
           <label>이름</label>
           <input
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             className="form-input"
           />
         </div>
@@ -96,7 +140,7 @@ function DeliveryMod({ currentAddress, onSave, onClose }) {
           <label>우편번호</label>
           <input
             type="text"
-            value={postcode}
+            value={zip}
             readOnly
             className="form-input"
           />
