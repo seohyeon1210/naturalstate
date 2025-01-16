@@ -53,10 +53,11 @@ function FindUser() {
         e.preventDefault();
 
         try {
+            // POST 요청: 데이터를 body에 포함
             const response = await fetch("/api/finduser/findid", {
-                method: "GET",
+                method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name, phone, email }),
+                body: JSON.stringify({ name, phone, email }), // 데이터를 body에 포함
             });
 
             const result = await response.json();
@@ -71,6 +72,8 @@ function FindUser() {
             alert("아이디 찾기 요청 중 문제가 발생했습니다.");
         }
     };
+
+
 
 
     // 비밀번호 찾기 요청 처리 함수

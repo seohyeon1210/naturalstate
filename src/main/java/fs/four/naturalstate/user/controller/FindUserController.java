@@ -19,30 +19,19 @@ public class FindUserController {
         this.findUserService = findUserService;
     }
 
-    /**
-     * 아이디 찾기 요청 처리
-     * @param name 사용자 이름
-     * @param phone 사용자 전화번호
-     * @param email 사용자 이메일
-     * @return 성공 또는 에러 메시지
-     */
-    @GetMapping("/findid")
-    public ResponseEntity<Map<String, String>> findUserId(
-            @RequestParam String name,
-            @RequestParam String phone,
-            @RequestParam String email
-    ) {
+    @PostMapping("/findid")
+    public ResponseEntity<Map<String, String>> findUserId(@RequestBody Map<String, String> request) {
+        String name = request.get("name");
+        String phone = request.get("phone");
+        String email = request.get("email");
         try {
-            // 아이디 찾기 로직 호출
             String userId = findUserService.findUserId(name, phone, email);
-
-            // 성공 메시지와 아이디 반환
             return ResponseEntity.ok(Map.of("userId", userId, "message", "아이디 찾기 성공"));
         } catch (IllegalArgumentException e) {
-            // 에러 메시지 반환
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
         }
     }
+
 
     /**
      * 비밀번호 찾기 요청 처리
