@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="fs.four.naturalstate.user.dao.FindUserDAO">
+
     <!-- ResultMap 정의 -->
     <resultMap id="userResult" type="fs.four.naturalstate.user.vo.UserVO">
-        <result property="userId" column="userId"/>
-        <result property="password" column="password"/>
-        <result property="userName" column="userName"/>
-        <result property="phone" column="phone"/>
-        <result property="zip" column="zip"/>
-        <result property="address" column="address"/>
-        <result property="detailAddress" column="detailAddress"/>
-        <result property="email" column="email"/>
-        <result property="receiveEmail" column="receiveEmail"/>
-        <result property="joindate" column="joindate"/>
-        <result property="auth" column="auth"/>
+        <result property="userId" column="USERID"/>
+        <result property="password" column="PASSWORD"/>
+        <result property="userName" column="USERNAME"/>
+        <result property="phone" column="PHONE"/>
+        <result property="zip" column="ZIP"/>
+        <result property="address" column="ADDRESS"/>
+        <result property="detailAddress" column="DETAILADDRESS"/>
+        <result property="email" column="EMAIL"/>
+        <result property="receiveEmail" column="RECEIVEEMAIL" javaType="string"/>
+        <result property="joindate" column="JOINDATE"/>
+        <result property="auth" column="AUTH"/>
     </resultMap>
 
     <!-- 아이디 찾기 -->
     <select id="findByNameAndPhoneAndEmail" parameterType="map" resultMap="userResult">
-        SELECT *
-        FROM USERS
+        SELECT
+        USERID, PASSWORD, USERNAME, PHONE, ZIP, ADDRESS, DETAILADDRESS,
+        EMAIL, TRIM(RECEIVEEMAIL) AS RECEIVEEMAIL, JOINDATE, AUTH
+        FROM "C##NATURALSTATE"."USERS"
         WHERE USERNAME = #{userName}
         AND PHONE = #{phone}
         AND EMAIL = #{email}
@@ -27,8 +30,10 @@
 
     <!-- 비밀번호 찾기 -->
     <select id="findByUserIdAndNameAndPhoneAndEmail" parameterType="map" resultMap="userResult">
-        SELECT *
-        FROM USERS
+        SELECT
+        USERID, PASSWORD, USERNAME, PHONE, ZIP, ADDRESS, DETAILADDRESS,
+        EMAIL, TRIM(RECEIVEEMAIL) AS RECEIVEEMAIL, JOINDATE, AUTH
+        FROM "C##NATURALSTATE"."USERS"
         WHERE USERID = #{userId}
         AND USERNAME = #{userName}
         AND PHONE = #{phone}
@@ -37,7 +42,7 @@
 
     <!-- 비밀번호 업데이트 -->
     <update id="updatePassword" parameterType="map">
-        UPDATE USERS
+        UPDATE "C##NATURALSTATE"."USERS"
         SET PASSWORD = #{password}
         WHERE USERID = #{userId}
     </update>

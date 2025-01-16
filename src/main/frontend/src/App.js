@@ -42,6 +42,7 @@ import RecommendedProduct from "./components/Product/RecommendedProduct";
 import FruitsProduct from "./components/Product/FruitsProduct";
 import GrainsProduct from "./components/Product/GrainsProduct";
 import VegetablesProduct from "./components/Product/VegetablesProduct";
+import RegisteredProduct from "./components/Mypage/RegisteredProduct";
 
 // User mypage import
 import Mypage from "./components/Mypage/Mypage";
