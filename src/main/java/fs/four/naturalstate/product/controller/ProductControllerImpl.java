@@ -44,4 +44,7 @@ public class ProductControllerImpl {
     public String Productwrite() {
         return "forward:/index.html";
     }
+
+    @GetMapping("registeredproduct")
+    public String RegisteredProduct () { return "forward:/index.html"; }
 }

@@ -69,7 +69,7 @@ function MypageSidebar() {
         { name: "주문배송현황", path: "/mypage/orderlist" },
         { name: "나의 배송지", path: "/mypage/deliverylist" },
         { name: "장바구니", path: "/mypage/cart" },
-        { name: "등록한 상품", path: "/mypage/productwrite" },
+        { name: "등록한 상품", path: "/mypage/registeredproduct" },
     ];
 
 
