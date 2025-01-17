@@ -90,7 +90,7 @@ task copyReactBuildFiles(type: Copy) {
 	dependsOn "buildReact"
 	from "$frontendDir/build"
 	into "$projectDir/src/main/resources/static"
-	include '**/*.jpg', '**/*.png', '**/*.jpeg'
+	include '**/*'
 }
 
 tasks.named('test') {
