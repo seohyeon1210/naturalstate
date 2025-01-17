@@ -30,6 +30,7 @@ import Report from "./components/Report/Report";
 import Event from "./components/CustomerService/Event";
 import Notice from "./components/CustomerService/Notice";
 import Inquiry from "./components/CustomerService/Inquiry";
+import DeliveryMethod from "./components/CustomerService/DeliveryMethod";
 
 // Cart import
 import Cart from "./components/Cart/Cart";
@@ -153,6 +154,7 @@ function App() {
                     <Route path="/notice" element={<Notice />} />
                     <Route path="/inquiry" element={<Inquiry />} />
                     <Route path="/webterms" element={<WebTerms />} />
+                    <Route path="/deliverymethod" element={<DeliveryMethod />} />
 
                     {/* 상품 */}
                     <Route path="/productwrite" element={<ProductWrite />} />

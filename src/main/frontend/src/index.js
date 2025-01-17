@@ -34,6 +34,7 @@ import AdminOrder from "./components/Adminpage/AdminOrder";
 import AdminUserlist from "./components/Adminpage/AdminUserlist";
 import AdminConfirmlist from "./components/Adminpage/AdminConfirmlist";
 import RegisteredProduct from './components/Mypage/RegisteredProduct';
+import DeliveryMethod from './components/CustomerService/DeliveryMethod';
 
 
 const router = createBrowserRouter([
@@ -69,6 +70,7 @@ const router = createBrowserRouter([
             { path: "adminuserlist", element: <AdminUserlist/>},
             { path: "adminconfirmlist", element: <AdminConfirmlist/>},
             { path: "registeredproduct", element: <RegisteredProduct/>},
+            { path: "deliverymethod", element: <DeliveryMethod/> },
                 { path: "sandbox",
                 children: [
                     { path: "", element: <CheckoutPage /> },

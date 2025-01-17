@@ -21,4 +21,7 @@ public class CustomerServiceControllerImpl {
 
     @GetMapping("/notice")
     public String Notice () { return "forward:/index.html"; }
+
+    @GetMapping("/deliverymethod")
+    public String DeliveryMethod () { return "forward:/index.html"; }
 }
