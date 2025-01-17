@@ -37,17 +37,6 @@ function ProductDetail() {
             alt="Product"
             className="detail-main-image"
           />
-          {/* 썸네일 이미지 */}
-          <div className="detail-thumbnail-container">
-            {[1, 2, 3, 4].map((item) => (
-              <img
-                key={item}
-                src={Thumbnail1}
-                alt={`Thumbnail ${item}`}
-                className="detail-thumbnail-image"
-              />
-            ))}
-          </div>
         </div>
 
         {/* 오른쪽 상세 정보 영역 */}
@@ -127,17 +116,26 @@ function ProductDetail() {
 
         <h3 className="detail-section-title">주문 전 꼭 읽어주세요!</h3>
         <ul>
-          <li>안내사항 1</li>
-          <li>안내사항 2</li>
-          <li>안내사항 3</li>
+          <li>모든 상품은 산지 직송으로 배송되며, 배송지 도착까지 1-3일 정도 소요됩니다!</li>
+          <li>교환, 환불은 상품 도착일로부터 구매자가 상품에 이상이 있는 걸 발견하고 고객센터에 교환 및 환불을 요청하면
+          당사 정책에 따라 절차를 진행합니다.</li>
         </ul>
-
-        <h3 className="detail-section-title">사진</h3>
+        <h3 className="detail-section-title">상품 설명</h3>
         <img
           src={TangerineDescImage}
           alt="Additional Info"
           className="detail-additional-image"
         />
+        <ul>
+          <li>제주도에서 바닷바람 맞으면서 자란 달고 맛있는 감귤입니다!
+          <br/>
+          한 입 베어 물면 상큼한 향과 함께 달콤한 과즙이 풍부하게 퍼집니다!
+          <br/>
+          자연의 건강함을 그대로 담아낸 저희 귤은 아침 식사부터 간식, 디저트까지 다양하게 즐길 수 있습니다!
+          <br/>
+          제주도의 싱그러운 자연의 맛을 만나보세요.
+          </li>
+        </ul>
       </div>
     </div>
   );
