@@ -1,13 +1,13 @@
 import React from "react";
 import "./Event.css"; // CSS 파일 import
+import NewStore from '../../images/신규입점.jpg';
 
 function EventPage() {
   const events = [
     {
       id: 1,
       label: "이벤트",
-      image: "https://via.placeholder.com/300x200", // Placeholder image
-      title: "신규 입점 스토어",
+      image: "../../images/신규입점.jpg", // Placeholder image
       description: "새롭게 입점신청한 스토어를 만나보세요.",
     },
     {
@@ -41,7 +41,7 @@ function EventPage() {
       <div className="event-grid">
         {events.map((event) => (
           <div key={event.id} className="event-card">
-            <img src={event.image} alt={event.title} />
+            <img src={NewStore} alt={event.title} />
             <div className="event-card-content">
               <span className="event-card-label">{event.label}</span>
               <h2 className="event-card-title">{event.title}</h2>

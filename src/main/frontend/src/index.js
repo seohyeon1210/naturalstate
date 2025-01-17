@@ -35,6 +35,7 @@ import AdminUserlist from "./components/Adminpage/AdminUserlist";
 import AdminConfirmlist from "./components/Adminpage/AdminConfirmlist";
 import RegisteredProduct from './components/Mypage/RegisteredProduct';
 import DeliveryMethod from './components/CustomerService/DeliveryMethod';
+import EventPage from './components/CustomerService/Event';
 
 
 const router = createBrowserRouter([
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
             { path: "post", element: <PostForm /> },
             { path: "terms", element: <Terms /> },
             { path: "report", element: <Report /> },
-            { path: "events", element: <Notice /> },
+            { path: "events", element: <EventPage /> },
             { path: "inquiry", element: <Inquiry /> },
             { path: "webterms", element: <WebTerms /> },
             { path: "productwrite", element: <ProductWrite /> },
@@ -71,6 +72,7 @@ const router = createBrowserRouter([
             { path: "adminconfirmlist", element: <AdminConfirmlist/>},
             { path: "registeredproduct", element: <RegisteredProduct/>},
             { path: "deliverymethod", element: <DeliveryMethod/> },
+            { path: "notice", element: <Notice/>},
                 { path: "sandbox",
                 children: [
                     { path: "", element: <CheckoutPage /> },
