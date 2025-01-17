@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fs.four.naturalstate.admin.dao.AdminDAO">
+    <resultMap id="user" type="userVO">
+        <result property="userId" column="userId"/>
+        <result property="password" column="password"/>
+        <result property="userName" column="userName"/>
+        <result property="phone" column="phone"/>
+        <result property="zip" column="zip"/>
+        <result property="address" column="address"/>
+        <result property="detailAddress" column="detailAddress"/>
+        <result property="email" column="email"/>
+        <result property="receiveEmail" column="receiveEmail"/>
+        <result property="joindate" column="joindate"/>
+        <result property="auth" column="auth"/>
+    </resultMap>
+
+    <select id="selectAllUserList" resultType="userVO">
+        <![CDATA[
+        select *
+        from users
+        order by userid desc
+        ]]>
+    </select>
+</mapper>
