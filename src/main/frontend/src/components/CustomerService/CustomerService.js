@@ -16,6 +16,9 @@ function CustomerService() {
               <a href="/inquiry">자주 묻는 질문</a>
             </li>
             <li>
+              <a href="/deliverymethod">배송 방식 안내</a>
+            </li>
+            <li>
               <a href="/post">1:1 문의</a>
             </li>
           </ul>

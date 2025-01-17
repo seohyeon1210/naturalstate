@@ -1,0 +1,67 @@
+/* 전체 컨테이너 스타일 */
+.delivery-method-container {
+  padding: 20px;
+  font-family: 'PretendardRegular';
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+/* 제목 스타일 */
+.delivery-method-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 10px;
+  font-family: 'PretendardBold';
+}
+
+.delivery-divider {
+  border: none;
+  border-top: 1px solid #cccccc;
+  margin-bottom: 20px;
+}
+
+/* 섹션 스타일 */
+.delivery-section {
+  margin-bottom: 30px;
+}
+
+.delivery-subtitle {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.delivery-logo {
+  width: 150px;
+  height: auto;
+  margin-top: 10px;
+}
+
+/* 배송비, 배송 안내 텍스트 스타일 */
+.delivery-text {
+  font-size: 16px;
+  color: #333333;
+  margin-bottom: 5px;
+}
+
+.delivery-note {
+  font-size: 14px;
+  color: #999999;
+  margin-top: -10px;
+}
+
+/* 배송 안내 리스트 스타일 */
+.delivery-list {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.delivery-list li {
+  font-size: 14px;
+  color: #555555;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
