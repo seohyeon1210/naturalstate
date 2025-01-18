@@ -28,6 +28,7 @@ public class LoginUserController {
             // 사용자 정보를 DB에서 조회 후 세션에 저장
             UserVO user = loginUserService.getUserDetails(loginRequest.getUserId());
             session.setAttribute("user", user);
+            session.setAttribute("userType", "user"); // 사용자 유형 추가
             return ResponseEntity.ok("Login successful!");
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid userId or password!");
@@ -78,7 +79,7 @@ public class LoginUserController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not logged in.");
     }
 
-    //회원정보 수정
+    // 회원정보 수정
     @PostMapping("/update")
     public ResponseEntity<String> updateUserInfo(@RequestBody UserVO updatedUser, HttpSession session) {
         UserVO user = (UserVO) session.getAttribute("user");

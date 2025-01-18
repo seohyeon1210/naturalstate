@@ -19,4 +19,5 @@
         values (#{storeId}, #{password}, #{storeName}, #{phone}, #{taxId}, #{taxFile}, #{email}, #{storeContact})
         ]]>
     </insert>
+
 </mapper>

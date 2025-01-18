@@ -54,7 +54,7 @@ import { CheckoutPage } from "./components/Payment/Checkout";
 import { SuccessPage } from "./components/Payment/Success";
 import { FailPage } from "./components/Payment/Fail";
 
-//Adminpage import
+// Adminpage import
 import Adminpage from "./components/Adminpage/Adminpage";
 import AdminOrder from "./components/Adminpage/AdminOrder";
 import AdminUserlist from "./components/Adminpage/AdminUserlist";
@@ -70,14 +70,25 @@ function App() {
     useEffect(() => {
         const checkSession = async () => {
             try {
-                const response = await fetch("http://localhost:18080/api/login/session/detail", {
+                // 사용자 세션 및 스토어 세션 확인 API 호출
+                const loginResponse = await fetch("http://localhost:18080/api/login/session/detail", {
                     method: "GET",
                     credentials: "include",
                 });
-                if (response.ok) {
-                    const user = await response.json();
+
+                const storeResponse = await fetch("http://localhost:18080/api/store/session", {
+                    method: "GET",
+                    credentials: "include",
+                });
+
+                if (loginResponse.ok) {
+                    const user = await loginResponse.json();
                     setIsLoggedIn(true);
-                    setUserData(user);
+                    setUserData({ ...user, userType: "user" }); // 일반 사용자
+                } else if (storeResponse.ok) {
+                    const store = await storeResponse.json();
+                    setIsLoggedIn(true);
+                    setUserData({ ...store, userType: "store" }); // 스토어 사용자
                 } else {
                     setIsLoggedIn(false);
                     setUserData(null);
@@ -128,7 +139,7 @@ function App() {
         <div id="app-wrapper">
             <MainAlert />
             <Header isLoggedIn={isLoggedIn} user={userData} onLogout={handleLogout} />
-            {isMainPage && <SecondHeader />}
+            {isMainPage && <SecondHeader userType={userData?.userType} />}
             <div className="main-content">
                 <Routes>
                     {/* 메인 */}
@@ -157,7 +168,9 @@ function App() {
                     <Route path="/deliverymethod" element={<DeliveryMethod />} />
 
                     {/* 상품 */}
-                    <Route path="/productwrite" element={<ProductWrite />} />
+                    {userData?.userType === "store" && (
+                        <Route path="/productwrite" element={<ProductWrite />} />
+                    )}
                     <Route path="/productdetail" element={<ProductDetail />} />
                     <Route path="/productpage" element={<ProductPage />} />
                     <Route path="/bestproduct" element={<BestProduct />} />

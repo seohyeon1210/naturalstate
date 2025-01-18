@@ -4,8 +4,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import './SecondHeader.css';
 
-function SecondHeader(){
-    return(
+function SecondHeader({ userType }) {
+    return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -15,17 +15,20 @@ function SecondHeader(){
                         <Nav.Link as={Link} to="/recommendedproduct">추천</Nav.Link>
                         <NavDropdown title="카테고리" id="basic-nav-dropdown">
                             <NavDropdown.Item as={Link} to="/fruitsproduct">과일</NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to="/vegetablesproduct">
-                                채소
-                            </NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/vegetablesproduct">채소</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to="/grainsproduct">곡물</NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link as={Link} to="/productwrite">글 쓰기</Nav.Link>
+                        {userType === "store" && (
+
+                            <Nav.Link as={Link} to="/productwrite">상품 등록</Nav.Link>
+                        )}
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
     );
 }
+
 
 export default SecondHeader;
