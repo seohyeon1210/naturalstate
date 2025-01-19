@@ -100,11 +100,12 @@ function App() {
             }
         };
         checkSession();
-    }, []);
+    },[isLoggedIn]);
 
     // 로그인 성공 시 호출
-    const handleLogin = () => {
+    const handleLogin = (user) => {
         setIsLoggedIn(true);
+        setUserData(user);
     };
 
     // 로그아웃 시 호출

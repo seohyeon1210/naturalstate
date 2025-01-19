@@ -21,19 +21,18 @@ public class StoreLoginController {
 
     // 스토어 로그인 처리
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody StoreVO loginRequest, HttpSession session) {
+    public ResponseEntity<?> login(@RequestBody StoreVO loginRequest, HttpSession session) {
         if (loginRequest.getStoreId() == null || loginRequest.getPassword() == null) {
             return ResponseEntity.badRequest().body("StoreId and Password must not be null!");
         }
 
         StoreVO store = storeLoginService.authenticate(loginRequest.getStoreId(), loginRequest.getPassword());
         if (store != null) {
-            session.setAttribute("store", store); // 세션에 스토어 정보 저장
-            session.setAttribute("userType", "store"); // 사용자 유형 저장
-            System.out.println("세션에 저장된 스토어: " + session.getAttribute("store"));
-            System.out.println("세션에 저장된 userType: " + session.getAttribute("userType"));
+            session.setAttribute("store", store);
+            session.setAttribute("userType", "store");
 
-            return ResponseEntity.ok("Login successful!");
+            // JSON 형식으로 반환
+            return ResponseEntity.ok(store);
         } else {
             return ResponseEntity.status(401).body("Invalid store ID or password.");
         }
