@@ -31,17 +31,17 @@ function Login({ onLogin }) {
                 credentials: "include",
             });
 
+            const result = await response.json(); // JSON 응답 데이터를 받아옴
+
             if (response.ok) {
-                const user = await response.json(); // JSON 응답 데이터를 받아옴
-                onLogin(user); // App.js로 사용자 정보 전달
-                alert("로그인 성공!");
+                onLogin(result); // App.js로 사용자 정보 전달
+                alert(result.message); // 로그인 성공 메시지
                 navigate("/"); // 메인 페이지로 이동
             } else {
-                const errorText = await response.text(); // 오류 메시지를 받아옴
-                setErrorMessage(errorText);
+                setErrorMessage(result.error); // 오류 메시지 설정
             }
         } catch (error) {
-            console.error("로그인 요청 실패:", error);
+            console.error("로그인 실패:", error);
             setErrorMessage("로그인 요청 중 문제가 발생했습니다.");
         }
     };

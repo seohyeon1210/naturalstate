@@ -23,18 +23,30 @@ public class StoreLoginController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody StoreVO loginRequest, HttpSession session) {
         if (loginRequest.getStoreId() == null || loginRequest.getPassword() == null) {
-            return ResponseEntity.badRequest().body("StoreId and Password must not be null!");
+            return ResponseEntity.badRequest().body(Map.of("error", "StoreId and Password must not be null!"));
         }
 
-        StoreVO store = storeLoginService.authenticate(loginRequest.getStoreId(), loginRequest.getPassword());
-        if (store != null) {
-            session.setAttribute("store", store);
-            session.setAttribute("userType", "store");
+        try {
+            StoreVO store = storeLoginService.authenticate(loginRequest.getStoreId(), loginRequest.getPassword());
+            if (store != null) {
+                session.setAttribute("store", store);
+                session.setAttribute("userType", "store");
 
-            // JSON 형식으로 반환
-            return ResponseEntity.ok(store);
-        } else {
-            return ResponseEntity.status(401).body("Invalid store ID or password.");
+                // null 방어 코드
+                String storeId = store.getStoreId() != null ? store.getStoreId() : "Unknown";
+                String storeName = store.getStoreName() != null ? store.getStoreName() : "Unknown";
+
+                return ResponseEntity.ok(Map.of(
+                        "message", "환영합니다!",
+                        "storeId", storeId,
+                        "storeName", storeName
+                ));
+            } else {
+                return ResponseEntity.status(401).body(Map.of("error", "Invalid store ID or password."));
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); // 로그 출력
+            return ResponseEntity.status(500).body(Map.of("error", "Internal Server Error occurred."));
         }
     }
 
