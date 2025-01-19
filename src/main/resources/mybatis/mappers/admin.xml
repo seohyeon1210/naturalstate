@@ -22,4 +22,12 @@
         order by userid desc
         ]]>
     </select>
+
+    <select id="selectAllStoreList" resultType="storeVO">
+        <![CDATA[
+        select *
+        from store
+        order by storeid desc
+        ]]>
+    </select>
 </mapper>
