@@ -153,6 +153,7 @@ function ProductWrite() {
                     resetForm();
                     setThumbnailPreview(DefaultImg);
                     setDetailPreview(DefaultImg);
+                    window.location.href = '/';
                 } catch (error) {
                     console.error('상품 등록 실패:', error);
                     alert('상품 등록에 실패하였습니다. 다시 시도해 주세요.');

@@ -27,4 +27,14 @@ public class AdminRestController {
             return ResponseEntity.internalServerError().build();
         }
     }
+
+    @GetMapping("/stores")
+    public ResponseEntity<List> getAllStores() {
+        try{
+            List storesList = adminService.listStores();
+            return ResponseEntity.ok(storesList);
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }

@@ -1,8 +1,13 @@
 package fs.four.naturalstate.store.vo;
 
+import lombok.Data;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class StoreVO {
+@Data
+public class StoreVO implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String storeId;
     private String password;
     private String confirmPassword;

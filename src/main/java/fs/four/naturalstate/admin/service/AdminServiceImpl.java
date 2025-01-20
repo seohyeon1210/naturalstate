@@ -20,4 +20,11 @@ public class AdminServiceImpl implements AdminService {
         usersList = adminDAO.selectAllUserList();
         return usersList;
     }
+
+    @Override
+    public List listStores() throws Exception{
+        List storesList = null;
+        storesList = adminDAO.selectAllStoreList();
+        return storesList;
+    }
 }

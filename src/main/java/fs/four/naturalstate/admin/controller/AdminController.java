@@ -7,4 +7,6 @@ import org.springframework.web.servlet.ModelAndView;
 public interface AdminController {
     public ModelAndView listUsers(HttpServletRequest request,
                                   HttpServletResponse response) throws Exception;
+
+    public ModelAndView listStores(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }
