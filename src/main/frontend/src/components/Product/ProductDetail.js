@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "./ProductDetail.css"; // 분리된 CSS 파일 import
+import "./ProductDetail.css";
+import { Link } from "react-router-dom";
+import {Button} from "react-bootstrap";
 
 function ProductDetail() {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     console.log("Fetching product ID:", productId);
@@ -12,7 +15,6 @@ function ProductDetail() {
       try {
         const response = await fetch(`http://localhost:18080/api/product/${productId}`);
         const data = await response.json();
-        // setProduct(data);
         setProduct(data || { options: [] });
       } catch (error) {
         console.error("Error fetching product details:", error);
@@ -24,6 +26,18 @@ function ProductDetail() {
   if (!product) {
     return <div>상품 정보를 불러오는 중...</div>;
   }
+
+  const increaseQuantity = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
+  };
+
+  const totalPrice = product.product_price * quantity;
 
   return (
       <div>
@@ -61,20 +75,19 @@ function ProductDetail() {
 
 
             <div className="detail-quantity-control">
-              <button className="detail-quantity-button">-</button>
-              <span className="detail-quantity-display">1</span>
-              <button className="detail-quantity-button">+</button>
+              <Button variant="primary" className="detail-quantity-button" onClick={decreaseQuantity}>-</Button>
+              <span className="detail-quantity-display">{quantity}</span>
+              <Button variant="primary" className="detail-quantity-button" onClick={increaseQuantity}>+</Button>
             </div>
 
-
             <div className="detail-total-price">
-              총 금액: {(product.product_price * 1).toLocaleString()}원
+              총 금액: {totalPrice.toLocaleString()}원
             </div>
 
 
             <div className="detail-action-buttons">
-              <button className="detail-cart-button">장바구니</button>
-              <button className="detail-buy-now-button">바로구매</button>
+              <Button className="detail-cart-button">장바구니</Button>
+              <Button as={Link} to="/sandbox" variant="primary" className="detail-buy-now-button">바로구매</Button>
             </div>
           </div>
         </div>

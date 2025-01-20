@@ -33,6 +33,10 @@ const CartAmount = ({ totalItems, totalPrice, shipping = 3000 }) => {
       >
         {totalItems}개 상품 구매하기
       </Button>
+        {/* 기존 버튼 */}
+        {/*<Button as={Link} to="/sandbox" variant="primary" size="lg" className="cart-btn-block">*/}
+        {/*    {totalItems}개 상품 구매하기*/}
+        {/*</Button>*/}
     </Card>
   );
 };
