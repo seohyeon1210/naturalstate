@@ -1,24 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Container, Row, Col, Pagination, Button } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 import './ProductPage.css';
 import axios from "axios";
 import * as XLSX from "xlsx";
 
 function ProductPage() {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([])
+    const { category } = useParams();
     const fileName = "product_data";
+
+    const categoryMapping = {
+        "fruits": 1,
+        "vegetables": 2,
+        "grains": 3,
+    };
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get("http://localhost:18080/api/products");
+                const categoryId = categoryMapping[category];
+                console.log("URL category:", category);
+                console.log("Mapped categoryId:", categoryId);
+                if (!categoryId) {
+                    console.error("Invalid category: ", category);
+                    setProducts([]);
+                    return;
+                }
+
+                const response = await axios.get(`http://localhost:18080/api/products?category=${categoryId}`);
+                console.log("Response Data:", response.data);
                 setProducts(response.data);
             } catch (error) {
                 console.error("네트워크 에러: ", error);
             }
         };
         fetchProducts();
-    }, []);
+    }, [category]);
 
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 8;
@@ -46,7 +64,12 @@ function ProductPage() {
 
     return (
         <Container>
-            <h5 className="my-4">전체 보기</h5>
+            <h5 className="my-4">{
+                category === "fruits" ? "과일 상품" :
+                    category === "grains" ? "곡류 상품" :
+                        category === "vegetables" ? "야채·채소 상품" :
+                            `${category} 상품`
+            }</h5>
             <hr />
             <Button variant="primary" onClick={handleDownloadExcel} className="mb-4">
                 엑셀 다운로드

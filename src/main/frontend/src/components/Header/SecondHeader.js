@@ -14,9 +14,9 @@ function SecondHeader({ userType }) {
                         <Nav.Link as={Link} to="/">홈</Nav.Link>
                         <Nav.Link as={Link} to="/recommendedproduct">추천</Nav.Link>
                         <NavDropdown title="카테고리" id="basic-nav-dropdown">
-                            <NavDropdown.Item as={Link} to="/fruitsproduct">과일</NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to="/vegetablesproduct">채소</NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to="/grainsproduct">곡물</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/products/fruits">과일</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/products/vegetables">채소</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/products/grains">곡물</NavDropdown.Item>
                         </NavDropdown>
                         {userType === "store" && (
 

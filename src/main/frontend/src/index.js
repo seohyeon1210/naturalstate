@@ -23,9 +23,6 @@ import ProductDetail from "./components/Product/ProductDetail";
 import ProductPage from "./components/Product/ProductPage";
 import BestProduct from "./components/Product/BestProduct";
 import RecommendedProduct from "./components/Product/RecommendedProduct";
-import FruitsProduct from "./components/Product/FruitsProduct";
-import GrainsProduct from "./components/Product/GrainsProduct";
-import VegetablesProduct from "./components/Product/VegetablesProduct";
 import {Cart} from "react-bootstrap-icons";
 import Mypage from "./components/Mypage/Mypage";
 import OrderList from "./components/Mypage/OrderList";
@@ -60,9 +57,7 @@ const router = createBrowserRouter([
             { path: "productpage", element: <ProductPage /> },
             { path: "bestproduct", element: <BestProduct /> },
             { path: "recommendedproduct", element: <RecommendedProduct /> },
-            { path: "fruitsproduct", element: <FruitsProduct /> },
-            { path: "grainsproduct", element: <GrainsProduct /> },
-            { path: "vegetablesproduct", element: <VegetablesProduct /> },
+            { path: "/products/:category", element: <ProductPage /> },
             { path: "cart", element: <Cart /> },
             { path: "/mypage/*", element: <Mypage /> },
             { path: "orderlist", element: <OrderList /> },

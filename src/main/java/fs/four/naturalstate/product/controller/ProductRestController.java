@@ -36,12 +36,19 @@ public class ProductRestController {
     }
 
     @GetMapping("/products")
-    public ResponseEntity<List> getAllProducts() {
+    public ResponseEntity<List> getProducts(@RequestParam(value = "category", required = false) String category) {
         try {
-            List productsList = productWriteService.listProducts();
+            List productsList;
+
+            if (category != null && !category.isEmpty()) {
+                productsList = productWriteService.listProductsByCategory(category);
+            } else {
+                productsList = productWriteService.listProducts();
+            }
 
             return ResponseEntity.ok(productsList);
         } catch (Exception e) {
+            System.err.println("상품 조회 중 오류 발생: " + e.getMessage());
             return ResponseEntity.internalServerError().build();
         }
     }

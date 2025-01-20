@@ -11,4 +11,6 @@ public interface ProductWriteDAO {
     public int insertProductWrite(ProductWriteVO productWriteVO) throws DataAccessException;
 
     public List selectAllProductList() throws DataAccessException;
+
+    List<ProductWriteVO> selectProductListByCategory(String category) throws DataAccessException;
 }

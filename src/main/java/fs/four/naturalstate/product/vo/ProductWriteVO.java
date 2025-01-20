@@ -5,7 +5,7 @@ import java.util.Date;
 public class ProductWriteVO {
 
     private long product_number;
-    private String store_id;
+    private String storeid;
     private String product_category;
     private String product_title;
     private String product_thumbnail_name;
@@ -31,12 +31,12 @@ public class ProductWriteVO {
         this.product_number = product_number;
     }
 
-    public String getStore_id() {
-        return store_id;
+    public String getStoreid() {
+        return storeid;
     }
 
-    public void setStore_id(String store_id) {
-        this.store_id = store_id;
+    public void setStoreid(String storeid) {
+        this.storeid = storeid;
     }
 
     public String getProduct_category() {
