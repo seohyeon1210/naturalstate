@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import "./ProductDetail.css"; // 분리된 CSS 파일 import
+import "./ProductDetail.css"; // CSS 파일 import
 import TangerineImage from '../../images/감귤한박스.png';
-import Thumbnail1 from '../../images/감귤한박스1.jpg';
-import TangerineDescImage from '../../images/감귤설명1.jpg'
+import TangerineDescImage from '../../images/감귤설명1.jpg';
 
 function ProductDetail() {
   const [selectedOption, setSelectedOption] = useState(""); // 옵션 선택 상태
@@ -24,6 +23,46 @@ function ProductDetail() {
     } else if (type === "decrease" && quantity > 1) {
       setQuantity((prev) => prev - 1);
     }
+  };
+
+  // 장바구니 추가 버튼 동작
+  const handleAddToCart = async () => {
+    if (!selectedOption) {
+      alert("옵션을 선택해주세요.");
+      return;
+    }
+
+    const cartItem = {
+      userId: "user123", // 현재 로그인한 사용자 ID (임시값)
+      productNumber: 1, // 상품 고유번호 (임시값)
+      productTitle: "[첫 구매 할인] 감귤 1박스",
+      productPrice: price,
+      productThumbnailPath: "/images/감귤한박스.png", // 임시 경로
+      itemOption: selectedOption,
+      quantity: quantity,
+    };
+
+    try {
+      const response = await fetch("http://localhost:18080/api/cart/add", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(cartItem),
+      });
+
+      if (response.ok) {
+        alert("장바구니에 추가되었습니다.");
+      } else {
+        alert("장바구니 추가에 실패했습니다.");
+      }
+    } catch (error) {
+      console.error("API 요청 중 오류 발생:", error);
+      alert("오류가 발생했습니다. 다시 시도해주세요.");
+    }
+  };
+
+  // 바로구매 버튼 동작
+  const handleBuyNow = () => {
+    alert("바로구매 기능은 아직 구현되지 않았습니다.");
   };
 
   return (
@@ -48,7 +87,7 @@ function ProductDetail() {
           {/* 혜택 정보 */}
           <div className="detail-benefits">
             <p>혜택: 최대 10% 적립 (토스페이)</p>
-            <p>배송: 무료배송 | 지금 주문시 내일 도착 가능</p>
+            <p>배송: 무료배송 | 지금 주문 시 내일 도착 가능</p>
           </div>
 
           {/* 옵션 선택 */}
@@ -103,8 +142,18 @@ function ProductDetail() {
 
           {/* 버튼 */}
           <div className="detail-action-buttons">
-            <button className="detail-cart-button">장바구니</button>
-            <button className="detail-buy-now-button">바로구매</button>
+            <button
+              className="detail-cart-button"
+              onClick={handleAddToCart}
+            >
+              장바구니
+            </button>
+            <button
+              className="detail-buy-now-button"
+              onClick={handleBuyNow}
+            >
+              바로구매
+            </button>
           </div>
         </div>
       </div>
@@ -117,8 +166,9 @@ function ProductDetail() {
         <h3 className="detail-section-title">주문 전 꼭 읽어주세요!</h3>
         <ul>
           <li>모든 상품은 산지 직송으로 배송되며, 배송지 도착까지 1-3일 정도 소요됩니다!</li>
-          <li>교환, 환불은 상품 도착일로부터 구매자가 상품에 이상이 있는 걸 발견하고 고객센터에 교환 및 환불을 요청하면
-          당사 정책에 따라 절차를 진행합니다.</li>
+          <li>
+            교환, 환불은 상품 도착일로부터 구매자가 상품에 이상이 있는 걸 발견하고 고객센터에 교환 및 환불을 요청하면 당사 정책에 따라 절차를 진행합니다.
+          </li>
         </ul>
         <h3 className="detail-section-title">상품 설명</h3>
         <img
@@ -127,13 +177,14 @@ function ProductDetail() {
           className="detail-additional-image"
         />
         <ul>
-          <li>제주도에서 바닷바람 맞으면서 자란 달고 맛있는 감귤입니다!
-          <br/>
-          한 입 베어 물면 상큼한 향과 함께 달콤한 과즙이 풍부하게 퍼집니다!
-          <br/>
-          자연의 건강함을 그대로 담아낸 저희 귤은 아침 식사부터 간식, 디저트까지 다양하게 즐길 수 있습니다!
-          <br/>
-          제주도의 싱그러운 자연의 맛을 만나보세요.
+          <li>
+            제주도에서 바닷바람 맞으면서 자란 달고 맛있는 감귤입니다!
+            <br />
+            한 입 베어 물면 상큼한 향과 함께 달콤한 과즙이 풍부하게 퍼집니다!
+            <br />
+            자연의 건강함을 그대로 담아낸 저희 귤은 아침 식사부터 간식, 디저트까지 다양하게 즐길 수 있습니다!
+            <br />
+            제주도의 싱그러운 자연의 맛을 만나보세요.
           </li>
         </ul>
       </div>

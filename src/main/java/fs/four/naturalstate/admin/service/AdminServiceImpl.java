@@ -11,6 +11,7 @@ import java.util.List;
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
 public class AdminServiceImpl implements AdminService {
+
     @Autowired
     private AdminDAO adminDAO;
 
