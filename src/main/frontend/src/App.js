@@ -40,10 +40,6 @@ import ProductWrite from "./components/Product/ProductWrite";
 import ProductDetail from "./components/Product/ProductDetail";
 import BestProduct from "./components/Product/BestProduct";
 import RecommendedProduct from "./components/Product/RecommendedProduct";
-import FruitsProduct from "./components/Product/FruitsProduct";
-import GrainsProduct from "./components/Product/GrainsProduct";
-import VegetablesProduct from "./components/Product/VegetablesProduct";
-import RegisteredProduct from "./components/Mypage/RegisteredProduct";
 
 // User mypage import
 import Mypage from "./components/Mypage/Mypage";
@@ -131,9 +127,9 @@ function App() {
         "/productpage",
         "/bestproduct",
         "/recommendedproduct",
-        "/fruitsproduct",
-        "/grainsproduct",
-        "/vegetablesproduct",
+        "/products/fruits",
+        "/products/grains",
+        "/products/vegetables",
     ].includes(location.pathname);
 
     return (
@@ -176,9 +172,9 @@ function App() {
                     <Route path="/productpage" element={<ProductPage />} />
                     <Route path="/bestproduct" element={<BestProduct />} />
                     <Route path="/recommendedproduct" element={<RecommendedProduct />} />
-                    <Route path="/products/fruits" element={<FruitsProduct />} />
-                    <Route path="/products/grains" element={<GrainsProduct />} />
-                    <Route path="/products/vegetables" element={<VegetablesProduct />} />
+                    <Route path="/products/:category" element={<ProductPage />} />
+                    <Route path="/products/:category" element={<ProductPage />} />
+                    <Route path="/products/:category" element={<ProductPage />} />
                     <Route path="/cart" element={<Cart />} />
 
                     {/* 마이페이지 */}
