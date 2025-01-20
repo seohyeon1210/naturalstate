@@ -34,4 +34,12 @@
         order by product_number desc
         ]]>
     </select>
+
+    <select id="selectProductListByCategory" resultType="ProductWriteVO" parameterType="String">
+        <![CDATA[
+        select *
+        from product
+        where product_category = #{category}
+        ]]>
+    </select>
 </mapper>

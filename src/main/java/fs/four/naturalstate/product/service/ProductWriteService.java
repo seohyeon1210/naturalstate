@@ -10,4 +10,6 @@ public interface ProductWriteService {
     public int addProductWrite(ProductWriteVO productWriteVO, MultipartFile thumbnailFile, MultipartFile detailFile) throws Exception;
 
     public List listProducts() throws Exception;
+
+    public List<ProductWriteVO> listProductsByCategory(String category) throws Exception;
 }

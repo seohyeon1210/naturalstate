@@ -10,10 +10,26 @@ function ProductPage() {
     const { category } = useParams();
     const fileName = "product_data";
 
+    const categoryMapping = {
+        "fruits": 1,
+        "vegetables": 2,
+        "grains": 3,
+    };
+
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get(`http://localhost:18080/api/products?category=${category}`);
+                const categoryId = categoryMapping[category];
+                console.log("URL category:", category);
+                console.log("Mapped categoryId:", categoryId);
+                if (!categoryId) {
+                    console.error("Invalid category: ", category);
+                    setProducts([]);
+                    return;
+                }
+
+                const response = await axios.get(`http://localhost:18080/api/products?category=${categoryId}`);
+                console.log("Response Data:", response.data);
                 setProducts(response.data);
             } catch (error) {
                 console.error("네트워크 에러: ", error);
