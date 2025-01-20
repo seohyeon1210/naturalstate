@@ -168,7 +168,7 @@ function App() {
                     {userData?.userType === "store" && (
                         <Route path="/productwrite" element={<ProductWrite />} />
                     )}
-                    <Route path="/productdetail" element={<ProductDetail />} />
+                    <Route path="/product/:productId" element={<ProductDetail />} />
                     <Route path="/productpage" element={<ProductPage />} />
                     <Route path="/bestproduct" element={<BestProduct />} />
                     <Route path="/recommendedproduct" element={<RecommendedProduct />} />

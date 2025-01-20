@@ -12,4 +12,6 @@ public interface ProductWriteService {
     public List listProducts() throws Exception;
 
     public List<ProductWriteVO> listProductsByCategory(String category) throws Exception;
+
+    public ProductWriteVO getProductById(long productNumber) throws Exception;
 }

@@ -67,4 +67,9 @@ public class ProductWriteServiceImpl implements ProductWriteService {
     public List<ProductWriteVO> listProductsByCategory(String category) throws Exception{
         return productWriteDAO.selectProductListByCategory(category);
     }
+
+    @Override
+    public ProductWriteVO getProductById(long productNumber) throws Exception{
+        return productWriteDAO.selectProductById(productNumber);
+    }
 }

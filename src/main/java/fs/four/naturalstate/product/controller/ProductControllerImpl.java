@@ -1,6 +1,7 @@
 package fs.four.naturalstate.product.controller;
 
 import fs.four.naturalstate.product.service.ProductWriteServiceImpl;
+import fs.four.naturalstate.product.vo.ProductWriteVO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
@@ -18,10 +19,21 @@ public class ProductControllerImpl implements ProductController {
         this.productWriteService = productWriteService;
     }
 
-    @GetMapping("/productdetail")
-    public String productdetail() {
-        return "forward:/index.html";
+    @GetMapping("/product/{productNumber}")
+    public ModelAndView productDetail(@PathVariable long productNumber, HttpServletRequest request) {
+        ModelAndView mav = new ModelAndView("forward:/index.html");
+
+        try {
+            ProductWriteVO product = productWriteService.getProductById(productNumber);
+
+            mav.addObject("product", product);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return mav;
     }
+
 
     @GetMapping("/bestproduct")
     public String bestproduct() {
@@ -32,21 +44,6 @@ public class ProductControllerImpl implements ProductController {
     public String recommendedproduct() {
         return "forward:/index.html";
     }
-
-//    @GetMapping("/products/fruits")
-//    public String fruitsproduct() {
-//        return "forward:/index.html";
-//    }
-//
-//    @GetMapping("/products/grains")
-//    public String grainsproduct() {
-//        return "forward:/index.html";
-//    }
-//
-//    @GetMapping("/products/vegetables")
-//    public String vegetablesproduct() {
-//        return "forward:/index.html";
-//    }
 
     @GetMapping("productpage")
     public String productpage() {

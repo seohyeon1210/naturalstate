@@ -53,7 +53,7 @@ const router = createBrowserRouter([
             { path: "inquiry", element: <Inquiry /> },
             { path: "webterms", element: <WebTerms /> },
             { path: "productwrite", element: <ProductWrite /> },
-            { path: "productdetail", element: <ProductDetail /> },
+            { path: "/product/:productId", element: <ProductDetail /> },
             { path: "productpage", element: <ProductPage /> },
             { path: "bestproduct", element: <BestProduct /> },
             { path: "recommendedproduct", element: <RecommendedProduct /> },

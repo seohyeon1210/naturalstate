@@ -42,4 +42,12 @@
         where product_category = #{category}
         ]]>
     </select>
+
+    <select id="selectProductById" resultMap="productResult" parameterType="long">
+        <![CDATA[
+        select *
+        from product
+        where product_number = #{productNumber}
+        ]]>
+    </select>
 </mapper>

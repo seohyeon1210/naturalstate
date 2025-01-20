@@ -13,4 +13,6 @@ public interface ProductWriteDAO {
     public List selectAllProductList() throws DataAccessException;
 
     List<ProductWriteVO> selectProductListByCategory(String category) throws DataAccessException;
+
+    ProductWriteVO selectProductById(long productNumber) throws DataAccessException;
 }

@@ -1,16 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.6dcd775f.css",
-    "main.js": "/static/js/main.1177f4fb.js",
+    "main.js": "/static/js/main.308ea538.js",
     "static/media/Pretendard-Light.otf": "/static/media/Pretendard-Light.65372b5df865e8aa758a.otf",
     "static/media/Pretendard-Bold.otf": "/static/media/Pretendard-Bold.4e72d46e664b88a6b5c8.otf",
     "static/media/Pretendard-Regular.otf": "/static/media/Pretendard-Regular.57ca7a4b20797e3b9625.otf",
     "static/media/Pretendard-Thin.otf": "/static/media/Pretendard-Thin.e45abc28d4828e92dd10.otf",
     "static/media/딸기.jpg": "/static/media/딸기.795542aa13ad13663e50.jpg",
     "static/media/군고구마.png": "/static/media/군고구마.52d8b6d71260a5f5d1de.png",
-    "static/media/감귤한박스.png": "/static/media/감귤한박스.53dc26be2d695cc28804.png",
     "static/media/애호박.jpg": "/static/media/애호박.27b778f4f9f43086a380.jpg",
-    "static/media/감귤설명1.jpg": "/static/media/감귤설명1.6dcb644bb10412011e5c.jpg",
     "static/media/신규입점.jpg": "/static/media/신규입점.2adab29f93322923dd96.jpg",
     "static/media/001.png": "/static/media/001.52f18b4b648b2ff0018e.png",
     "static/media/002.png": "/static/media/002.8b8ec0fc77ff71600c02.png",
@@ -22,10 +20,10 @@
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
     "main.6dcd775f.css.map": "/static/css/main.6dcd775f.css.map",
-    "main.1177f4fb.js.map": "/static/js/main.1177f4fb.js.map"
+    "main.308ea538.js.map": "/static/js/main.308ea538.js.map"
   },
   "entrypoints": [
     "static/css/main.6dcd775f.css",
-    "static/js/main.1177f4fb.js"
+    "static/js/main.308ea538.js"
   ]
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Container, Row, Col, Pagination, Button } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import './ProductPage.css';
 import axios from "axios";
 import * as XLSX from "xlsx";
@@ -78,22 +78,24 @@ function ProductPage() {
             <Row>
                 {currentProducts.map((product) => (
                     <Col md={3} key={product.product_number} className="mb-4">
-                        <Card className="product-card">
-                            <div className="card-img-container">
-                                <Card.Img
-                                    variant="top"
-                                    src={`http://localhost:18080${product.product_thumbnail_path.startsWith('/') ? '' : '/'}${product.product_thumbnail_path}`}
-                                    alt={product.product_title}
-                                    className="product-image"
-                                />
-                            </div>
-                            <Card.Body>
-                                <Card.Title>{product.product_title}</Card.Title>
-                                <Card.Text>
-                                    <strong>{product.product_price.toLocaleString()}원</strong>
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
+                        <Link to={`/product/${product.product_number}`} className="text-decoration-none">
+                            <Card className="product-card">
+                                <div className="card-img-container">
+                                    <Card.Img
+                                        variant="top"
+                                        src={`http://localhost:18080${product.product_thumbnail_path.startsWith('/') ? '' : '/'}${product.product_thumbnail_path}`}
+                                        alt={product.product_title}
+                                        className="product-image"
+                                    />
+                                </div>
+                                <Card.Body>
+                                    <Card.Title>{product.product_title}</Card.Title>
+                                    <Card.Text>
+                                        <strong>{product.product_price.toLocaleString()}원</strong>
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Link>
                     </Col>
                 ))}
             </Row>

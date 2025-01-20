@@ -52,4 +52,20 @@ public class ProductRestController {
             return ResponseEntity.internalServerError().build();
         }
     }
+
+    @GetMapping("/product/{productNumber}")
+    public ResponseEntity<ProductWriteVO> getProduct(@PathVariable long productNumber) {
+        try {
+            ProductWriteVO product = productWriteService.getProductById(productNumber);
+
+            if (product != null) {
+                return ResponseEntity.ok(product);
+            } else {
+                return ResponseEntity.status(404).body(null);
+            }
+        } catch (Exception e) {
+            System.err.println("상품 조회 중 오류 발생: " + e.getMessage());
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }
