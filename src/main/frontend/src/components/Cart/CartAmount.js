@@ -20,7 +20,17 @@ const CartAmount = ({ totalItems, totalPrice, shipping = 3000 }) => {
         <span>결제금액</span>
         <span>{finalPrice.toLocaleString()}원</span>
       </div>
-      <Button as={Link} to="/checkout" variant="primary" size="lg" className="cart-btn-block">
+      {/* 상품 구매하기 버튼 */}
+      <Button
+        as={Link}
+        to={{
+          pathname: "/sandbox",
+          state: { totalItems, totalPrice, finalPrice }, // 필요한 데이터 전달
+        }}
+        variant="primary"
+        size="lg"
+        className="cart-btn-block"
+      >
         {totalItems}개 상품 구매하기
       </Button>
     </Card>
