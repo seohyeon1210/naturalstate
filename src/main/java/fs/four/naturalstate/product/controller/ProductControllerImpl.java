@@ -32,17 +32,17 @@ public class ProductControllerImpl implements ProductController {
         return "forward:/index.html";
     }
 
-    @GetMapping("/fruitsproduct")
+    @GetMapping("/products/fruits")
     public String fruitsproduct() {
         return "forward:/index.html";
     }
 
-    @GetMapping("/grainsproduct")
+    @GetMapping("/products/grains")
     public String grainsproduct() {
         return "forward:/index.html";
     }
 
-    @GetMapping("vegetablesproduct")
+    @GetMapping("/products/vegetables")
     public String vegetablesproduct() {
         return "forward:/index.html";
     }

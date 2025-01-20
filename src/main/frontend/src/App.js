@@ -176,9 +176,9 @@ function App() {
                     <Route path="/productpage" element={<ProductPage />} />
                     <Route path="/bestproduct" element={<BestProduct />} />
                     <Route path="/recommendedproduct" element={<RecommendedProduct />} />
-                    <Route path="/fruitsproduct" element={<FruitsProduct />} />
-                    <Route path="/grainsproduct" element={<GrainsProduct />} />
-                    <Route path="/vegetablesproduct" element={<VegetablesProduct />} />
+                    <Route path="/products/fruits" element={<FruitsProduct />} />
+                    <Route path="/products/grains" element={<GrainsProduct />} />
+                    <Route path="/products/vegetables" element={<VegetablesProduct />} />
                     <Route path="/cart" element={<Cart />} />
 
                     {/* 마이페이지 */}

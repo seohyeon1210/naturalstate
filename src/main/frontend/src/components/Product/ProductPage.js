@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Container, Row, Col, Pagination, Button } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 import './ProductPage.css';
 import axios from "axios";
 import * as XLSX from "xlsx";
 
 function ProductPage() {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([])
+    const { category } = useParams();
     const fileName = "product_data";
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get("http://localhost:18080/api/products");
+                const response = await axios.get(`http://localhost:18080/api/products?category=${category}`);
                 setProducts(response.data);
             } catch (error) {
                 console.error("네트워크 에러: ", error);
             }
         };
         fetchProducts();
-    }, []);
+    }, [category]);
 
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 8;
@@ -46,7 +48,7 @@ function ProductPage() {
 
     return (
         <Container>
-            <h5 className="my-4">전체 보기</h5>
+            <h5 className="my-4">{category} 상품</h5>
             <hr />
             <Button variant="primary" onClick={handleDownloadExcel} className="mb-4">
                 엑셀 다운로드
