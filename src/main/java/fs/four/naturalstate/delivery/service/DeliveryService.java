@@ -2,12 +2,14 @@ package fs.four.naturalstate.delivery.service;
 
 import fs.four.naturalstate.delivery.vo.DeliveryVO;
 import fs.four.naturalstate.delivery.dao.DeliveryDAO;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class DeliveryService {
 
     @Autowired
@@ -33,12 +35,15 @@ public class DeliveryService {
      * @return 추가된 배송지 정보
      */
     public DeliveryVO addDelivery(DeliveryVO delivery) {
+        System.out.println("Service - 배송지 추가 요청 도착");
         if (delivery == null || delivery.getUserId() == null) {
+            System.out.println("Service - DeliveryVO 또는 사용자 ID 누락");
             throw new IllegalArgumentException("배송지 정보와 사용자 ID는 필수입니다.");
         }
         // 로그 추가: 추가 요청
         System.out.println("배송지 추가 요청: " + delivery);
         deliveryDAO.insertDelivery(delivery);
+        System.out.println("Service - 배송지 추가 완료");
         return delivery;
     }
 
