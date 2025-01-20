@@ -36,14 +36,19 @@ public class DeliveryController {
     // 배송지 추가
     @PostMapping("/add")
     public DeliveryVO addDelivery(@RequestBody DeliveryVO delivery, HttpSession session) {
+        System.out.println("Controller - 배송지 추가 요청 도착"); // 1. Controller 메서드 호출 로그
         UserVO loggedInUser = (UserVO) session.getAttribute("user");
         if (loggedInUser == null) {
+            System.out.println("Controller - 로그인된 사용자 없음");
             throw new IllegalStateException("로그인이 필요합니다.");
         }
+        System.out.println("Controller - 로그인된 사용자 ID: " + loggedInUser.getUserId()); // 3. 사용자 정보 로그
 
+        // 배송지 정보에 사용자 ID 추가
         delivery.setUserId(loggedInUser.getUserId());
         System.out.println("추가할 DeliveryVO: " + delivery);
 
+        // Service 호출
         DeliveryVO addedDelivery = deliveryService.addDelivery(delivery);
 
         // 디버깅 로그: 추가된 데이터 확인

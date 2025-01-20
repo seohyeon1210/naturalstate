@@ -22,6 +22,7 @@
     <!-- 배송지 추가 -->
     <insert id="insertDelivery" parameterType="fs.four.naturalstate.delivery.vo.DeliveryVO">
         INSERT INTO DELIVERY (
+            DELIVERY_NUMBER,
             USERID,
             DELIVERY_USERNAME,
             DELIVERY_PHONE,
@@ -29,6 +30,7 @@
             DELIVERY_ZIP,
             DELIVERY_DETAILADDRESS
         ) VALUES (
+                     SEQ_DELIVERY.NEXTVAL,
                      #{userId},
                      #{deliveryUsername},
                      #{deliveryPhone},
