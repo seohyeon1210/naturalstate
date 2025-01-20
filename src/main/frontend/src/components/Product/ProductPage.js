@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import { Card, Container, Row, Col, Pagination } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Card, Container, Row, Col, Pagination, Button } from 'react-bootstrap';
 import './ProductPage.css';
-import DefaultImg from "../../assets/default.jpg";
 import axios from "axios";
+import * as XLSX from "xlsx";
 
 function ProductPage() {
     const [products, setProducts] = useState([]);
+    const fileName = "product_data";
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -19,10 +20,8 @@ function ProductPage() {
         fetchProducts();
     }, []);
 
-
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 8;
-
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentProducts = products.slice(indexOfFirstItem, indexOfLastItem);
@@ -33,10 +32,26 @@ function ProductPage() {
         setCurrentPage(pageNumber);
     };
 
+    // 엑셀 다운로드 함수
+    const handleDownloadExcel = () => {
+        if (products.length === 0) {
+            alert("No data to export!");
+            return;
+        }
+        const worksheet = XLSX.utils.json_to_sheet(products);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Products");
+        XLSX.writeFile(workbook, `${fileName}.xlsx`);
+    };
+
     return (
         <Container>
             <h5 className="my-4">전체 보기</h5>
-            <hr/>
+            <hr />
+            <Button variant="primary" onClick={handleDownloadExcel} className="mb-4">
+                엑셀 다운로드
+            </Button>
+
             <Row>
                 {currentProducts.map((product) => (
                     <Col md={3} key={product.product_number} className="mb-4">
@@ -71,7 +86,7 @@ function ProductPage() {
                 ))}
             </Pagination>
         </Container>
-    )
+    );
 }
 
 export default ProductPage;

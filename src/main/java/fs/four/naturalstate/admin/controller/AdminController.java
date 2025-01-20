@@ -9,4 +9,6 @@ public interface AdminController {
                                   HttpServletResponse response) throws Exception;
 
     public ModelAndView listStores(HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+    public ModelAndView listExcelProducts(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

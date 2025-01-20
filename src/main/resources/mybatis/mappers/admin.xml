@@ -30,4 +30,12 @@
         order by storeid desc
         ]]>
     </select>
+
+    <select id="selectProductList" resultType="ProductWriteVO">
+        <![CDATA[
+        select product_number, product_category, product_title, product_content, product_price, product_created_date
+        from product
+        order by product_number
+        ]]>
+    </select>
 </mapper>

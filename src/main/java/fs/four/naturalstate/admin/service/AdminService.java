@@ -6,4 +6,6 @@ public interface AdminService {
     public List listUsers() throws Exception;
 
     public List listStores() throws Exception;
+
+    public List listSelectProducts() throws Exception;
 }

@@ -48,4 +48,12 @@ public class AdminControllerImpl implements AdminController {
         mav.addObject("storesList", storesList);
         return mav;
     }
+
+    @Override
+    public ModelAndView listExcelProducts(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        List productsExcelList = adminService.listSelectProducts();
+        ModelAndView mav = new ModelAndView("forward:/index.html");
+        mav.addObject("productsExcelList", productsExcelList);
+        return mav;
+    }
 }

@@ -37,4 +37,14 @@ public class AdminRestController {
             return ResponseEntity.internalServerError().build();
         }
     }
+
+    @GetMapping("/excel/products")
+    public ResponseEntity<List> getExcelProducts() {
+        try {
+            List productsExcelList = adminService.listSelectProducts();
+            return ResponseEntity.ok(productsExcelList);
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }

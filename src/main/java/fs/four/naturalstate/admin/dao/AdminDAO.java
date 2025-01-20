@@ -10,4 +10,6 @@ public interface AdminDAO {
     public List selectAllUserList() throws DataAccessException;
 
     public List selectAllStoreList() throws DataAccessException;
+
+    public List selectProductList() throws DataAccessException;
 }
