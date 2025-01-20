@@ -64,7 +64,12 @@ function ProductPage() {
 
     return (
         <Container>
-            <h5 className="my-4">{category} 상품</h5>
+            <h5 className="my-4">{
+                category === "fruits" ? "과일 상품" :
+                    category === "grains" ? "곡류 상품" :
+                        category === "vegetables" ? "야채·채소 상품" :
+                            `${category} 상품`
+            }</h5>
             <hr />
             <Button variant="primary" onClick={handleDownloadExcel} className="mb-4">
                 엑셀 다운로드
