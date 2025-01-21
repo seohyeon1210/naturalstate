@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Slider from "react-slick";
+import {Link} from "react-router-dom";
 import axios from "axios";
 
 const sliderSettings = {
@@ -46,22 +47,26 @@ function RecommendedProductSlider() {
     }, []);
 
     return (
-        <div className="product-section">
-            <h3 className="section-title">✨이 상품 어때요?✨</h3>
+        <div className="slider-section">
+            <h3 className="slider-title">✨이 상품 어때요?✨</h3>
             <Slider {...sliderSettings}>
                 {products.map((product) => (
-                    <div key={product.product_number} className="product-card">
-                        <img
-                            src={`http://localhost:18080${product.product_thumbnail_path}`}
-                            alt={product.product_title}
-                        />
-                        <div className="product-info">
-                            <p className="product-title">{product.product_title}</p>
-                            <p className="product-price">
-                                <span
-                                    className="discount">{product.discount}</span> {product.product_price.toLocaleString()}원
-                            </p>
-                        </div>
+                    <div key={product.product_number} className="slider-card">
+                        <Link to={`/product/${product.product_number}`} className="slider-link">
+                            <img
+                                src={`http://localhost:18080${product.product_thumbnail_path}`}
+                                alt={product.product_title}
+                            />
+                            <div className="slider-info">
+                                <p className="slider-title-text">{product.product_title}</p>
+                                <p className="slider-price">
+                                <span className="slider-discount">
+                                    {product.discount}
+                                </span>{" "}
+                                    {product.product_price.toLocaleString()}원
+                                </p>
+                            </div>
+                        </Link>
                     </div>
                 ))}
             </Slider>

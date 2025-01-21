@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.8d66d45c.css",
-    "main.js": "/static/js/main.306c92ea.js",
+    "main.css": "/static/css/main.1f6af36a.css",
+    "main.js": "/static/js/main.6ce0bc2b.js",
     "static/media/Pretendard-Light.otf": "/static/media/Pretendard-Light.65372b5df865e8aa758a.otf",
     "static/media/Pretendard-Bold.otf": "/static/media/Pretendard-Bold.4e72d46e664b88a6b5c8.otf",
     "static/media/Pretendard-Regular.otf": "/static/media/Pretendard-Regular.57ca7a4b20797e3b9625.otf",
@@ -12,18 +12,17 @@
     "static/media/신규입점.jpg": "/static/media/신규입점.2adab29f93322923dd96.jpg",
     "static/media/001.png": "/static/media/001.52f18b4b648b2ff0018e.png",
     "static/media/002.png": "/static/media/002.8b8ec0fc77ff71600c02.png",
-    "static/media/styled.png": "/static/media/styled.3df87f84c81b1f2bf024.png",
     "static/media/default.jpg": "/static/media/default.eab82e8ab7c5d664cf3e.jpg",
     "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
-    "main.8d66d45c.css.map": "/static/css/main.8d66d45c.css.map",
-    "main.306c92ea.js.map": "/static/js/main.306c92ea.js.map"
+    "main.1f6af36a.css.map": "/static/css/main.1f6af36a.css.map",
+    "main.6ce0bc2b.js.map": "/static/js/main.6ce0bc2b.js.map"
   },
   "entrypoints": [
-    "static/css/main.8d66d45c.css",
-    "static/js/main.306c92ea.js"
+    "static/css/main.1f6af36a.css",
+    "static/js/main.6ce0bc2b.js"
   ]
 }
