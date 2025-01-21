@@ -46,15 +46,20 @@ import Mypage from "./components/Mypage/Mypage";
 import DeliveryList from "./components/Mypage/DeliveryList";
 import ProductPage from "./components/Product/ProductPage";
 import OrderList from "./components/Mypage/OrderList";
+import SettlementPage from './components/Mypage/SettlementPage';
 import { CheckoutPage } from "./components/Payment/Checkout";
 import { SuccessPage } from "./components/Payment/Success";
 import { FailPage } from "./components/Payment/Fail";
+
+
 
 // Adminpage import
 import Adminpage from "./components/Adminpage/Adminpage";
 import AdminOrder from "./components/Adminpage/AdminOrder";
 import AdminUserlist from "./components/Adminpage/AdminUserlist";
 import AdminConfirmlist from "./components/Adminpage/AdminConfirmlist";
+
+
 
 function App() {
     // 로그인 상태와 사용자 정보 관리

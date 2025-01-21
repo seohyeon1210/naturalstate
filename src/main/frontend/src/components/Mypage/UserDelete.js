@@ -66,7 +66,7 @@ function DeleteAccount() {
                     // 로그아웃 후 로그인 페이지로 이동
                     window.location.href = "/login";
                 } else {
-                    alert("회원탈퇴에 실패했습니다.");
+                    alert("스토어 계정 탈퇴신청은 관리자에게 문의바랍니다.");
                 }
             } catch (error) {
                 console.error("회원탈퇴 요청 실패:", error);

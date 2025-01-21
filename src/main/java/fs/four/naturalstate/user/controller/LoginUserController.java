@@ -36,10 +36,10 @@ public class LoginUserController {
             UserVO user = loginUserService.getUserDetails(loginRequest.getUserId());
             session.setAttribute("user", user);
             session.setAttribute("userType", "user"); // 사용자 유형 추가
-            response.put("message", "Login successful!");
+            response.put("message", "그대로에 오신걸 환영합니다!");
             return ResponseEntity.ok(response);
         } else {
-            response.put("error", "Invalid userId or password!");
+            response.put("error", "아이디 및 비밀번호가 다릅니다!");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
         }
     }

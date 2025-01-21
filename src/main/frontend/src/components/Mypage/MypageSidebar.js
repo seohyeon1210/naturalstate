@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import profileImage from "../../assets/MypageSidebar/styled.png";
+import axios from 'axios';
 
 const Side = styled.div`
     display: flex;
@@ -12,14 +12,7 @@ const Side = styled.div`
     height: 100vh;
     border-right: 1px solid #e0e0e0;
     background-color: #f9f9f9;
-    padding-top: 50px;
-`;
-
-const Profile = styled.img`
-    margin-top: 20px;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+    padding-top: 100px;
 `;
 
 const Section = styled.div`
@@ -64,48 +57,70 @@ const MenuItem = styled.div`
 `;
 
 function MypageSidebar() {
+    const [userType, setUserType] = useState(''); // "user" 또는 "store"
 
-    const shoppingMenus = [
-        { name: "주문배송현황", path: "/mypage/orderlist" },
-        { name: "나의 배송지", path: "/mypage/deliverylist" },
-        { name: "장바구니", path: "/mypage/cart" },
-        { name: "등록한 상품", path: "/mypage/registeredproduct" },
+    useEffect(() => {
+        // 현재 로그인한 사용자 유형 확인
+        axios
+            .get('http://localhost:18080/api/store/session', { withCredentials: true })
+            .then((response) => {
+                if (response.data.userType === 'store') {
+                    setUserType('store'); // 스토어 사용자
+                } else {
+                    setUserType('user'); // 일반 사용자
+                }
+            })
+            .catch(() => {
+                setUserType('user'); // 기본값으로 일반 사용자 설정
+            });
+    }, []);
+
+    // 유저 로그인 시 보여질 메뉴
+    const userShoppingMenus = [
+        { name: '주문배송현황', path: '/mypage/orderlist' },
+        { name: '나의 배송지', path: '/mypage/deliverylist' },
+        { name: '장바구니', path: '/mypage/cart' },
+    ];
+    const userPersonalMenus = [
+        { name: '회원정보수정', path: '/mypage/usermypage' },
+        { name: '회원탈퇴', path: '/mypage/userdelete' },
     ];
 
-
-    const personalMenus = [
-        { name: "회원정보수정", path: "/mypage/usermypage" },
-        { name: "회원탈퇴", path: "/mypage/userdelete" },
+    // 스토어 로그인 시 보여질 메뉴
+    const storeShoppingMenus = [
+        { name: '등록한 상품', path: '/mypage/registeredproduct' },
+        { name: '정산 페이지', path: '/mypage/settlement' },
     ];
+    const storePersonalMenus = [
+        { name: '회원탈퇴', path: '/mypage/userdelete' },
+    ]; // 필요 시 추가 가능
+
+    // 렌더링할 메뉴 선택
+    const shoppingMenus = userType === 'store' ? storeShoppingMenus : userShoppingMenus;
+    const personalMenus = userType === 'store' ? storePersonalMenus : userPersonalMenus;
 
     return (
         <Side>
-
-            <Profile src={profileImage} alt="Profile" />
-
-
             <Section>
                 <SectionTitle>쇼핑정보</SectionTitle>
                 {shoppingMenus.map((menu, index) => (
                     <MenuItem key={index}>
                         <NavLink
                             to={menu.path}
-                            className={({ isActive }) => (isActive ? "active" : "")}
+                            className={({ isActive }) => (isActive ? 'active' : '')}
                         >
                             {menu.name}
                         </NavLink>
                     </MenuItem>
                 ))}
             </Section>
-
-
             <Section>
-                <SectionTitle>개인정보</SectionTitle>
+                <SectionTitle>회원정보</SectionTitle>
                 {personalMenus.map((menu, index) => (
                     <MenuItem key={index}>
                         <NavLink
                             to={menu.path}
-                            className={({ isActive }) => (isActive ? "active" : "")}
+                            className={({ isActive }) => (isActive ? 'active' : '')}
                         >
                             {menu.name}
                         </NavLink>

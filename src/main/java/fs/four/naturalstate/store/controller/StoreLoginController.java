@@ -37,7 +37,7 @@ public class StoreLoginController {
                 String storeName = store.getStoreName() != null ? store.getStoreName() : "Unknown";
 
                 return ResponseEntity.ok(Map.of(
-                        "message", "환영합니다!",
+                        "message", "그대로에 오신걸 환영합니다!",
                         "storeId", storeId,
                         "storeName", storeName
                 ));
