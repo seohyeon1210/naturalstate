@@ -48,11 +48,11 @@ function Main() {
         // ]);
 
         // API 호출
-        // axios.get("http://localhost:8080/api/products/best")
+        // axios.get("http://192.168.0.48:8080/api/products/best")
         //     .then(response => setBestProducts(response.data))
         //     .catch(error => console.error("Error fetching best products:", error));
 
-        // axios.get("http://localhost:8080/api/products/recommended")
+        // axios.get("http://192.168.0.48:8080/api/products/recommended")
         //     .then(response => setRecommendedProducts(response.data))
         //     .catch(error => console.error("Error fetching recommended products:", error));
     }, []);

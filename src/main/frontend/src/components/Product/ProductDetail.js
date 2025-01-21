@@ -13,7 +13,7 @@ function ProductDetail() {
     console.log("Fetching product ID:", productId);
     const fetchProductDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:18080/api/product/${productId}`);
+        const response = await fetch(`http://192.168.0.48:18080/api/product/${productId}`);
         const data = await response.json();
         setProduct(data || { options: [] });
       } catch (error) {
@@ -44,7 +44,7 @@ function ProductDetail() {
         <div className="detail-container">
           <div className="detail-image-section">
             <img
-                src={`http://localhost:18080${product.product_thumbnail_path.startsWith('/') ? '' : '/'}${product.product_thumbnail_path}`}
+                src={`http://192.168.0.48:18080${product.product_thumbnail_path.startsWith('/') ? '' : '/'}${product.product_thumbnail_path}`}
                 alt="Product"
                 className="detail-main-image"
             />
@@ -95,7 +95,7 @@ function ProductDetail() {
         {product.product_detail_path && (
             <div className="detail-image-section">
               <img
-                  src={`http://localhost:18080${product.product_detail_path.startsWith('/') ? '' : '/'}${product.product_detail_path}`}
+                  src={`http://192.168.0.48:18080${product.product_detail_path.startsWith('/') ? '' : '/'}${product.product_detail_path}`}
                   alt="Product Detail"
                   className="detail-product-detail-image"
               />

@@ -14,7 +14,7 @@ function DeliveryPopup({ onAdd, onClose }) {
   useEffect(() => {
     const fetchUserId = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/session/userId", {
+        const response = await fetch("http://192.168.0.48:8080/api/session/userId", {
           method: "GET",
           credentials: "include",
         });
@@ -57,7 +57,7 @@ function DeliveryPopup({ onAdd, onClose }) {
     console.log("Frontend - API 요청 데이터: ", newAddress);
 
     try {
-      const response = await fetch("http://localhost:18080/api/delivery/add", {
+      const response = await fetch("http://192.168.0.48:18080/api/delivery/add", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

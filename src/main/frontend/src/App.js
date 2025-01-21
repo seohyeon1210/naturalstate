@@ -72,12 +72,12 @@ function App() {
         const checkSession = async () => {
             try {
                 // 사용자 세션 및 스토어 세션 확인 API 호출
-                const loginResponse = await fetch("http://localhost:18080/api/login/session/detail", {
+                const loginResponse = await fetch("http://192.168.0.48:18080/api/login/session/detail", {
                     method: "GET",
                     credentials: "include",
                 });
 
-                const storeResponse = await fetch("http://localhost:18080/api/store/session", {
+                const storeResponse = await fetch("http://192.168.0.48:18080/api/store/session", {
                     method: "GET",
                     credentials: "include",
                 });
@@ -112,7 +112,7 @@ function App() {
     // 로그아웃 시 호출
     const handleLogout = async () => {
         try {
-            const response = await fetch("http://localhost:18080/api/login/logout", {
+            const response = await fetch("http://192.168.0.48:18080/api/login/logout", {
                 method: "POST",
                 credentials: "include",
             });

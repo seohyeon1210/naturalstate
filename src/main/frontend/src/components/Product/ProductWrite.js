@@ -142,7 +142,7 @@ function ProductWrite() {
                         console.log(`${key}:`, value);
                     });
 
-                    const response = await axios.post('http://localhost:18080/api/productwrite', formData, {
+                    const response = await axios.post('http://192.168.0.48:18080/api/productwrite', formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                         },
