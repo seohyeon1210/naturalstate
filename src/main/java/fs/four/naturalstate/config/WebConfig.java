@@ -28,4 +28,11 @@ public class WebConfig implements WebMvcConfigurer {
             }
         };
     }
+    
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("http://192.168.0.48:3000") // React 서버 주소
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
+    }
 }
