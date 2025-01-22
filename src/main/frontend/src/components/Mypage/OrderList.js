@@ -38,16 +38,8 @@ const OrderList = () => {
 
     return (
         <div className="order-status-container">
-            <h1>김춘배님의 주문 내역입니다.</h1>
-            <div className="search-container">
-                <input
-                    type="text"
-                    placeholder="상품명을 입력하세요"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                <button>검색</button>
-            </div>
+            <h1>주문 내역</h1>
+
             <div className="order-list">
                 {filteredOrders.map((order) => (
                     <div className="order-item" key={order.id}>
