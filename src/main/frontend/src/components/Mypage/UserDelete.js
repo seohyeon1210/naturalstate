@@ -17,6 +17,7 @@ const Title = styled.h2`
     margin-bottom: 20px;
     font-size: 24px;
     font-weight: bold;
+    font-family: PretendardBold, sans-serif;
 `;
 
 const NoticeBox = styled.div`
@@ -33,6 +34,7 @@ const NoticeText = styled.p`
     font-size: 14px;
     margin: 10px 0;
     line-height: 1.6;
+    font-family: PretendardRegular, sans-serif;
 `;
 
 const DeleteButton = styled.button`
@@ -45,6 +47,7 @@ const DeleteButton = styled.button`
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-family: PretendardRegular, sans-serif;
 
     &:hover {
         background-color: #b71c1c;

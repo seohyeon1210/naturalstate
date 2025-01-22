@@ -18,6 +18,7 @@ const Header = styled.div`
 const Title = styled.h1`
     font-size: 24px;
     font-weight: bold;
+    font-family: PretendardBold, sans-serif;
 `;
 
 const Table = styled.table`
@@ -34,6 +35,11 @@ const Table = styled.table`
     th {
         background-color: #f4f4f4;
         font-weight: bold;
+        font-family: PretendardBold, sans-serif;
+    }
+    
+    td {
+        font-family: PretendardRegular, sans-serif;
     }
 `;
 

@@ -1,14 +1,15 @@
 .admin-confirmlist {
-  font-family: 'PretendardRegular';
+  font-family: 'PretendardRegular', sans-serif;
   margin: 20px;
   color: #333;
   margin-top: 50px;
 }
 
-.admin-confirmlist h1 {
-  color: #0056b3; /* 파란색 계열 제목 */
+.admin-confirmlist h3 {
+  color: #007bff;
   text-align: center;
   margin-bottom: 20px;
+  font-family: PretendardBold, sans-serif;
 }
 
 .admin-confirmlist table {

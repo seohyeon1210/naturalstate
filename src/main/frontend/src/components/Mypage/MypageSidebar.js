@@ -13,6 +13,7 @@ const Side = styled.div`
     border-right: 1px solid #e0e0e0;
     background-color: #f9f9f9;
     padding-top: 100px;
+    font-family: PretendardRegular, sans-serif;
 `;
 
 const Section = styled.div`

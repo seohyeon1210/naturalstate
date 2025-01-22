@@ -17,7 +17,7 @@ function AdminPage() {
 
       {/* 전체 주문 현황 */}
       <div className="admin-section">
-        <h2 className="admin-subtitle">전체 주문현황</h2>
+        <h4 className="admin-subtitle">전체 주문현황</h4>
         <div className="admin-summary">
           <div className="admin-summary-item">
             <h3>총 주문건수</h3>
@@ -32,7 +32,7 @@ function AdminPage() {
 
       {/* 주문 상태 현황 */}
       <div className="admin-section">
-        <h2 className="admin-subtitle">주문상태 현황</h2>
+        <h4 className="admin-subtitle">주문상태 현황</h4>
         <div className="admin-status">
           <div className="admin-status-item">
             <h3>입금대기</h3>

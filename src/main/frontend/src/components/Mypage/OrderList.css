@@ -15,6 +15,7 @@
     font-size: 20px;
     text-align: center;
     margin-bottom: 20px;
+    font-family: PretendardBold, sans-serif;
 }
 
 /* 검색 바 */
@@ -61,6 +62,7 @@
     border: 1px solid #ddd;
     background-color: #ffffff;
     border-radius: 4px;
+    font-family: PretendardRegular, sans-serif;
 }
 
 .detail-button {

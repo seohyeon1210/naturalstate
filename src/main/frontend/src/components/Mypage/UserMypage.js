@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-    font-family: Arial, sans-serif;
     margin: 0 auto;
     width: 400px;
     padding: 20px;
@@ -18,12 +17,14 @@ const Title = styled.h2`
     color: #333;
     margin-bottom: 20px;
     font-weight: bold;
+    font-family: PretendardBold, sans-serif;
 `;
 
 const Form = styled.form`
     display: flex;
     flex-direction: column;
     gap: 20px;
+    font-family: PretendardRegular, sans-serif;
 `;
 
 const Label = styled.label`

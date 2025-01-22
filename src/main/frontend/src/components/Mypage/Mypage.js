@@ -22,11 +22,13 @@ const WelcomeMessage = styled.h2`
     font-weight: bold;
     color: #333;
     margin-bottom: 10px;
+    font-family: PretendardBold, sans-serif;
 `;
 
 const SubMessage = styled.p`
     font-size: 18px;
     color: #555;
+    font-family: PretendardRegular, sans-serif;
 `;
 
 // 최근 문의 내역 스타일
@@ -45,12 +47,14 @@ const Table = styled.table`
     th {
         background-color: #f4f4f4;
         font-weight: bold;
+        font-family: PretendardBold, sans-serif;
     }
 
     td[colspan="3"] {
         text-align: center;
         font-style: italic;
         color: #999;
+        font-family: PretendardRegular, sans-serif;
     }
 `;
 
@@ -62,6 +66,7 @@ const SectionTitle = styled.h3`
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
+    font-family: PretendardBold, sans-serif;
 `;
 
 // 레이아웃 스타일

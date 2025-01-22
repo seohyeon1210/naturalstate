@@ -35,7 +35,7 @@ const AdminConfirmlist = () => {
 
     return (
         <div className="admin-confirmlist">
-            <h1>입점신청 승인 리스트</h1>
+            <h3>입점신청 승인 리스트</h3>
             <table>
                 <thead>
                 <tr>
