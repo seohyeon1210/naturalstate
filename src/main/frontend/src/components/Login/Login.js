@@ -6,7 +6,7 @@ import "./Login.css";
 function Login({ onLogin }) {
     const [userId, setUserId] = useState("");
     const [password, setPassword] = useState("");
-    const [userType, setUserType] = useState("user"); // 유저 유형: user 또는 store
+    const [userType, setUserType] = useState("user");
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
 
@@ -15,8 +15,8 @@ function Login({ onLogin }) {
 
         const data =
             userType === "user"
-                ? { userId, password } // 일반 유저 로그인
-                : { storeId: userId, password }; // 스토어 로그인
+                ? { userId, password }
+                : { storeId: userId, password };
 
         const apiEndpoint =
             userType === "user"
@@ -31,14 +31,14 @@ function Login({ onLogin }) {
                 credentials: "include",
             });
 
-            const result = await response.json(); // JSON 응답 데이터를 받아옴
+            const result = await response.json();
 
             if (response.ok) {
-                onLogin(result); // App.js로 사용자 정보 전달
-                alert(result.message); // 로그인 성공 메시지
-                navigate("/"); // 메인 페이지로 이동
+                onLogin(result);
+                alert(result.message);
+                navigate("/");
             } else {
-                setErrorMessage(result.error); // 오류 메시지 설정
+                setErrorMessage(result.error);
             }
         } catch (error) {
             console.error("로그인 실패:", error);
@@ -102,6 +102,17 @@ function Login({ onLogin }) {
                 <Button className="font-label btn-submit" type="submit">
                     로그인
                 </Button>
+
+                {/* 아이디/비밀번호 찾기 버튼 */}
+                <div className="mt-3 text-center">
+                    <Button
+                        variant="link"
+                        className="font-label"
+                        onClick={() => navigate("/finduser")}
+                    >
+                        아이디/비밀번호 찾기
+                    </Button>
+                </div>
             </Form>
         </div>
     );
