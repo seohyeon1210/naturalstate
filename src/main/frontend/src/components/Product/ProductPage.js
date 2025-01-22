@@ -19,6 +19,13 @@ function ProductPage() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
+                if (!category) {
+                    console.log("카테고리 없음, 전체 상품 조회");
+                    const response = await axios.get(`http://192.168.0.48:18080/api/products`);
+                    setProducts(response.data);
+                    return;
+                }
+
                 const categoryId = categoryMapping[category];
                 console.log("URL category:", category);
                 console.log("Mapped categoryId:", categoryId);
@@ -28,7 +35,7 @@ function ProductPage() {
                     return;
                 }
 
-                const response = await axios.get(`http://localhost:18080/api/products?category=${categoryId}`);
+                const response = await axios.get(`http://192.168.0.48:18080/api/products?category=${categoryId}`);
                 console.log("Response Data:", response.data);
                 setProducts(response.data);
             } catch (error) {
@@ -65,10 +72,11 @@ function ProductPage() {
     return (
         <Container>
             <h5 className="my-4">{
-                category === "fruits" ? "과일 상품" :
-                    category === "grains" ? "곡류 상품" :
-                        category === "vegetables" ? "야채·채소 상품" :
-                            `${category} 상품`
+                !category ? "전체 상품" :
+                    category === "fruits" ? "과일 상품" :
+                        category === "grains" ? "곡류 상품" :
+                            category === "vegetables" ? "야채·채소 상품" :
+                                `${category} 상품`
             }</h5>
             <hr />
             <Button variant="primary" onClick={handleDownloadExcel} className="mb-4">
@@ -83,7 +91,7 @@ function ProductPage() {
                                 <div className="card-img-container">
                                     <Card.Img
                                         variant="top"
-                                        src={`http://localhost:18080${product.product_thumbnail_path.startsWith('/') ? '' : '/'}${product.product_thumbnail_path}`}
+                                        src={`http://192.168.0.48:18080${product.product_thumbnail_path.startsWith('/') ? '' : '/'}${product.product_thumbnail_path}`}
                                         alt={product.product_title}
                                         className="product-image"
                                     />
