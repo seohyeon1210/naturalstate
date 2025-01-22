@@ -26,9 +26,6 @@ function Footer() {
                         <p>
                             <Link to="/webterms">개인정보 처리방침</Link>
                         </p>
-                        <p>
-                            <Link to="/partnerterms">파트너 개인정보 처리방침</Link>
-                        </p>
                     </Col>
                 </Row>
                 <hr/>

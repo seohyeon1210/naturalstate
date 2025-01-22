@@ -77,7 +77,7 @@ function ProductDetail() {
       if (response.ok) {
         alert("장바구니에 추가되었습니다.");
       } else {
-        alert("장바구니 추가에 실패했습니다.");
+        alert("로그인 정보가 없습니다");
       }
     } catch (error) {
       console.error("API 요청 중 오류 발생:", error);
@@ -106,15 +106,12 @@ function ProductDetail() {
 
         {/* 오른쪽 상세 정보 영역 */}
         <div className="detail-detail-section">
-          <h2 className="detail-title">{product.product_title || "[첫 구매 할인] 감귤 1박스"}</h2>
-          <p className="detail-brand">{product.product_brand || "네이버리빙 | 브랜드"}</p>
+          <h2 className="detail-title">{product.product_title }</h2>
+          <p className="detail-brand">{product.product_brand }</p>
           <p className="detail-price">{price.toLocaleString()}원</p>
 
-          {/* 혜택 정보 */}
-          <div className="detail-benefits">
-            <p>혜택: {product.benefits || "최대 10% 적립 (토스페이)"}</p>
-            <p>배송: {product.shipping_info || "무료배송 | 지금 주문 시 내일 도착 가능"}</p>
-          </div>
+
+
 
           {/* 옵션 선택 */}
           <div className="detail-option">
@@ -188,7 +185,7 @@ function ProductDetail() {
       {/* 하단 스크롤 섹션 */}
       <div className="detail-scroll-section">
         <h3 className="detail-section-title">배송 일정</h3>
-        <p>배송 출발일: 화, 목</p>
+
 
         <h3 className="detail-section-title">주문 전 꼭 읽어주세요!</h3>
         <ul>
@@ -204,17 +201,7 @@ function ProductDetail() {
           alt="Additional Info"
           className="detail-additional-image"
         />
-        <ul>
-          <li>
-            제주도에서 바닷바람 맞으면서 자란 달고 맛있는 감귤입니다!
-            <br />
-            한 입 베어 물면 상큼한 향과 함께 달콤한 과즙이 풍부하게 퍼집니다!
-            <br />
-            자연의 건강함을 그대로 담아낸 저희 귤은 아침 식사부터 간식, 디저트까지 다양하게 즐길 수 있습니다!
-            <br />
-            제주도의 싱그러운 자연의 맛을 만나보세요.
-          </li>
-        </ul>
+
       </div>
     </div>
   );

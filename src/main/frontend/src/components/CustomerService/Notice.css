@@ -22,7 +22,7 @@
 
 .notice-search-select {
   padding: 5px;
-  border: 1px solid #00A731;
+  border: 1px solid #3228f7;
   border-radius: 4px;
   font-size: 12px;
   width: 100px;
@@ -30,7 +30,7 @@
 
 .notice-search-input {
   padding: 5px;
-  border: 1px solid #00A731;
+  border: 1px solid #3228f7;
   border-radius: 4px;
   font-size: 12px;
   width: 200px;
@@ -38,7 +38,7 @@
 
 .notice-search-button {
   padding: 5px;
-  background-color: #00A731;
+  background-color: #3228f7;
   color: white;
   border: none;
   border-radius: 4px;
@@ -100,7 +100,7 @@
 }
 
 .notice-pagination button.active {
-  background-color: #00A731;
+  background-color: #3228f7;
   color: white;
 }
 
