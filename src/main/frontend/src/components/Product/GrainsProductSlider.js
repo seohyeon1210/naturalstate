@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
 import Slider from "react-slick";
-import "./ProductSlider.css";
+import {Link} from "react-router-dom";
 import axios from "axios";
 
 const sliderSettings = {
     infinite: true,
     speed: 700,
-    slidesToShow: 5,
+    slidesToShow: 4,
     slidesToScroll: 1,
     centerMode: true,
     centerPadding: "0px",
@@ -31,13 +30,14 @@ const sliderSettings = {
     ],
 };
 
-function BestProductSlider() {
+function RecommendedProductSlider() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get("http://192.168.0.48:18080/api/products");
+                const categoryId = 3;
+                const response = await axios.get(`http://192.168.0.48:18080/api/products?category=${categoryId}`);
                 setProducts(response.data);
             } catch (error) {
                 console.error("상품 데이터를 가져오는 데 오류가 발생했습니다.", error);
@@ -46,9 +46,10 @@ function BestProductSlider() {
 
         fetchProducts();
     }, []);
+
     return (
         <div className="slider-section">
-            <h3 className="slider-title">전체 상품</h3>
+            <h3 className="slider-title">🥄곡류 상품 어때요?🥄</h3>
             <Slider {...sliderSettings}>
                 {products.map((product) => (
                     <div key={product.product_number} className="slider-card">
@@ -74,4 +75,4 @@ function BestProductSlider() {
     );
 }
 
-export default BestProductSlider;
+export default RecommendedProductSlider;
