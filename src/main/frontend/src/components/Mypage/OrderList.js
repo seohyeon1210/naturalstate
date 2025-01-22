@@ -4,10 +4,10 @@ import "./OrderList.css";
 const OrderList = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [orders, setOrders] = useState([
-        { id: 1, date: "2025-01-10", productName: "노트북", amount: "1,500,000원", status: "배송중" },
-        { id: 2, date: "2025-01-08", productName: "무선 이어폰", amount: "250,000원", status: "배송완료" },
-        { id: 3, date: "2025-01-05", productName: "휴대폰 케이스", amount: "20,000원", status: "배송준비중" },
-        { id: 4, date: "2025-01-03", productName: "키보드", amount: "120,000원", status: "배송중" },
+        { id: 1, date: "2025-01-10", productName: "딸기", amount: "15000원", status: "배송중" },
+        { id: 2, date: "2025-01-08", productName: "바나나", amount: "25000원", status: "배송완료" },
+        { id: 3, date: "2025-01-05", productName: "메론", amount: "30000원", status: "배송준비중" },
+        { id: 4, date: "2025-01-03", productName: "포도", amount: "35000원", status: "배송중" },
     ]);
 
     const [selectedOrder, setSelectedOrder] = useState(null); // 선택한 상품 정보
