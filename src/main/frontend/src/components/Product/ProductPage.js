@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Container, Row, Col, Pagination, Button } from 'react-bootstrap';
+import { Card, Container, Row, Col, Pagination } from 'react-bootstrap';
 import { useParams, Link } from 'react-router-dom';
 import './ProductPage.css';
 import axios from "axios";
-import * as XLSX from "xlsx";
 
 function ProductPage() {
     const [products, setProducts] = useState([])
     const { category } = useParams();
-    const fileName = "product_data";
 
     const categoryMapping = {
         "fruits": 1,
@@ -57,18 +55,6 @@ function ProductPage() {
         setCurrentPage(pageNumber);
     };
 
-    // 엑셀 다운로드 함수
-    const handleDownloadExcel = () => {
-        if (products.length === 0) {
-            alert("No data to export!");
-            return;
-        }
-        const worksheet = XLSX.utils.json_to_sheet(products);
-        const workbook = XLSX.utils.book_new();
-        XLSX.utils.book_append_sheet(workbook, worksheet, "Products");
-        XLSX.writeFile(workbook, `${fileName}.xlsx`);
-    };
-
     return (
         <Container>
             <h5 className="my-4">{
@@ -79,9 +65,6 @@ function ProductPage() {
                                 `${category} 상품`
             }</h5>
             <hr />
-            <Button variant="primary" onClick={handleDownloadExcel} className="mb-4">
-                엑셀 다운로드
-            </Button>
 
             <Row>
                 {currentProducts.map((product) => (
