@@ -169,7 +169,7 @@ function App() {
                     <Route path="/inquiry" element={<Inquiry />} />
                     <Route path="/webterms" element={<WebTerms />} />
                     <Route path="/deliverymethod" element={<DeliveryMethod />} />
-                    <Route path="/partnerterms" element={<PartnerTerms />} />
+                    <Route path="/terms" element={<PartnerTerms />} />
 
                     {/* 상품 */}
                     {userData?.userType === "store" && (
