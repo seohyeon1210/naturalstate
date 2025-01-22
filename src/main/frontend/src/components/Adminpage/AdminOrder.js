@@ -12,7 +12,7 @@ function AdminOrder() {
   useEffect(() => {
     const fetchAllProducts = async () => {
       try {
-        const response = await axios.get("http://192.168.0.48:18080/api/products")
+        const response = await axios.get("http://localhost:18080/api/products")
         setAdminProducts(response.data);
         console.log("Fetched stores: ", response.data);
       } catch (error) {

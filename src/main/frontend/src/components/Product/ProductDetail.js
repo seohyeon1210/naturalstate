@@ -19,7 +19,7 @@ function ProductDetail() {
 
     const fetchProductDetails = async () => {
       try {
-        const response = await fetch(`http://192.168.0.48:18080/api/product/${productId}`);
+        const response = await fetch(`http://localhost:18080/api/product/${productId}`);
         const data = await response.json();
         setProduct(data || { options: [] });
         setPrice(data.product_price || 17900); // 가격 설정
@@ -68,7 +68,7 @@ function ProductDetail() {
     };
 
     try {
-      const response = await fetch("http://192.168.0.48:18080/api/cart/add", {
+      const response = await fetch("http://localhost:18080/api/cart/add", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(cartItem),
@@ -98,7 +98,7 @@ function ProductDetail() {
         {/* 왼쪽 이미지 영역 */}
         <div className="detail-image-section">
           <img
-            src={`http://192.168.0.48:18080${product.product_thumbnail_path?.startsWith('/') ? '' : '/'}${product.product_thumbnail_path || TangerineImage}`}
+            src={`http://localhost:18080${product.product_thumbnail_path?.startsWith('/') ? '' : '/'}${product.product_thumbnail_path || TangerineImage}`}
             alt="Product"
             className="detail-main-image"
           />
@@ -210,7 +210,7 @@ function ProductDetail() {
 
         <h3 className="detail-section-title">상품 설명</h3>
         <img
-          src={`http://192.168.0.48:18080${product.product_detail_path || TangerineDescImage}`}
+          src={`http://localhost:18080${product.product_detail_path || TangerineDescImage}`}
           alt="Additional Info"
           className="detail-additional-image"
         />

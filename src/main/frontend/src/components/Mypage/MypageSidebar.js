@@ -62,7 +62,7 @@ function MypageSidebar() {
     useEffect(() => {
         // 현재 로그인한 사용자 유형 확인
         axios
-            .get('http://192.168.0.48:18080/api/store/session', { withCredentials: true })
+            .get('http://localhost:18080/api/store/session', { withCredentials: true })
             .then((response) => {
                 if (response.data.userType === 'store') {
                     setUserType('store'); // 스토어 사용자

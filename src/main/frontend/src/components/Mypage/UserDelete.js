@@ -56,7 +56,7 @@ function DeleteAccount() {
         const confirmDelete = window.confirm("정말 탈퇴하시겠습니까?");
         if (confirmDelete) {
             try {
-                const response = await fetch("http://192.168.0.48:18080/api/login/delete", {
+                const response = await fetch("http://localhost:18080/api/login/delete", {
                     method: "DELETE",
                     credentials: "include", // 세션 쿠키 포함
                 });

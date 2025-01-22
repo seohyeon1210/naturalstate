@@ -37,7 +37,7 @@ function VegatablesProductSlider() {
         const fetchProducts = async () => {
             try {
                 const categoryId = 2;
-                const response = await axios.get(`http://192.168.0.48:18080/api/products?category=${categoryId}`);
+                const response = await axios.get(`http://localhost:18080/api/products?category=${categoryId}`);
                 setProducts(response.data);
             } catch (error) {
                 console.error("상품 데이터를 가져오는 데 오류가 발생했습니다.", error);
@@ -55,7 +55,7 @@ function VegatablesProductSlider() {
                     <div key={product.product_number} className="slider-card">
                         <Link to={`/product/${product.product_number}`} className="slider-link">
                             <img
-                                src={`http://192.168.0.48:18080${product.product_thumbnail_path}`}
+                                src={`http://localhost:18080${product.product_thumbnail_path}`}
                                 alt={product.product_title}
                             />
                             <div className="slider-info">

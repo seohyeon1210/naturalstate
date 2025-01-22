@@ -10,7 +10,7 @@ const AdminConfirmlist = () => {
     useEffect(() => {
         const fetchStores = async () => {
             try {
-                const response = await axios.get("http://192.168.0.48:18080/api/stores")
+                const response = await axios.get("http://localhost:18080/api/stores")
                 setStores(response.data);
                 console.log("Fetched stores: ", response.data);
             } catch (error) {

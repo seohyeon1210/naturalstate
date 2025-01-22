@@ -7,7 +7,7 @@ const ReactExcelDownload = () => {
     const fileName = "product_data";
 
     useEffect(() => {
-        fetch("http://192.168.0.48:18080/api/excel/products")
+        fetch("http://localhost:18080/api/excel/products")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Network response was not ok");

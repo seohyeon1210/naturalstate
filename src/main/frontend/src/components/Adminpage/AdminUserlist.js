@@ -10,7 +10,7 @@ function AdminUserlist() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("http://192.168.0.48:18080/api/users");
+        const response = await axios.get("http://localhost:18080/api/users");
         setUsers(response.data);
         console.log("Fetched users:", response.data);
       } catch (error) {

@@ -13,7 +13,7 @@ function Cart() {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const response = await fetch("http://192.168.0.48:18080/api/login/session/detail", {
+        const response = await fetch("http://localhost:18080/api/login/session/detail", {
           method: "GET",
           credentials: "include",
         });
@@ -37,7 +37,7 @@ function Cart() {
     if (userId) {
       const fetchCartItems = async () => {
         try {
-          const response = await fetch(`http://192.168.0.48:18080/api/cart/list`, {
+          const response = await fetch(`http://localhost:18080/api/cart/list`, {
             method: "GET",
             credentials: "include",
           });
@@ -70,7 +70,7 @@ function Cart() {
     );
 
     try {
-      await fetch(`http://192.168.0.48:18080/api/cart/update/${id}`, {
+      await fetch(`http://localhost:18080/api/cart/update/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ quantity: newQuantity }),
@@ -86,7 +86,7 @@ function Cart() {
     setSelectedItems((prevSelected) => prevSelected.filter((itemId) => itemId !== id));
 
     try {
-      await fetch(`http://192.168.0.48:18080/api/cart/delete/${id}`, {
+      await fetch(`http://localhost:18080/api/cart/delete/${id}`, {
         method: "DELETE",
       });
     } catch (error) {

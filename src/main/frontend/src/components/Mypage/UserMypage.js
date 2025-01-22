@@ -89,7 +89,7 @@ function UserInfoEdit() {
         // 사용자 정보를 세션에서 가져오기
         const fetchUserData = async () => {
             try {
-                const response = await fetch("http://192.168.0.48:18080/api/login/session/detail", {
+                const response = await fetch("http://localhost:18080/api/login/session/detail", {
                     credentials: "include", // 세션 쿠키 포함
                 });
                 if (response.ok) {
@@ -114,7 +114,7 @@ function UserInfoEdit() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://192.168.0.48:18080/api/login/update", {
+            const response = await fetch("http://localhost:18080/api/login/update", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

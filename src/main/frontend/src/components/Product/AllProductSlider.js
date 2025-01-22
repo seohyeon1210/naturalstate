@@ -37,7 +37,7 @@ function AllProductSlider() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get("http://192.168.0.48:18080/api/products");
+                const response = await axios.get("http://localhost:18080/api/products");
                 setProducts(response.data);
             } catch (error) {
                 console.error("상품 데이터를 가져오는 데 오류가 발생했습니다.", error);
@@ -54,7 +54,7 @@ function AllProductSlider() {
                     <div key={product.product_number} className="slider-card">
                         <Link to={`/product/${product.product_number}`} className="slider-link">
                             <img
-                                src={`http://192.168.0.48:18080${product.product_thumbnail_path}`}
+                                src={`http://localhost:18080${product.product_thumbnail_path}`}
                                 alt={product.product_title}
                             />
                             <div className="slider-info">

@@ -25,7 +25,7 @@ function DeliveryList() {
   useEffect(() => {
     const fetchAddresses = async () => {
       try {
-        const response = await fetch("http://192.168.0.48:18080/api/delivery/list", {
+        const response = await fetch("http://localhost:18080/api/delivery/list", {
           credentials: "include", // 세션 포함
         });
         const data = await response.json();
@@ -56,7 +56,7 @@ function DeliveryList() {
   // 배송지 수정
   const handleSaveAddress = async (updatedAddress) => {
     try {
-      const response = await fetch("http://192.168.0.48:18080/api/delivery/update", {
+      const response = await fetch("http://localhost:18080/api/delivery/update", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -83,7 +83,7 @@ function DeliveryList() {
     if (window.confirm("정말 삭제하시겠습니까?")) {
       try {
         const response = await fetch(
-            `http://192.168.0.48:18080/api/delivery/delete/${deliveryNumber}`,
+            `http://localhost:18080/api/delivery/delete/${deliveryNumber}`,
             {
               method: "DELETE",
               credentials: "include",
