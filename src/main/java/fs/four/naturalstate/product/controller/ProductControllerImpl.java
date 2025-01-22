@@ -41,7 +41,7 @@ public class ProductControllerImpl implements ProductController {
     }
 
     @GetMapping("/allproduct")
-    public String allproduct() {
+    public String Allproduct() {
         return "forward:/index.html";
     }
 

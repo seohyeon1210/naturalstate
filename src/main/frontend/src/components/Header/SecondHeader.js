@@ -12,7 +12,7 @@ function SecondHeader({ userType }) {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link as={Link} to="/">홈</Nav.Link>
-                        <Nav.Link as={Link} to="/recommendedproduct">전체</Nav.Link>
+                        <Nav.Link as={Link} to="/allproduct">전체</Nav.Link>
                         <NavDropdown title="카테고리" id="basic-nav-dropdown">
                             <NavDropdown.Item as={Link} to="/products/fruits">과일</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to="/products/vegetables">채소</NavDropdown.Item>
