@@ -77,7 +77,7 @@ function ProductDetail() {
       if (response.ok) {
         alert("장바구니에 추가되었습니다.");
       } else {
-        alert("장바구니 추가에 실패했습니다.");
+        alert("로그인 정보가 없습니다");
       }
     } catch (error) {
       console.error("API 요청 중 오류 발생:", error);
