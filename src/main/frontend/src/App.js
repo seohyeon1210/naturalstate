@@ -31,6 +31,7 @@ import Event from "./components/CustomerService/Event";
 import Notice from "./components/CustomerService/Notice";
 import Inquiry from "./components/CustomerService/Inquiry";
 import DeliveryMethod from "./components/CustomerService/DeliveryMethod";
+import PartnerTerms from "./components/Terms/PartnerTerms";
 
 // Cart import
 import Cart from "./components/Cart/Cart";
@@ -168,6 +169,7 @@ function App() {
                     <Route path="/inquiry" element={<Inquiry />} />
                     <Route path="/webterms" element={<WebTerms />} />
                     <Route path="/deliverymethod" element={<DeliveryMethod />} />
+                    <Route path="/partnerterms" element={<PartnerTerms />} />
 
                     {/* 상품 */}
                     {userData?.userType === "store" && (

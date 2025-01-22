@@ -33,6 +33,7 @@ import AdminConfirmlist from "./components/Adminpage/AdminConfirmlist";
 import RegisteredProduct from './components/Mypage/RegisteredProduct';
 import DeliveryMethod from './components/CustomerService/DeliveryMethod';
 import EventPage from './components/CustomerService/Event';
+import PartnerTerms from './components/Terms/PartnerTerms';
 
 
 const router = createBrowserRouter([
@@ -68,6 +69,7 @@ const router = createBrowserRouter([
             { path: "registeredproduct", element: <RegisteredProduct/>},
             { path: "deliverymethod", element: <DeliveryMethod/> },
             { path: "notice", element: <Notice/>},
+            { path: "partnerterms", element: <PartnerTerms/>},
                 { path: "sandbox",
                 children: [
                     { path: "", element: <CheckoutPage /> },
