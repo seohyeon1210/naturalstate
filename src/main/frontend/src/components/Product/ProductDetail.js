@@ -175,9 +175,22 @@ function ProductDetail() {
             <button className="detail-cart-button" onClick={handleAddToCart}>
               장바구니
             </button>
-            <button className="detail-buy-now-button" onClick={handleBuyNow}>
-              바로구매
-            </button>
+            <Button
+                          as={Link}
+                          to={{
+                            pathname: "/sandbox",
+                            state: {
+                              productId,
+                              selectedOption,
+                              quantity,
+                              totalPrice,
+                            },
+                          }}
+                          variant="primary"
+                          className="detail-buy-now-button"
+                        >
+                          바로구매
+                        </Button>
           </div>
         </div>
       </div>
