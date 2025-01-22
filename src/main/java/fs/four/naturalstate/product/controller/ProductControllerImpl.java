@@ -40,8 +40,8 @@ public class ProductControllerImpl implements ProductController {
         return "forward:/index.html";
     }
 
-    @GetMapping("/recommendedproduct")
-    public String recommendedproduct() {
+    @GetMapping("/allproduct")
+    public String allproduct() {
         return "forward:/index.html";
     }
 

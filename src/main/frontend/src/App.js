@@ -39,7 +39,7 @@ import Cart from "./components/Cart/Cart";
 import ProductWrite from "./components/Product/ProductWrite";
 import ProductDetail from "./components/Product/ProductDetail";
 import BestProduct from "./components/Product/BestProduct";
-import RecommendedProduct from "./components/Product/RecommendedProduct";
+import AllProduct from "./components/Product/AllProduct";
 
 // User mypage import
 import Mypage from "./components/Mypage/Mypage";
@@ -131,7 +131,7 @@ function App() {
         "/main",
         "/productpage",
         "/bestproduct",
-        "/recommendedproduct",
+        "/allproduct",
         "/products/fruits",
         "/products/grains",
         "/products/vegetables",
@@ -176,7 +176,7 @@ function App() {
                     <Route path="/product/:productId" element={<ProductDetail />} />
                     <Route path="/productpage" element={<ProductPage />} />
                     <Route path="/bestproduct" element={<BestProduct />} />
-                    <Route path="/recommendedproduct" element={<RecommendedProduct />} />
+                    <Route path="/allproduct" element={<AllProduct />} />
                     <Route path="/products/:category" element={<ProductPage />} />
                     <Route path="/products/:category" element={<ProductPage />} />
                     <Route path="/products/:category" element={<ProductPage />} />

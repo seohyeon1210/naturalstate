@@ -19,6 +19,13 @@ function ProductPage() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
+                if (!category) {
+                    console.log("카테고리 없음, 전체 상품 조회");
+                    const response = await axios.get(`http://192.168.0.48:18080/api/products`);
+                    setProducts(response.data);
+                    return;
+                }
+
                 const categoryId = categoryMapping[category];
                 console.log("URL category:", category);
                 console.log("Mapped categoryId:", categoryId);
