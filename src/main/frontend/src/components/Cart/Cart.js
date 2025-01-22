@@ -119,7 +119,7 @@ function Cart() {
   const totalItems = selectedItems.length;
 
   if (isLoading) {
-    return <div>로딩 중...</div>;
+    return <div>로그인 정보가 없습니다!</div>;
   }
 
   return (
