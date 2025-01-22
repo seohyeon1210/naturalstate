@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
-import Slider from "react-slick";
 import {Link} from "react-router-dom";
+import Slider from "react-slick";
+import "./ProductSlider.css";
 import axios from "axios";
 
 const sliderSettings = {
     infinite: true,
     speed: 700,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     centerMode: true,
     centerPadding: "0px",
@@ -30,7 +31,7 @@ const sliderSettings = {
     ],
 };
 
-function RecommendedProductSlider() {
+function AllProductSlider() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -45,10 +46,9 @@ function RecommendedProductSlider() {
 
         fetchProducts();
     }, []);
-
     return (
         <div className="slider-section">
-            <h3 className="slider-title">✨이 상품 어때요?✨</h3>
+            <h3 className="slider-title">전체 상품</h3>
             <Slider {...sliderSettings}>
                 {products.map((product) => (
                     <div key={product.product_number} className="slider-card">
@@ -74,4 +74,4 @@ function RecommendedProductSlider() {
     );
 }
 
-export default RecommendedProductSlider;
+export default AllProductSlider;
