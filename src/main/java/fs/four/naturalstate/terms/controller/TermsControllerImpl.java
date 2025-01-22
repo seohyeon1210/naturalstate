@@ -10,6 +10,9 @@ public class TermsControllerImpl {
         return "forward:/index.html";
     }
 
+    @GetMapping("/partnerterms")
+    public String PartnerTerms () { return "forward:/index.html"; }
+
     @GetMapping("/webterms")
     public String WebTerms () { return "forward:/index.html"; }
 }
