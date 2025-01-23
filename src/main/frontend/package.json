@@ -32,7 +32,7 @@
     "xlsx": "^0.18.5",
     "yup": "^1.6.1"
   },
-  "proxy": "http://localhost:18080",
+  "proxy": "http://192.168.0.48:18080",
   "scripts": {
     "start": "react-scripts start --host 0.0.0.0",
     "build": "react-scripts build",
