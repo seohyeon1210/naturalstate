@@ -28,7 +28,7 @@ function StoreJoin() {
                 validationSchema={schema}
                 onSubmit={async (values, {setSubmitting, resetForm}) => {
                     try {
-                        const response = await axios.post('http://localhost:18080/api/storejoin', values, {
+                        const response = await axios.post('http://192.168.0.48:18080/api/storejoin', values, {
                             headers: {
                                 'Content-Type': 'application/json'
                             }
