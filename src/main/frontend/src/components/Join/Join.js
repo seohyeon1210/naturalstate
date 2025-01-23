@@ -56,7 +56,7 @@ function Join() {
                 onSubmit={async (values, {setSubmitting, resetForm}) => {
                     console.log('폼 제출 시작:', values);
                     try {
-                        const response = await axios.post('http://localhost:18080/api/join', values, {
+                        const response = await axios.post('http://192.168.0.48:18080/api/join', values, {
                             headers: {
                                 'Content-Type': 'application/json'
                             }

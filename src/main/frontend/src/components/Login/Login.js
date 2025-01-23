@@ -20,8 +20,8 @@ function Login({ onLogin }) {
 
         const apiEndpoint =
             userType === "user"
-                ? "http://localhost:18080/api/login"
-                : "http://localhost:18080/api/store/login";
+                ? "http://192.168.0.48:18080/api/login"
+                : "http://192.168.0.48:18080/api/store/login";
 
         try {
             const response = await fetch(apiEndpoint, {
